@@ -16,17 +16,19 @@ namespace damdrempe_zadaca_1
                 ZavrsiProgram("Broj argumenata mora biti jednak 1.", false);
             }
 
-            string nazivDatotekeParametara = args[0];
-            if(!File.Exists(nazivDatotekeParametara))
+            string datotekaParametara = args[0];
+            if(!File.Exists(datotekaParametara))
             {
                 ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
             }
-
-            SingletonParametri parametri = SingletonParametri.DohvatiInstancu(nazivDatotekeParametara);
+            SingletonParametri parametri = SingletonParametri.DohvatiInstancu(datotekaParametara);
             int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
             SingletonGeneratorBrojeva generatorBrojeva = SingletonGeneratorBrojeva.DohvatiInstancu(sjemeGeneratora);
 
-            Ucitavac.UcitajUlice(parametri.DohvatiParametar("ulice"));
+            string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
+            Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }

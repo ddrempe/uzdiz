@@ -23,7 +23,7 @@ namespace damdrempe_zadaca_1.Modeli
 
     class Vozilo
     {
-        public int Naziv { get; set; }
+        public string Naziv { get; set; }
 
         public TipVozila Tip { get; set; }
 

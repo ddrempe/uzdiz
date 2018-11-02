@@ -28,9 +28,9 @@ namespace damdrempe_zadaca_1
             return this;
         }
 
-        public string[] VratiRetke()
+        public int VratiBrojRedaka()
         {
-            return retci;
+            return retci.Length;
         }
 
         public string[] ProcitajElementeRetka(string redak, char separator)
@@ -47,6 +47,11 @@ namespace damdrempe_zadaca_1
 
             elementi = ProcitajElementeRetka(retci[redniBrojRetka], separator);
             return this;
+        }
+
+        public int VratiBrojElemenataRetka()
+        {
+            return elementi.Length;
         }
 
         public string VratiElementRetka(int redniBrojElementa)
