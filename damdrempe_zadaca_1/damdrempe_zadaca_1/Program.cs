@@ -24,12 +24,9 @@ namespace damdrempe_zadaca_1
 
             SingletonParametri parametri = SingletonParametri.DohvatiInstancu(nazivDatotekeParametara);
             int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
-
             SingletonGeneratorBrojeva generatorBrojeva = SingletonGeneratorBrojeva.DohvatiInstancu(sjemeGeneratora);
-            for (int i = 0; i < 10; i++)    // TODO: izbrisati, samo za test
-            {
-                Console.WriteLine(generatorBrojeva.DajSlucajniBrojFloat((float)15.17, (float)20.15,1));
-            }
+
+            Ucitavac.UcitajUlice(parametri.DohvatiParametar("ulice"));
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }

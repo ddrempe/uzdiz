@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitacPopisa.cs" />
+    <Compile Include="Modeli\Spremnik.cs" />
+    <Compile Include="Modeli\Ulica.cs" />
+    <Compile Include="Modeli\Vozilo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonGeneratorBrojeva.cs" />
     <Compile Include="SingletonParametri.cs" />
+    <Compile Include="Ucitavac.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
