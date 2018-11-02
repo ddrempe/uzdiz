@@ -13,14 +13,35 @@ namespace damdrempe_zadaca_1
         {
             if (args.Length != 1)
             {
-                Console.WriteLine("Broj argumenata mora biti jednak 1!");
+                ZavrsiProgram("Broj argumenata mora biti jednak 1.", false);
             }
 
             string nazivDatotekeParametara = args[0];
-            SingletonParametri singletonParametri = SingletonParametri.DohvatiInstancu(nazivDatotekeParametara);
-            Console.WriteLine(singletonParametri.DohvatiParametar("spremnici"));
+            if(!File.Exists(nazivDatotekeParametara))
+            {
+                ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
+            }
 
-            Console.Read();
+            SingletonParametri parametri = SingletonParametri.DohvatiInstancu(nazivDatotekeParametara);
+            int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
+
+            SingletonGeneratorBrojeva generatorBrojeva = SingletonGeneratorBrojeva.DohvatiInstancu(sjemeGeneratora);
+            for (int i = 0; i < 10; i++)    // TODO: izbrisati, samo za test
+            {
+                Console.WriteLine(generatorBrojeva.DajSlucajniBrojFloat((float)15.17, (float)20.15,1));
+            }
+
+            ZavrsiProgram("Program izvrsen do kraja.", true);
+        }
+
+        private static void ZavrsiProgram(string sadrzajPoruke, bool uspjeh)
+        {
+            string porukaZavrsetka = uspjeh ? "USPJEH! " : "GRESKA! ";
+            porukaZavrsetka += sadrzajPoruke;
+
+            Console.WriteLine(porukaZavrsetka);
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }

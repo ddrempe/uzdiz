@@ -28,12 +28,7 @@ namespace damdrempe_zadaca_1
                 string[] rezultat = redak.Split(':');
                 parametri.Add(rezultat[0], rezultat[1]);
             }
-        }
-
-        public string DohvatiParametar(string nazivParametra)
-        {
-            return parametri[nazivParametra];
-        }     
+        }  
 
         public static SingletonParametri DohvatiInstancu(string nazivDatotekeParametara)
         {
@@ -43,6 +38,11 @@ namespace damdrempe_zadaca_1
             }
 
             return instanca;
+        }
+
+        public string DohvatiParametar(string nazivParametra)
+        {
+            return parametri[nazivParametra];
         }
     }
 }
