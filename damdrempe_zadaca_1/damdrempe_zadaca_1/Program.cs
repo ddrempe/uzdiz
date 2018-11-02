@@ -1,4 +1,5 @@
-﻿using System;
+﻿using damdrempe_zadaca_1.Modeli;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,9 +27,11 @@ namespace damdrempe_zadaca_1
             SingletonGeneratorBrojeva generatorBrojeva = SingletonGeneratorBrojeva.DohvatiInstancu(sjemeGeneratora);
 
             string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
-            Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            List<Ulica> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            List<Vozilo> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            List<Spremnik> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+
+            ulice = Pomocno.StvoriKorisnike(ulice);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }

@@ -17,5 +17,9 @@ namespace damdrempe_zadaca_1.Modeli
         public int UdioSrednjih { get; set; }
 
         public int UdioVelikih { get; set; }
+
+        public List<Korisnik> Korisnici { get; set; }
+
+        public Ulica() => Korisnici = new List<Korisnik>();
     }
 }
