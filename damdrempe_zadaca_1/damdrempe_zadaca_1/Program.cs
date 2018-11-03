@@ -29,15 +29,22 @@ namespace damdrempe_zadaca_1
 
             string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
 
-            Popis popis = new UlicaPopis();
-            List<Redak> retciUlice = popis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            Popis ulicaPopis = new UlicaPopis();
+            List<Redak> retciUlice = ulicaPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
 
-            List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            Popis voziloPopis = new VoziloPopis();
+            List<Redak> retciVozila = voziloPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
 
-            ulice = GeneratorEntiteta.StvoriKorisnike(ulice);
-            GeneratorEntiteta.StvoriSpremnike(ulice, spremnici);
+            Popis spremnikPopis = new SpremnikPopis();
+            List<Redak> retciSpremnici = spremnikPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+
+            // Refaktorirano za korištenje Abstract Factory
+            //List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            //List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            //List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+
+            //ulice = GeneratorEntiteta.StvoriKorisnike(ulice);
+            //GeneratorEntiteta.StvoriSpremnike(ulice, spremnici);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }

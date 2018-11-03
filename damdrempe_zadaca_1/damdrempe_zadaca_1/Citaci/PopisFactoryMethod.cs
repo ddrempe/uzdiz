@@ -35,7 +35,7 @@ namespace damdrempe_zadaca_1.Citaci
 
         public int UdioVelikih { get; set; }
 
-        //TODO: extract users outside this class
+        //TODO: izdvojiti korisnike van ove klase
         public List<Korisnik> KorisniciMali { get; set; }
 
         public List<Korisnik> KorisniciSrednji { get; set; }
@@ -75,6 +75,45 @@ namespace damdrempe_zadaca_1.Citaci
         public abstract List<Redak> UcitajRetke(string datoteka);
     }
 
+    class SpremnikPopis : Popis
+    {
+        public override List<Redak> UcitajRetke(string datoteka)
+        {
+            List<Redak> spremnici = new List<Redak>();
+
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
+            citacPopisa.ProcitajRetke();
+            for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            {
+                try
+                {
+                    citacPopisa.ProcitajElementeRetka(brojRetka, ';');
+                    if (citacPopisa.VratiBrojElemenataRetka() != 6)
+                    {
+                        Console.WriteLine("Neispravan redak " + brojRetka);
+                        continue;
+                    }
+
+                    SpremnikRedak spremnik = new SpremnikRedak();
+                    spremnik.Naziv = citacPopisa.VratiElementRetka(0);
+                    spremnik.Vrsta = (VrstaSpremnika)citacPopisa.VratiElementRetkaInt(1);
+                    spremnik.BrojnostMali = citacPopisa.VratiElementRetkaInt(2);
+                    spremnik.BrojnostSrednji = citacPopisa.VratiElementRetkaInt(3);
+                    spremnik.BrojnostVeliki = citacPopisa.VratiElementRetkaInt(4);
+                    spremnik.Nosivost = citacPopisa.VratiElementRetkaInt(5);
+
+                    spremnici.Add(spremnik);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Neispravan redak " + brojRetka);
+                }
+            }
+
+            return spremnici;
+        }
+    }
+
     class UlicaPopis : Popis
     {
         public override List<Redak> UcitajRetke(string datoteka)
@@ -110,6 +149,49 @@ namespace damdrempe_zadaca_1.Citaci
             }
 
             return ulice;
+        }
+    }
+
+    class VoziloPopis : Popis
+    {
+        public override List<Redak> UcitajRetke(string datoteka)
+        {
+            List<Redak> vozila = new List<Redak>();
+
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
+            citacPopisa.ProcitajRetke();
+            for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            {
+                try
+                {
+                    citacPopisa.ProcitajElementeRetka(brojRetka, ';');
+                    if (citacPopisa.VratiBrojElemenataRetka() != 5)
+                    {
+                        Console.WriteLine("Neispravan redak " + brojRetka);
+                        continue;
+                    }
+
+                    VoziloRedak vozilo = new VoziloRedak();
+                    vozilo.Naziv = citacPopisa.VratiElementRetka(0);
+                    vozilo.Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(1);
+                    vozilo.VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(2);
+                    vozilo.Nosivost = citacPopisa.VratiElementRetkaInt(3);
+
+                    string[] vozaci = citacPopisa.VratiElementRetka(4).Split(',');
+                    foreach (string vozac in vozaci)
+                    {
+                        vozilo.Vozaci.Add(vozac.Trim());
+                    }
+
+                    vozila.Add(vozilo);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Neispravan redak " + brojRetka);
+                }
+            }
+
+            return vozila;
         }
     }
 }

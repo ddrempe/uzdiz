@@ -8,6 +8,10 @@ using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_1
 {
+    /// <summary>
+    /// Klasa prije refaktoriranja i dodavanja PopisFactoryMethod.
+    /// Trenutno se ne koristi, ostavljena samo za usporedbu prije i poslije refaktoriranja.
+    /// </summary>
     class Ucitavac
     {
         public static List<UlicaCitanje> UcitajUlice(string datoteka)
