@@ -9,11 +9,11 @@ namespace damdrempe_zadaca_1
 {
     class GeneratorEntiteta
     {
-        public static List<UlicaPopis> StvoriKorisnike(List<UlicaPopis> ulice)
+        public static List<UlicaCitanje> StvoriKorisnike(List<UlicaCitanje> ulice)
         {
             int korisnikID = 1;
 
-            foreach (UlicaPopis ulica in ulice)
+            foreach (UlicaCitanje ulica in ulice)
             {
                 int brojMalih = (int)Math.Round(ulica.UdioMalih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
                 int brojSrednjih = (int)Math.Round(ulica.UdioSrednjih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
@@ -53,14 +53,14 @@ namespace damdrempe_zadaca_1
             return ulice;
         }
 
-        public static List<Spremnik> StvoriSpremnike(List<UlicaPopis> ulice, List<SpremnikPopis> spremnici)
+        public static List<Spremnik> StvoriSpremnike(List<UlicaCitanje> ulice, List<SpremnikCitanje> spremnici)
         {
             int idSpremnika = 1;
             List<Spremnik> instanceSpremnika = new List<Spremnik>();
 
-            foreach (UlicaPopis ulica in ulice)
+            foreach (UlicaCitanje ulica in ulice)
             {
-                foreach (SpremnikPopis spremnik in spremnici)
+                foreach (SpremnikCitanje spremnik in spremnici)
                 {             
                     int brojacKorisnici = 0;
                     while (brojacKorisnici < ulica.KorisniciMali.Count)

@@ -29,12 +29,12 @@ namespace damdrempe_zadaca_1
 
             string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
 
-            Popis popis = new UlicaPopisF();
+            Popis popis = new UlicaPopis();
             List<Redak> retciUlice = popis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
 
-            List<UlicaPopis> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            List<VoziloPopis> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            List<SpremnikPopis> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
 
             ulice = GeneratorEntiteta.StvoriKorisnike(ulice);
             GeneratorEntiteta.StvoriSpremnike(ulice, spremnici);

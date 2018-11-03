@@ -4,17 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_1.Citaci
 {
     abstract class Redak { }
-
-    //TODO: extract to separate class
-    enum VrstaSpremnika
-    {
-        Kanta,
-        Kontejner
-    }
 
     class SpremnikRedak : Redak {
         public string Naziv { get; set; }
@@ -56,21 +50,6 @@ namespace damdrempe_zadaca_1.Citaci
         }
     }
 
-    enum TipVozila
-    {
-        Dizel,
-        Elektricni
-    }
-
-    enum VrstaOtpada
-    {
-        Staklo,
-        Papir,
-        Metal,
-        Bio,
-        Mijesano
-    }
-
     class VoziloRedak : Redak
     {
         public string Naziv { get; set; }
@@ -96,7 +75,7 @@ namespace damdrempe_zadaca_1.Citaci
         public abstract List<Redak> UcitajRetke(string datoteka);
     }
 
-    class UlicaPopisF : Popis
+    class UlicaPopis : Popis
     {
         public override List<Redak> UcitajRetke(string datoteka)
         {

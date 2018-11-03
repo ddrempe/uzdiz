@@ -44,11 +44,12 @@
   <ItemGroup>
     <Compile Include="Citaci\CitacPopisaBuilder.cs" />
     <Compile Include="Citaci\PopisFactoryMethod.cs" />
-    <Compile Include="Modeli\Spremnik.cs" />
-    <Compile Include="Modeli\Korisnik.cs" />
-    <Compile Include="Modeli\Popis\SpremnikPopis.cs" />
-    <Compile Include="Modeli\Popis\UlicaPopis.cs" />
-    <Compile Include="Modeli\Popis\VoziloPopis.cs" />
+    <Compile Include="Podaci\Enumeracije.cs" />
+    <Compile Include="Podaci\Modeli\Spremnik.cs" />
+    <Compile Include="Podaci\Modeli\Korisnik.cs" />
+    <Compile Include="Podaci\Modeli\Citanje\SpremnikCitanje.cs" />
+    <Compile Include="Podaci\Modeli\Citanje\UlicaCitanje.cs" />
+    <Compile Include="Podaci\Modeli\Citanje\VoziloCitanje.cs" />
     <Compile Include="Generatori\GeneratorEntiteta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_1.Modeli
 {
-    enum VrstaSpremnika
-    {
-        Kanta,
-        Kontejner
-    }
-
-    class SpremnikPopis
+    class SpremnikCitanje
     {
         public string Naziv { get; set; }
 

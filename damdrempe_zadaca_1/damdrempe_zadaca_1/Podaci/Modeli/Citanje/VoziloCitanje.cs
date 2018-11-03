@@ -3,25 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_1.Modeli
 {
-    enum TipVozila
-    {
-        Dizel,
-        Elektricni
-    }
 
-    enum VrstaOtpada
-    {
-        Staklo,
-        Papir,
-        Metal,
-        Bio,
-        Mijesano
-    }
 
-    class VoziloPopis
+    class VoziloCitanje
     {
         public string Naziv { get; set; }
 
@@ -33,6 +21,6 @@ namespace damdrempe_zadaca_1.Modeli
 
         public List<string> Vozaci { get; set; }
 
-        public VoziloPopis() => Vozaci = new List<string>();
+        public VoziloCitanje() => Vozaci = new List<string>();
     }
 }

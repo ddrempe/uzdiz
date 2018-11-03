@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_1
 {
     class Ucitavac
     {
-        public static List<UlicaPopis> UcitajUlice(string datoteka)
+        public static List<UlicaCitanje> UcitajUlice(string datoteka)
         {
-            List<UlicaPopis> ulice = new List<UlicaPopis>();
+            List<UlicaCitanje> ulice = new List<UlicaCitanje>();
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
@@ -26,7 +27,7 @@ namespace damdrempe_zadaca_1
                         continue;
                     }
 
-                    UlicaPopis ulica = new UlicaPopis();
+                    UlicaCitanje ulica = new UlicaCitanje();
                     ulica.Naziv = citacPopisa.VratiElementRetka(0);
                     ulica.BrojMjesta = citacPopisa.VratiElementRetkaInt(1);
                     ulica.UdioMalih = citacPopisa.VratiElementRetkaInt(2);
@@ -44,9 +45,9 @@ namespace damdrempe_zadaca_1
             return ulice;
         }
 
-        public static List<SpremnikPopis> UcitajSpremnike(string datoteka)
+        public static List<SpremnikCitanje> UcitajSpremnike(string datoteka)
         {
-            List<SpremnikPopis> spremnici = new List<SpremnikPopis>();
+            List<SpremnikCitanje> spremnici = new List<SpremnikCitanje>();
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
@@ -61,7 +62,7 @@ namespace damdrempe_zadaca_1
                         continue;
                     }
 
-                    SpremnikPopis spremnik = new SpremnikPopis();
+                    SpremnikCitanje spremnik = new SpremnikCitanje();
                     spremnik.Naziv = citacPopisa.VratiElementRetka(0);
                     spremnik.Vrsta = (VrstaSpremnika)citacPopisa.VratiElementRetkaInt(1);
                     spremnik.BrojnostMali = citacPopisa.VratiElementRetkaInt(2);
@@ -80,9 +81,9 @@ namespace damdrempe_zadaca_1
             return spremnici;
         }
 
-        public static List<VoziloPopis> UcitajVozila(string datoteka)
+        public static List<VoziloCitanje> UcitajVozila(string datoteka)
         {
-            List<VoziloPopis> vozila = new List<VoziloPopis>();
+            List<VoziloCitanje> vozila = new List<VoziloCitanje>();
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
@@ -97,7 +98,7 @@ namespace damdrempe_zadaca_1
                         continue;
                     }
 
-                    VoziloPopis vozilo = new VoziloPopis();
+                    VoziloCitanje vozilo = new VoziloCitanje();
                     vozilo.Naziv = citacPopisa.VratiElementRetka(0);
                     vozilo.Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(1);
                     vozilo.VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(2);
