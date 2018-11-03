@@ -1,5 +1,7 @@
 ﻿using damdrempe_zadaca_1.Citaci;
 using damdrempe_zadaca_1.Modeli;
+using damdrempe_zadaca_1.Podaci.Modeli;
+using damdrempe_zadaca_1.Pomagaci;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,25 +28,25 @@ namespace damdrempe_zadaca_1
             ParametriSingleton parametri = ParametriSingleton.DohvatiInstancu(datotekaParametara);
             int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
             GeneratorBrojevaSingleton generatorBrojeva = GeneratorBrojevaSingleton.DohvatiInstancu(sjemeGeneratora);
+            string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);            
 
-            string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
-
+            string datotekaUlice = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice"));
             Popis ulicaPopis = new UlicaPopis();
-            List<Redak> retciUlice = ulicaPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            List<Redak> ulicaPopisRetci = ulicaPopis.UcitajRetke(datotekaUlice);
 
-            Popis voziloPopis = new VoziloPopis();
-            List<Redak> retciVozila = voziloPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-
+            string datotekaSpremnika = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici"));
             Popis spremnikPopis = new SpremnikPopis();
-            List<Redak> retciSpremnici = spremnikPopis.UcitajRetke(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            List<Redak> spremnikPopisRetci = spremnikPopis.UcitajRetke(datotekaSpremnika);
 
-            // Refaktorirano za korištenje Abstract Factory
-            //List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            //List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            //List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            string datotekaVozila = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila"));
+            Popis voziloPopis = new VoziloPopis();
+            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);
 
-            //ulice = GeneratorEntiteta.StvoriKorisnike(ulice);
-            //GeneratorEntiteta.StvoriSpremnike(ulice, spremnici);
+            List<Ulica> pripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
+            List<Spremnik> pripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
+
+            List<Ulica> ulice = GeneratorEntiteta.StvoriKorisnike(pripremljeneUlice);
+            List<Spremnik> spremnici = GeneratorEntiteta.StvoriSpremnike(pripremljeneUlice, pripremljeniSpremnici);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }
@@ -57,6 +59,14 @@ namespace damdrempe_zadaca_1
             Console.WriteLine(porukaZavrsetka);
             Console.ReadKey();
             Environment.Exit(0);
+        }
+
+        // Korišteno prije refaktoriranja i uvodenja PopisFactoryMethod.
+        private static void TestCitanje(string putanjaDatoteka, ParametriSingleton parametri)
+        {
+            List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
         }
     }
 }

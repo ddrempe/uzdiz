@@ -34,20 +34,6 @@ namespace damdrempe_zadaca_1.Citaci
         public int UdioSrednjih { get; set; }
 
         public int UdioVelikih { get; set; }
-
-        //TODO: izdvojiti korisnike van ove klase
-        public List<Korisnik> KorisniciMali { get; set; }
-
-        public List<Korisnik> KorisniciSrednji { get; set; }
-
-        public List<Korisnik> KorisniciVeliki { get; set; }
-
-        public UlicaRedak()
-        {
-            KorisniciMali = new List<Korisnik>();
-            KorisniciSrednji = new List<Korisnik>();
-            KorisniciVeliki = new List<Korisnik>();
-        }
     }
 
     class VoziloRedak : Redak
