@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_1.Modeli
 {
-    class Ulica
+    class UlicaPopis
     {
         public string Naziv { get; set; }
 
@@ -24,7 +24,7 @@ namespace damdrempe_zadaca_1.Modeli
 
         public List<Korisnik> KorisniciVeliki { get; set; }
 
-        public Ulica()
+        public UlicaPopis()
         {
             KorisniciMali = new List<Korisnik>();
             KorisniciSrednji = new List<Korisnik>();

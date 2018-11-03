@@ -22,17 +22,17 @@ namespace damdrempe_zadaca_1
             {
                 ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
             }
-            SingletonParametri parametri = SingletonParametri.DohvatiInstancu(datotekaParametara);
+            ParametriSingleton parametri = ParametriSingleton.DohvatiInstancu(datotekaParametara);
             int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
-            SingletonGeneratorBrojeva generatorBrojeva = SingletonGeneratorBrojeva.DohvatiInstancu(sjemeGeneratora);
+            GeneratorBrojevaSingleton generatorBrojeva = GeneratorBrojevaSingleton.DohvatiInstancu(sjemeGeneratora);
 
             string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);
-            List<Ulica> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            List<Vozilo> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            List<Spremnik> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
+            List<UlicaPopis> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
+            List<VoziloPopis> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
+            List<SpremnikPopis> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
 
-            ulice = Pomocno.StvoriKorisnike(ulice);
-            Pomocno.StvoriSpremnike(ulice, spremnici);
+            ulice = GeneratorEntiteta.StvoriKorisnike(ulice);
+            GeneratorEntiteta.StvoriSpremnike(ulice, spremnici);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }

@@ -16,24 +16,24 @@ namespace damdrempe_zadaca_1
         float DajSlucajniBrojFloat(float minVrijednost, float maxVrijednost, int brojDecimala);
     }
 
-    class SingletonGeneratorBrojeva : IGeneratorBrojeva
+    class GeneratorBrojevaSingleton : IGeneratorBrojeva
     {
-        private static SingletonGeneratorBrojeva instanca;
+        private static GeneratorBrojevaSingleton instanca;
 
         private static Random random;
 
-        private SingletonGeneratorBrojeva(int sjemeGeneratora)
+        private GeneratorBrojevaSingleton(int sjemeGeneratora)
         {
             Console.WriteLine("Pokrenut generator...");
 
             random = new Random(sjemeGeneratora);
         }
 
-        public static SingletonGeneratorBrojeva DohvatiInstancu(int sjemeGeneratora)
+        public static GeneratorBrojevaSingleton DohvatiInstancu(int sjemeGeneratora)
         {
             if (instanca == null)
             {
-                instanca = new SingletonGeneratorBrojeva(sjemeGeneratora);
+                instanca = new GeneratorBrojevaSingleton(sjemeGeneratora);
             }
 
             return instanca;

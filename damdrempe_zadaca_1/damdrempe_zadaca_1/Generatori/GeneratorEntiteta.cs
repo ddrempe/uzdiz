@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_1
 {
-    class Pomocno
+    class GeneratorEntiteta
     {
-        public static List<Ulica> StvoriKorisnike(List<Ulica> ulice)
+        public static List<UlicaPopis> StvoriKorisnike(List<UlicaPopis> ulice)
         {
             int korisnikID = 1;
 
-            foreach (Ulica ulica in ulice)
+            foreach (UlicaPopis ulica in ulice)
             {
                 int brojMalih = (int)Math.Round(ulica.UdioMalih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
                 int brojSrednjih = (int)Math.Round(ulica.UdioSrednjih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
@@ -53,22 +53,22 @@ namespace damdrempe_zadaca_1
             return ulice;
         }
 
-        public static List<SpremnikInstanca> StvoriSpremnike(List<Ulica> ulice, List<Spremnik> spremnici)
+        public static List<Spremnik> StvoriSpremnike(List<UlicaPopis> ulice, List<SpremnikPopis> spremnici)
         {
             int idSpremnika = 1;
-            List<SpremnikInstanca> instanceSpremnika = new List<SpremnikInstanca>();
+            List<Spremnik> instanceSpremnika = new List<Spremnik>();
 
-            foreach (Ulica ulica in ulice)
+            foreach (UlicaPopis ulica in ulice)
             {
-                foreach (Spremnik spremnik in spremnici)
+                foreach (SpremnikPopis spremnik in spremnici)
                 {             
                     int brojacKorisnici = 0;
                     while (brojacKorisnici < ulica.KorisniciMali.Count)
                     {
                         if (spremnik.BrojnostMali == 0) break;
 
-                        SpremnikInstanca spremnikInstanca = new SpremnikInstanca();
-                        spremnikInstanca = new SpremnikInstanca();
+                        Spremnik spremnikInstanca = new Spremnik();
+                        spremnikInstanca = new Spremnik();
                         spremnikInstanca.ID = idSpremnika;
                         spremnikInstanca.Naziv = spremnik.Naziv;
 

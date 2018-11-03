@@ -12,13 +12,13 @@ namespace damdrempe_zadaca_1
         string DohvatiParametar(string nazivParametra);
     }
 
-    class SingletonParametri : IParametri
+    class ParametriSingleton : IParametri
     {
-        private static SingletonParametri instanca;
+        private static ParametriSingleton instanca;
 
         private Dictionary<string, string> parametri = new Dictionary<string, string>();
 
-        private SingletonParametri(string nazivDatotekeParametara)
+        private ParametriSingleton(string nazivDatotekeParametara)
         {
             Console.WriteLine("Pokrenuto ucitavanje parametara iz datoteke...");
 
@@ -30,11 +30,11 @@ namespace damdrempe_zadaca_1
             }
         }  
 
-        public static SingletonParametri DohvatiInstancu(string nazivDatotekeParametara)
+        public static ParametriSingleton DohvatiInstancu(string nazivDatotekeParametara)
         {
             if (instanca == null)
             {
-                instanca = new SingletonParametri(nazivDatotekeParametara);
+                instanca = new ParametriSingleton(nazivDatotekeParametara);
             }
 
             return instanca;

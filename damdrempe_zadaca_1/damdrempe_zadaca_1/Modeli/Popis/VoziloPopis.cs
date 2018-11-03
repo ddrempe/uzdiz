@@ -21,7 +21,7 @@ namespace damdrempe_zadaca_1.Modeli
         Mijesano
     }
 
-    class Vozilo
+    class VoziloPopis
     {
         public string Naziv { get; set; }
 
@@ -33,6 +33,6 @@ namespace damdrempe_zadaca_1.Modeli
 
         public List<string> Vozaci { get; set; }
 
-        public Vozilo() => Vozaci = new List<string>();
+        public VoziloPopis() => Vozaci = new List<string>();
     }
 }

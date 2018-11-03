@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_1.Modeli
 {
-    enum VrstaSpremnika
-    {
-        Kanta,
-        Kontejner
-    }
-
     class Spremnik
     {
+        public int ID { get; set; }
+
         public string Naziv { get; set; }
 
         public VrstaSpremnika Vrsta { get; set; }
 
-        public int BrojnostMali { get; set; }
-
-        public int BrojnostSrednji { get; set; }
-
-        public int BrojnostVeliki { get; set; }
-
         public int Nosivost { get; set; }
+
+        public List<int> Korisnici { get; set; }
+
+        public Spremnik() => Korisnici = new List<int>();
     }
 }
