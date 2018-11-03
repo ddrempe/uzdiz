@@ -52,6 +52,7 @@
     <Compile Include="Podaci\Modeli\Citanje\VoziloCitanje.cs" />
     <Compile Include="Generatori\GeneratorEntiteta.cs" />
     <Compile Include="Podaci\Modeli\Ulica.cs" />
+    <Compile Include="Pomagaci\Inicijalizator.cs" />
     <Compile Include="Pomagaci\PripremateljPrototype.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

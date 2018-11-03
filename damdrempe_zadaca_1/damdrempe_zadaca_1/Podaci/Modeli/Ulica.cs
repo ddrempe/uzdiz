@@ -1,5 +1,4 @@
 ﻿using damdrempe_zadaca_1.Citaci;
-using damdrempe_zadaca_1.Modeli;
 using System;
 using System.Collections.Generic;
 using System.Linq;

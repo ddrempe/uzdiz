@@ -22,31 +22,37 @@ namespace damdrempe_zadaca_1
 
                 for (int i = 0; i < brojMalih; i++)
                 {
-                    Korisnik korisnik = new Korisnik();
-                    korisnik.ID = korisnikID;
-                    korisnik.Kategorija = Kategorija.Mali;
-                    ulica.KorisniciMali.Add(korisnik);
+                    Korisnik korisnik = new Korisnik
+                    {
+                        ID = korisnikID,
+                        Kategorija = Kategorija.Mali,
+                    };
 
+                    ulica.KorisniciMali.Add(korisnik);               
                     korisnikID++;
                 }
 
                 for (int i = 0; i < brojSrednjih; i++)
                 {
-                    Korisnik korisnik = new Korisnik();
-                    korisnik.ID = korisnikID;
-                    korisnik.Kategorija = Kategorija.Srednji;
-                    ulica.KorisniciSrednji.Add(korisnik);
+                    Korisnik korisnik = new Korisnik
+                    {
+                        ID = korisnikID,
+                        Kategorija = Kategorija.Srednji,
+                    };
 
+                    ulica.KorisniciSrednji.Add(korisnik);
                     korisnikID++;
                 }
 
                 for (int i = 0; i < brojVelikih; i++)
                 {
-                    Korisnik korisnik = new Korisnik();
-                    korisnik.ID = korisnikID;
-                    korisnik.Kategorija = Kategorija.Veliki;
-                    ulica.KorisniciVeliki.Add(korisnik);
+                    Korisnik korisnik = new Korisnik
+                    {
+                        ID = korisnikID,
+                        Kategorija = Kategorija.Veliki,
+                    };
 
+                    ulica.KorisniciVeliki.Add(korisnik);
                     korisnikID++;
                 }
             }
@@ -54,40 +60,85 @@ namespace damdrempe_zadaca_1
             return ulice;
         }
 
-        public static List<Spremnik> StvoriSpremnike(List<Ulica> ulice, List<Spremnik> spremnici)
+        public static List<Spremnik> StvoriSpremnike(List<Ulica> ulice, List<Spremnik> spremniciVrste)
         {
-            int idSpremnika = 1;
-            List<Spremnik> instanceSpremnika = new List<Spremnik>();
+            int spremnikID = 1;
+            int brojacKorisnici;
+            List<Spremnik> spremnici = new List<Spremnik>();
 
             foreach (Ulica ulica in ulice)
             {
-                foreach (Spremnik spremnik in spremnici)
-                {             
-                    int brojacKorisnici = 0;
+                foreach (Spremnik spremnikVrsta in spremniciVrste)
+                {                    
+                    brojacKorisnici = 0;
                     while (brojacKorisnici < ulica.KorisniciMali.Count)
                     {
-                        if (spremnik.BrojnostMali == 0) break;
+                        if (spremnikVrsta.BrojnostMali == 0) break;
 
-                        Spremnik spremnikInstanca = new Spremnik();
-                        spremnikInstanca = new Spremnik();
-                        spremnikInstanca.ID = idSpremnika;
-                        spremnikInstanca.Naziv = spremnik.Naziv;
+                        Spremnik spremnik = new Spremnik();
+                        spremnik = new Spremnik();
+                        spremnik.ID = spremnikID;
+                        spremnik.Naziv = spremnikVrsta.Naziv;
 
                         int brojacKorisnikaGrupe = 1;
-                        while (brojacKorisnikaGrupe <= spremnik.BrojnostMali && brojacKorisnici < ulica.KorisniciMali.Count)
+                        while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostMali && brojacKorisnici < ulica.KorisniciMali.Count)
                         {
                             Korisnik korisnik = ulica.KorisniciMali[brojacKorisnici];
-                            spremnikInstanca.Korisnici.Add(korisnik.ID);
+                            spremnik.Korisnici.Add(korisnik.ID);
                             brojacKorisnikaGrupe++;
                             brojacKorisnici++;
                         }
 
-                        instanceSpremnika.Add(spremnikInstanca);
-                    }                    
+                        spremnici.Add(spremnik);
+                    }
+
+                    brojacKorisnici = 0;
+                    while (brojacKorisnici < ulica.KorisniciSrednji.Count)
+                    {
+                        if (spremnikVrsta.BrojnostSrednji == 0) break;
+
+                        Spremnik spremnik = new Spremnik();
+                        spremnik = new Spremnik();
+                        spremnik.ID = spremnikID;
+                        spremnik.Naziv = spremnikVrsta.Naziv;
+
+                        int brojacKorisnikaGrupe = 1;
+                        while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostSrednji && brojacKorisnici < ulica.KorisniciSrednji.Count)
+                        {
+                            Korisnik korisnik = ulica.KorisniciSrednji[brojacKorisnici];
+                            spremnik.Korisnici.Add(korisnik.ID);
+                            brojacKorisnikaGrupe++;
+                            brojacKorisnici++;
+                        }
+
+                        spremnici.Add(spremnik);
+                    }
+
+                    brojacKorisnici = 0;
+                    while (brojacKorisnici < ulica.KorisniciVeliki.Count)
+                    {
+                        if (spremnikVrsta.BrojnostVeliki == 0) break;
+
+                        Spremnik spremnik = new Spremnik();
+                        spremnik = new Spremnik();
+                        spremnik.ID = spremnikID;
+                        spremnik.Naziv = spremnikVrsta.Naziv;
+
+                        int brojacKorisnikaGrupe = 1;
+                        while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostVeliki && brojacKorisnici < ulica.KorisniciVeliki.Count)
+                        {
+                            Korisnik korisnik = ulica.KorisniciVeliki[brojacKorisnici];
+                            spremnik.Korisnici.Add(korisnik.ID);
+                            brojacKorisnikaGrupe++;
+                            brojacKorisnici++;
+                        }
+
+                        spremnici.Add(spremnik);
+                    }
                 }                           
             }
 
-            return instanceSpremnika;
+            return spremnici;
         }
     }
 }

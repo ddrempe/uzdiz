@@ -48,6 +48,8 @@ namespace damdrempe_zadaca_1
             List<Ulica> ulice = GeneratorEntiteta.StvoriKorisnike(pripremljeneUlice);
             List<Spremnik> spremnici = GeneratorEntiteta.StvoriSpremnike(pripremljeneUlice, pripremljeniSpremnici);
 
+            ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, parametri, generatorBrojeva);
+
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }
 

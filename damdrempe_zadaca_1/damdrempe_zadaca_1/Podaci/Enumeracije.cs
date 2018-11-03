@@ -20,7 +20,7 @@ namespace damdrempe_zadaca_1.Podaci
             Papir,
             Metal,
             Bio,
-            Mijesano
+            Mješano
         }
 
         public enum VrstaSpremnika

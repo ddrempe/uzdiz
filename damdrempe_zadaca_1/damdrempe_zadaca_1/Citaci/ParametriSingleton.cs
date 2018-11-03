@@ -44,5 +44,10 @@ namespace damdrempe_zadaca_1
         {
             return parametri[nazivParametra];
         }
+
+        public int DohvatiParametarInt(string nazivParametra)
+        {
+            return int.Parse(DohvatiParametar(nazivParametra));
+        }
     }
 }

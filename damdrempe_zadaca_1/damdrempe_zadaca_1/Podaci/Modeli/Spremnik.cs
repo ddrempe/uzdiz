@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using damdrempe_zadaca_1.Citaci;
 using static damdrempe_zadaca_1.Podaci.Enumeracije;
 
-namespace damdrempe_zadaca_1.Modeli
+namespace damdrempe_zadaca_1.Podaci.Modeli
 {
     class Spremnik
     {
