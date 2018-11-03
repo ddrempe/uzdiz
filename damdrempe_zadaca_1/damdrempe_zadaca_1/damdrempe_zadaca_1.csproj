@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Citaci\CitacPopisa.cs" />
+    <Compile Include="Citaci\CitacPopisaBuilder.cs" />
     <Compile Include="Modeli\Spremnik.cs" />
     <Compile Include="Modeli\Korisnik.cs" />
     <Compile Include="Modeli\Popis\SpremnikPopis.cs" />

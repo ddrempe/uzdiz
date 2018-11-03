@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_1
 {
-    class CitacPopisa
+    class CitacPopisaBuilder
     {
         private string[] retci;
 
@@ -17,12 +17,12 @@ namespace damdrempe_zadaca_1
 
         public string DatotekaPopisa { get; set; }
 
-        public CitacPopisa(string datoteka)
+        public CitacPopisaBuilder(string datoteka)
         {
             DatotekaPopisa = datoteka;
         }        
 
-        public CitacPopisa ProcitajRetke()
+        public CitacPopisaBuilder ProcitajRetke()
         {
             retci = File.ReadAllLines(DatotekaPopisa);
             return this;
@@ -38,7 +38,7 @@ namespace damdrempe_zadaca_1
             return redak.Split(separator);
         }
 
-        public CitacPopisa ProcitajElementeRetka(int redniBrojRetka, char separator)
+        public CitacPopisaBuilder ProcitajElementeRetka(int redniBrojRetka, char separator)
         {
             if(redniBrojRetka <0 || redniBrojRetka >= retci.Length)
             {

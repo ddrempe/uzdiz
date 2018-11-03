@@ -13,7 +13,7 @@ namespace damdrempe_zadaca_1
         {
             List<UlicaPopis> ulice = new List<UlicaPopis>();
 
-            CitacPopisa citacPopisa = new CitacPopisa(datoteka);
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
             for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
@@ -48,7 +48,7 @@ namespace damdrempe_zadaca_1
         {
             List<SpremnikPopis> spremnici = new List<SpremnikPopis>();
 
-            CitacPopisa citacPopisa = new CitacPopisa(datoteka);
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
             for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
@@ -84,7 +84,7 @@ namespace damdrempe_zadaca_1
         {
             List<VoziloPopis> vozila = new List<VoziloPopis>();
 
-            CitacPopisa citacPopisa = new CitacPopisa(datoteka);
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
             for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
