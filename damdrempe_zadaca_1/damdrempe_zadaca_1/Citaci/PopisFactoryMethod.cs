@@ -76,7 +76,7 @@ namespace damdrempe_zadaca_1.Citaci
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
                     if (citacPopisa.VratiBrojElemenataRetka() != 6)
                     {
-                        Console.WriteLine("Neispravan redak " + brojRetka);
+                        Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                         continue;
                     }
 
@@ -92,7 +92,7 @@ namespace damdrempe_zadaca_1.Citaci
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Neispravan redak " + brojRetka);
+                    Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                 }
             }
 
@@ -115,7 +115,7 @@ namespace damdrempe_zadaca_1.Citaci
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
                     if (citacPopisa.VratiBrojElemenataRetka() != 5)
                     {
-                        Console.WriteLine("Neispravan redak " + brojRetka);
+                        Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                         continue;
                     }
 
@@ -130,7 +130,7 @@ namespace damdrempe_zadaca_1.Citaci
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Neispravan redak " + brojRetka);
+                    Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                 }
             }
 
@@ -153,7 +153,7 @@ namespace damdrempe_zadaca_1.Citaci
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
                     if (citacPopisa.VratiBrojElemenataRetka() != 5)
                     {
-                        Console.WriteLine("Neispravan redak " + brojRetka);
+                        Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                         continue;
                     }
 
@@ -173,7 +173,7 @@ namespace damdrempe_zadaca_1.Citaci
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("Neispravan redak " + brojRetka);
+                    Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                 }
             }
 

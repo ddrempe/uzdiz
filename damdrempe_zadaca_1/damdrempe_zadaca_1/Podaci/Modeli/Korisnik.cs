@@ -22,16 +22,6 @@ namespace damdrempe_zadaca_1.Podaci.Modeli
 
         public Dictionary<VrstaOtpada, float> Otpad { get; set; }
 
-        public float OtpadStaklo { get; set; }
-
-        public float OtpadPapir { get; set; }
-
-        public float OtpadMetal { get; set; }
-
-        public float OtpadBio { get; set; }
-
-        public float OtpadMijesano { get; set; }
-
         public Korisnik()
         {
             Otpad = new Dictionary<VrstaOtpada, float>();

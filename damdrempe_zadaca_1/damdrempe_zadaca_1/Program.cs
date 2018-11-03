@@ -25,9 +25,8 @@ namespace damdrempe_zadaca_1
             {
                 ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
             }
+
             ParametriSingleton parametri = ParametriSingleton.DohvatiInstancu(datotekaParametara);
-            int sjemeGeneratora = int.Parse(parametri.DohvatiParametar("sjemeGeneratora"));
-            GeneratorBrojevaSingleton generatorBrojeva = GeneratorBrojevaSingleton.DohvatiInstancu(sjemeGeneratora);
             string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);            
 
             string datotekaUlice = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice"));
@@ -48,7 +47,7 @@ namespace damdrempe_zadaca_1
             List<Ulica> ulice = GeneratorEntiteta.StvoriKorisnike(pripremljeneUlice);
             List<Spremnik> spremnici = GeneratorEntiteta.StvoriSpremnike(pripremljeneUlice, pripremljeniSpremnici);
 
-            ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, parametri, generatorBrojeva);
+            ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, datotekaParametara);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }
