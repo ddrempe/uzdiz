@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CitacPopisa.cs" />
+    <Compile Include="Modeli\SpremnikInstanca.cs" />
     <Compile Include="Modeli\Korisnik.cs" />
     <Compile Include="Modeli\Spremnik.cs" />
     <Compile Include="Modeli\Ulica.cs" />

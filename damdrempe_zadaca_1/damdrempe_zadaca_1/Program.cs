@@ -32,6 +32,7 @@ namespace damdrempe_zadaca_1
             List<Spremnik> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
 
             ulice = Pomocno.StvoriKorisnike(ulice);
+            Pomocno.StvoriSpremnike(ulice, spremnici);
 
             ZavrsiProgram("Program izvrsen do kraja.", true);
         }
