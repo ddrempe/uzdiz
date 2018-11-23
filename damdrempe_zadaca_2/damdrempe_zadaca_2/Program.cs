@@ -61,13 +61,5 @@ namespace damdrempe_zadaca_2
             Console.ReadKey();
             Environment.Exit(0);
         }
-
-        // Korišteno prije refaktoriranja i uvodenja PopisFactoryMethod.
-        private static void TestCitanje(string putanjaDatoteka, ParametriSingleton parametri)
-        {
-            List<UlicaCitanje> ulice = Ucitavac.UcitajUlice(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice")));
-            List<VoziloCitanje> vozila = Ucitavac.UcitajVozila(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila")));
-            List<SpremnikCitanje> spremnici = Ucitavac.UcitajSpremnike(Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici")));
-        }
     }
 }

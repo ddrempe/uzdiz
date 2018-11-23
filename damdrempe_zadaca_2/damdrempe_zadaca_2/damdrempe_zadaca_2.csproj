@@ -58,7 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generatori\GeneratorBrojevaSingleton.cs" />
     <Compile Include="Citaci\ParametriSingleton.cs" />
-    <Compile Include="Citaci\Ucitavac.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
