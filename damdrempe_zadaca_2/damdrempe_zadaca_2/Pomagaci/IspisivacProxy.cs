@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace damdrempe_zadaca_2.Pomagaci
 {
     /// <summary>
-    /// Klasa Client.
+    /// Client
     /// </summary>
     public class Ispisivac
     {

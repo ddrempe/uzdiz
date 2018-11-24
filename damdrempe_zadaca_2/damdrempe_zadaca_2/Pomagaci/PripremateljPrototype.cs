@@ -9,7 +9,6 @@ namespace damdrempe_zadaca_2.Pomagaci
         public static List<Ulica> PripremiUlice(List<UlicaRedak> uliceRetci)
         {
             List<Ulica> ulice = new List<Ulica>();
-
             foreach (UlicaRedak ulicaRedak in uliceRetci)
             {
                 ulice.Add(new Ulica(ulicaRedak));
@@ -21,7 +20,6 @@ namespace damdrempe_zadaca_2.Pomagaci
         public static List<Spremnik> PripremiSpremnike(List<SpremnikRedak> spremnikRetci)
         {
             List<Spremnik> spremnici = new List<Spremnik>();
-
             foreach (SpremnikRedak spremnikRedak in spremnikRetci)
             {
                 spremnici.Add(new Spremnik(spremnikRedak));

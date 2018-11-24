@@ -6,7 +6,8 @@ namespace damdrempe_zadaca_2.Citaci
 {
     abstract class Redak { }
 
-    class SpremnikRedak : Redak {
+    class SpremnikRedak : Redak {        
+
         public string Naziv { get; set; }
 
         public VrstaSpremnika Vrsta { get; set; }
@@ -18,9 +19,20 @@ namespace damdrempe_zadaca_2.Citaci
         public int BrojnostVeliki { get; set; }
 
         public int Nosivost { get; set; }
+
+        public SpremnikRedak(CitacPopisaBuilder citacPopisa)
+        {
+            Naziv = citacPopisa.VratiElementRetka(0);
+            Vrsta = (VrstaSpremnika)citacPopisa.VratiElementRetkaInt(1);
+            BrojnostMali = citacPopisa.VratiElementRetkaInt(2);
+            BrojnostSrednji = citacPopisa.VratiElementRetkaInt(3);
+            BrojnostVeliki = citacPopisa.VratiElementRetkaInt(4);
+            Nosivost = citacPopisa.VratiElementRetkaInt(5);
+        }
     }
 
-    class UlicaRedak : Redak {
+    class UlicaRedak : Redak {        
+
         public string ID { get; set; }
 
         public string Naziv { get; set; }
@@ -32,6 +44,16 @@ namespace damdrempe_zadaca_2.Citaci
         public int UdioSrednjih { get; set; }
 
         public int UdioVelikih { get; set; }
+
+        public UlicaRedak(CitacPopisaBuilder citacPopisa)
+        {
+            ID = citacPopisa.VratiElementRetka(0);
+            Naziv = citacPopisa.VratiElementRetka(1);
+            BrojMjesta = citacPopisa.VratiElementRetkaInt(2);
+            UdioMalih = citacPopisa.VratiElementRetkaInt(3);
+            UdioSrednjih = citacPopisa.VratiElementRetkaInt(4);
+            UdioVelikih = citacPopisa.VratiElementRetkaInt(5);
+        }
     }
 
     class VoziloRedak : Redak
@@ -48,7 +70,21 @@ namespace damdrempe_zadaca_2.Citaci
 
         public List<string> Vozaci { get; set; }
 
-        public VoziloRedak() => Vozaci = new List<string>();
+        public VoziloRedak(CitacPopisaBuilder citacPopisa)
+        {            
+            ID = citacPopisa.VratiElementRetka(0);
+            Naziv = citacPopisa.VratiElementRetka(1);
+            Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(2);
+            VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(3);
+            Nosivost = citacPopisa.VratiElementRetkaInt(4);
+
+            Vozaci = new List<string>();
+            string[] vozaci = citacPopisa.VratiElementRetka(5).Split(',');
+            foreach (string vozac in vozaci)
+            {
+                Vozaci.Add(vozac.Trim());
+            }
+        }
     }
 
     abstract class Popis
@@ -81,14 +117,7 @@ namespace damdrempe_zadaca_2.Citaci
                         continue;
                     }
 
-                    SpremnikRedak spremnik = new SpremnikRedak();
-                    spremnik.Naziv = citacPopisa.VratiElementRetka(0);
-                    spremnik.Vrsta = (VrstaSpremnika)citacPopisa.VratiElementRetkaInt(1);
-                    spremnik.BrojnostMali = citacPopisa.VratiElementRetkaInt(2);
-                    spremnik.BrojnostSrednji = citacPopisa.VratiElementRetkaInt(3);
-                    spremnik.BrojnostVeliki = citacPopisa.VratiElementRetkaInt(4);
-                    spremnik.Nosivost = citacPopisa.VratiElementRetkaInt(5);
-
+                    SpremnikRedak spremnik = new SpremnikRedak(citacPopisa);
                     spremnici.Add(spremnik);
                 }
                 catch (FormatException)
@@ -121,14 +150,7 @@ namespace damdrempe_zadaca_2.Citaci
                         continue;
                     }
 
-                    UlicaRedak ulica = new UlicaRedak();
-                    ulica.ID = citacPopisa.VratiElementRetka(0);
-                    ulica.Naziv = citacPopisa.VratiElementRetka(1);
-                    ulica.BrojMjesta = citacPopisa.VratiElementRetkaInt(2);
-                    ulica.UdioMalih = citacPopisa.VratiElementRetkaInt(3);
-                    ulica.UdioSrednjih = citacPopisa.VratiElementRetkaInt(4);
-                    ulica.UdioVelikih = citacPopisa.VratiElementRetkaInt(5);
-
+                    UlicaRedak ulica = new UlicaRedak(citacPopisa);                   
                     ulice.Add(ulica);
                 }
                 catch (FormatException)
@@ -161,19 +183,7 @@ namespace damdrempe_zadaca_2.Citaci
                         continue;
                     }
 
-                    VoziloRedak vozilo = new VoziloRedak();
-                    vozilo.ID = citacPopisa.VratiElementRetka(0);
-                    vozilo.Naziv = citacPopisa.VratiElementRetka(1);
-                    vozilo.Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(2);
-                    vozilo.VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(3);
-                    vozilo.Nosivost = citacPopisa.VratiElementRetkaInt(4);
-
-                    string[] vozaci = citacPopisa.VratiElementRetka(5).Split(',');
-                    foreach (string vozac in vozaci)
-                    {
-                        vozilo.Vozaci.Add(vozac.Trim());
-                    }
-
+                    VoziloRedak vozilo = new VoziloRedak(citacPopisa);                 
                     vozila.Add(vozilo);
                 }
                 catch (FormatException)
