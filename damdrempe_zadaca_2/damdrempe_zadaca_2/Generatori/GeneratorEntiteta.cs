@@ -1,10 +1,6 @@
-﻿using damdrempe_zadaca_2.Modeli;
-using damdrempe_zadaca_2.Podaci.Modeli;
+﻿using damdrempe_zadaca_2.Podaci.Modeli;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_2
 {
@@ -78,6 +74,7 @@ namespace damdrempe_zadaca_2
                         Spremnik spremnik = new Spremnik();
                         spremnik = new Spremnik();
                         spremnik.ID = spremnikID;
+                        spremnikID++;
                         spremnik.Naziv = spremnikVrsta.Naziv;
 
                         int brojacKorisnikaGrupe = 1;
@@ -100,6 +97,7 @@ namespace damdrempe_zadaca_2
                         Spremnik spremnik = new Spremnik();
                         spremnik = new Spremnik();
                         spremnik.ID = spremnikID;
+                        spremnikID++;
                         spremnik.Naziv = spremnikVrsta.Naziv;
 
                         int brojacKorisnikaGrupe = 1;
@@ -122,6 +120,7 @@ namespace damdrempe_zadaca_2
                         Spremnik spremnik = new Spremnik();
                         spremnik = new Spremnik();
                         spremnik.ID = spremnikID;
+                        spremnikID++;
                         spremnik.Naziv = spremnikVrsta.Naziv;
 
                         int brojacKorisnikaGrupe = 1;

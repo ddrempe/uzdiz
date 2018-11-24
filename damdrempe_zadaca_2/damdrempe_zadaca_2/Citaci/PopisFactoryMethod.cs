@@ -1,9 +1,5 @@
-﻿using damdrempe_zadaca_2.Modeli;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static damdrempe_zadaca_2.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_2.Citaci
@@ -25,6 +21,8 @@ namespace damdrempe_zadaca_2.Citaci
     }
 
     class UlicaRedak : Redak {
+        public string ID { get; set; }
+
         public string Naziv { get; set; }
 
         public int BrojMjesta { get; set; }
@@ -38,6 +36,8 @@ namespace damdrempe_zadaca_2.Citaci
 
     class VoziloRedak : Redak
     {
+        public string ID { get; set; }
+
         public string Naziv { get; set; }
 
         public TipVozila Tip { get; set; }
@@ -69,7 +69,8 @@ namespace damdrempe_zadaca_2.Citaci
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
-            for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            // počinje se od retka 1 jer je redak indeksa 0 zaglavlje
+            for (int brojRetka = 1; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
                 try
                 {
@@ -108,23 +109,25 @@ namespace damdrempe_zadaca_2.Citaci
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
-            for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            // počinje se od retka 1 jer je redak indeksa 0 zaglavlje
+            for (int brojRetka = 1; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
                 try
                 {
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
-                    if (citacPopisa.VratiBrojElemenataRetka() != 5)
+                    if (citacPopisa.VratiBrojElemenataRetka() != 6)
                     {
                         Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                         continue;
                     }
 
                     UlicaRedak ulica = new UlicaRedak();
-                    ulica.Naziv = citacPopisa.VratiElementRetka(0);
-                    ulica.BrojMjesta = citacPopisa.VratiElementRetkaInt(1);
-                    ulica.UdioMalih = citacPopisa.VratiElementRetkaInt(2);
-                    ulica.UdioSrednjih = citacPopisa.VratiElementRetkaInt(3);
-                    ulica.UdioVelikih = citacPopisa.VratiElementRetkaInt(4);
+                    ulica.ID = citacPopisa.VratiElementRetka(0);
+                    ulica.Naziv = citacPopisa.VratiElementRetka(1);
+                    ulica.BrojMjesta = citacPopisa.VratiElementRetkaInt(2);
+                    ulica.UdioMalih = citacPopisa.VratiElementRetkaInt(3);
+                    ulica.UdioSrednjih = citacPopisa.VratiElementRetkaInt(4);
+                    ulica.UdioVelikih = citacPopisa.VratiElementRetkaInt(5);
 
                     ulice.Add(ulica);
                 }
@@ -146,24 +149,26 @@ namespace damdrempe_zadaca_2.Citaci
 
             CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
             citacPopisa.ProcitajRetke();
-            for (int brojRetka = 0; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            // počinje se od retka 1 jer je redak indeksa 0 zaglavlje
+            for (int brojRetka = 1; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
             {
                 try
                 {
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
-                    if (citacPopisa.VratiBrojElemenataRetka() != 5)
+                    if (citacPopisa.VratiBrojElemenataRetka() != 6)
                     {
                         Console.WriteLine("Neispravan redak {0} u datoteci {1}.", brojRetka, datoteka);
                         continue;
                     }
 
                     VoziloRedak vozilo = new VoziloRedak();
-                    vozilo.Naziv = citacPopisa.VratiElementRetka(0);
-                    vozilo.Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(1);
-                    vozilo.VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(2);
-                    vozilo.Nosivost = citacPopisa.VratiElementRetkaInt(3);
+                    vozilo.ID = citacPopisa.VratiElementRetka(0);
+                    vozilo.Naziv = citacPopisa.VratiElementRetka(1);
+                    vozilo.Tip = (TipVozila)citacPopisa.VratiElementRetkaInt(2);
+                    vozilo.VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(3);
+                    vozilo.Nosivost = citacPopisa.VratiElementRetkaInt(4);
 
-                    string[] vozaci = citacPopisa.VratiElementRetka(4).Split(',');
+                    string[] vozaci = citacPopisa.VratiElementRetka(5).Split(',');
                     foreach (string vozac in vozaci)
                     {
                         vozilo.Vozaci.Add(vozac.Trim());

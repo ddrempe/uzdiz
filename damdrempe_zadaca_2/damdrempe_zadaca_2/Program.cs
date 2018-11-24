@@ -1,13 +1,10 @@
 ﻿using damdrempe_zadaca_2.Citaci;
-using damdrempe_zadaca_2.Modeli;
 using damdrempe_zadaca_2.Podaci.Modeli;
 using damdrempe_zadaca_2.Pomagaci;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace damdrempe_zadaca_2
 {

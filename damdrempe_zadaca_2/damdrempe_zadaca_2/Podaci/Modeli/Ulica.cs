@@ -9,6 +9,8 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 {
     class Ulica
     {
+        public string ID { get; set; }
+
         public string Naziv { get; set; }
 
         public int BrojMjesta { get; set; }
@@ -34,6 +36,7 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 
         public Ulica(UlicaRedak ulicaRedak)
         {
+            ID = ulicaRedak.ID;
             Naziv = ulicaRedak.Naziv;
             BrojMjesta = ulicaRedak.BrojMjesta;
             UdioMalih = ulicaRedak.UdioMalih;

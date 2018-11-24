@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using damdrempe_zadaca_2.Citaci;
-using damdrempe_zadaca_2.Modeli;
 using damdrempe_zadaca_2.Podaci.Modeli;
 
 namespace damdrempe_zadaca_2.Pomagaci
