@@ -10,31 +10,34 @@ namespace damdrempe_zadaca_2
 {
     class Program
     {
+        public static string DatotekaParametara;
+        public static string PutanjaDatoteka;
+        public static IspisivacSingleton Ispisivac = IspisivacSingleton.DohvatiInstancu();
+
         static void Main(string[] args)
         {
             if (args.Length != 1)
             {
-                ZavrsiProgram("Broj argumenata mora biti jednak 1.", false);
+                Pomocno.ZavrsiProgram("Broj argumenata mora biti jednak 1.", false);
             }
 
-            string datotekaParametara = args[0];
-            if(!File.Exists(datotekaParametara))
+            DatotekaParametara = args[0];
+            if(!File.Exists(DatotekaParametara))
             {
-                ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
+                Pomocno.ZavrsiProgram("Datoteka s parametrima ne postoji!", false);
             }
+            ParametriSingleton parametri = ParametriSingleton.DohvatiInstancu(DatotekaParametara);
+            PutanjaDatoteka = Path.GetDirectoryName(DatotekaParametara);
 
-            ParametriSingleton parametri = ParametriSingleton.DohvatiInstancu(datotekaParametara);
-            string putanjaDatoteka = Path.GetDirectoryName(datotekaParametara);            
-
-            string datotekaUlice = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("ulice"));
+            string datotekaUlice = Pomocno.DohvatiPutanjuDatoteke(parametri.DohvatiParametar("ulice"));
             Popis ulicaPopis = new UlicaPopis();
             List<Redak> ulicaPopisRetci = ulicaPopis.UcitajRetke(datotekaUlice);
 
-            string datotekaSpremnika = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("spremnici"));
+            string datotekaSpremnika = Pomocno.DohvatiPutanjuDatoteke(parametri.DohvatiParametar("spremnici"));
             Popis spremnikPopis = new SpremnikPopis();
             List<Redak> spremnikPopisRetci = spremnikPopis.UcitajRetke(datotekaSpremnika);
 
-            string datotekaVozila = Path.Combine(putanjaDatoteka, parametri.DohvatiParametar("vozila"));
+            string datotekaVozila = Pomocno.DohvatiPutanjuDatoteke(parametri.DohvatiParametar("vozila"));
             Popis voziloPopis = new VoziloPopis();
             List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);
 
@@ -44,19 +47,9 @@ namespace damdrempe_zadaca_2
             List<Ulica> ulice = GeneratorEntiteta.StvoriKorisnike(pripremljeneUlice);
             List<Spremnik> spremnici = GeneratorEntiteta.StvoriSpremnike(pripremljeneUlice, pripremljeniSpremnici);
 
-            ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, datotekaParametara);
+            ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, DatotekaParametara);
 
-            ZavrsiProgram("Program izvrsen do kraja.", true);
-        }
-
-        private static void ZavrsiProgram(string sadrzajPoruke, bool uspjeh)
-        {
-            string porukaZavrsetka = uspjeh ? "USPJEH! " : "GRESKA! ";
-            porukaZavrsetka += sadrzajPoruke;
-
-            Console.WriteLine(porukaZavrsetka);
-            Console.ReadKey();
-            Environment.Exit(0);
+            Pomocno.ZavrsiProgram("Program izvrsen do kraja.", true);
         }
     }
 }

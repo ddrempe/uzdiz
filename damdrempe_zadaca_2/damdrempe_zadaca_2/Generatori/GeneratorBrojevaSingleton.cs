@@ -24,8 +24,6 @@ namespace damdrempe_zadaca_2
 
         private GeneratorBrojevaSingleton(int sjemeGeneratora)
         {
-            Console.WriteLine("Pokrenut generator...");
-
             random = new Random(sjemeGeneratora);
         }
 

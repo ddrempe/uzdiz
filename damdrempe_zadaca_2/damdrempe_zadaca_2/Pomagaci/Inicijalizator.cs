@@ -72,11 +72,11 @@ namespace damdrempe_zadaca_2.Pomagaci
                     }
                 }
 
-                Console.WriteLine();
-                Console.WriteLine(ulica.Naziv);
+                Program.Ispisivac.Koristi();
+                Program.Ispisivac.Koristi(ulica.Naziv);
                 foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                 {
-                    Console.WriteLine("{0}: {1}kg", vrsta, sumaOtpada[vrsta]);
+                    Program.Ispisivac.Koristi($"{vrsta}: {sumaOtpada[vrsta]}kg");
                 }
             }
 

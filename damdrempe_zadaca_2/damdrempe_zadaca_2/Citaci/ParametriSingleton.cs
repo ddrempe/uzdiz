@@ -20,8 +20,6 @@ namespace damdrempe_zadaca_2
 
         private ParametriSingleton(string nazivDatotekeParametara)
         {
-            Console.WriteLine("Pokrenuto ucitavanje parametara iz datoteke...");
-
             string[] retci = File.ReadAllLines(nazivDatotekeParametara);
             foreach (string redak in retci)
             {

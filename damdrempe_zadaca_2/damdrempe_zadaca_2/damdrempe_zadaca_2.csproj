@@ -49,7 +49,10 @@
     <Compile Include="Podaci\Modeli\Korisnik.cs" />
     <Compile Include="Generatori\GeneratorEntiteta.cs" />
     <Compile Include="Podaci\Modeli\Ulica.cs" />
+    <Compile Include="Pomagaci\IspisivacSingleton.cs" />
+    <Compile Include="Pomagaci\Pomocno.cs" />
     <Compile Include="Pomagaci\Inicijalizator.cs" />
+    <Compile Include="Pomagaci\IspisivacProxy.cs" />
     <Compile Include="Pomagaci\PripremateljPrototype.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
