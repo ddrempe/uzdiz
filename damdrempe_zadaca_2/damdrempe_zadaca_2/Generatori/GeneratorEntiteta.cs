@@ -6,6 +6,12 @@ namespace damdrempe_zadaca_2
 {
     class GeneratorEntiteta
     {
+        /// <summary>
+        /// Stvara potreban broj korisnika za svaku ulicu prema traženom broju korisnika.
+        /// Korisnicima dodjeljuje ID inkrementalne vrijednosti.
+        /// </summary>
+        /// <param name="ulice"></param>
+        /// <returns></returns>
         public static List<Ulica> StvoriKorisnike(List<Ulica> ulice)
         {
             int korisnikID = 1;
@@ -24,6 +30,13 @@ namespace damdrempe_zadaca_2
             return ulice;
         }
 
+        /// <summary>
+        /// Stvara listu korisnika pojedine vrste za jednu ulicu.
+        /// </summary>
+        /// <param name="korisnikID"></param>
+        /// <param name="brojKorisnika"></param>
+        /// <param name="kategorija"></param>
+        /// <returns></returns>
         private static List<Korisnik> StvoriKorisnikePoVrsti(ref int korisnikID, int brojKorisnika, Kategorija kategorija)
         {
             List<Korisnik> korisnici = new List<Korisnik>();
@@ -43,6 +56,12 @@ namespace damdrempe_zadaca_2
             return korisnici;
         }
 
+        /// <summary>
+        /// Stvara potreban broj spremnika prema broju korisnika.
+        /// </summary>
+        /// <param name="ulice"></param>
+        /// <param name="spremniciVrste"></param>
+        /// <returns></returns>
         public static List<Spremnik> StvoriSpremnike(List<Ulica> ulice, List<Spremnik> spremniciVrste)
         {
             int spremnikID = 1;
@@ -65,6 +84,15 @@ namespace damdrempe_zadaca_2
             return spremnici;
         }
 
+        /// <summary>
+        /// Stvara listu spremnika prema vrsti spremnika i kategoriji korisnika.
+        /// U svaki spremnik zapisuje identifikatore jednog ili više korisnika koji imaju pravo na taj spremnik.
+        /// </summary>
+        /// <param name="spremnikID"></param>
+        /// <param name="ulica"></param>
+        /// <param name="spremnikVrsta"></param>
+        /// <param name="kategorija"></param>
+        /// <returns></returns>
         private static List<Spremnik> StvoriSpremnikePoVrsti(ref int spremnikID, Ulica ulica, Spremnik spremnikVrsta, Kategorija kategorija)
         {            
             List<Korisnik> korisnici = OdrediListuKorisnika(ulica, kategorija);          
@@ -95,6 +123,12 @@ namespace damdrempe_zadaca_2
             return spremnici;
         }
 
+        /// <summary>
+        /// Obzirom na kategoriju korisnika određuje koju listu korisnika treba dohvatiti.
+        /// </summary>
+        /// <param name="ulica"></param>
+        /// <param name="kategorija"></param>
+        /// <returns></returns>
         private static List<Korisnik> OdrediListuKorisnika(Ulica ulica, Kategorija kategorija)
         {
             List<Korisnik> korisnici = new List<Korisnik>();
