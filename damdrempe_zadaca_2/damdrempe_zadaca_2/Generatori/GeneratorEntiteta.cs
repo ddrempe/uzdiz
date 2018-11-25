@@ -103,10 +103,11 @@ namespace damdrempe_zadaca_2
                 if (spremnikVrsta.BrojnostMali == 0) break;
 
                 Spremnik spremnik = new Spremnik();
-                spremnik = new Spremnik();
                 spremnik.ID = spremnikID;
                 spremnikID++;
-                spremnik.Naziv = spremnikVrsta.Naziv;
+                spremnik.NazivPremaOtpadu = spremnikVrsta.NazivPremaOtpadu;
+                spremnik.Vrsta = spremnikVrsta.Vrsta;
+                spremnik.Nosivost = spremnikVrsta.Nosivost;
 
                 int brojacKorisnikaGrupe = 1;
                 while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostMali && i < korisnici.Count)

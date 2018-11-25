@@ -70,10 +70,10 @@ namespace damdrempe_zadaca_2.Pomagaci
             }
 
             return otpadiKorisnika;
-        }
+        }        
 
         /// <summary>
-        /// 
+        /// Ispisuje otpad po ulicama.
         /// </summary>
         public static void IspisiOtpadPoUlicama(List<Ulica> ulice)
         {
@@ -94,7 +94,6 @@ namespace damdrempe_zadaca_2.Pomagaci
                 {
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {
-                        sumaOtpada[vrsta] = 0;
                         sumaOtpada[vrsta] += korisnik.Otpad[vrsta];
                     }
                 }
@@ -103,7 +102,6 @@ namespace damdrempe_zadaca_2.Pomagaci
                 {
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {
-                        sumaOtpada[vrsta] = 0;
                         sumaOtpada[vrsta] += korisnik.Otpad[vrsta];
                     }
                 }
@@ -115,6 +113,68 @@ namespace damdrempe_zadaca_2.Pomagaci
                     Program.Ispisivac.Koristi($"{vrsta}: {sumaOtpada[vrsta]}kg");
                 }
             }            
+        }
+
+        /// <summary>
+        /// Za svaki spremnik pronalazi korisnike kojima pripada.
+        /// Otpad svakog korisnika se pohranjuje u spremnik a visak odbacuje.
+        /// </summary>
+        /// <param name="ulice"></param>
+        /// <param name="spremnici"></param>
+        /// <returns></returns>
+        public static List<Spremnik> OdloziOtpadKorisnika(List<Ulica> ulice, List<Spremnik> spremnici)
+        {
+            foreach(Spremnik spremnik in spremnici)
+            {
+                foreach (int korisnikID in spremnik.Korisnici)
+                {
+                    Korisnik korisnik = NadjiKorisnika(korisnikID, ulice);
+                    float preostaliKapacitetSpremnika = spremnik.Nosivost - spremnik.KolicinaOtpada;
+                    float kolicinaOtpadaKorisnika = korisnik.Otpad[spremnik.NazivPremaOtpadu];
+
+                    if (kolicinaOtpadaKorisnika > preostaliKapacitetSpremnika)
+                    {
+                        float kolicinaOtpadaViska = kolicinaOtpadaKorisnika - preostaliKapacitetSpremnika;
+                        kolicinaOtpadaKorisnika = kolicinaOtpadaKorisnika - kolicinaOtpadaViska;
+                        Program.Ispisivac.Koristi($"Korisnik {korisnikID} ima {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu} viška.");
+                        Program.Ispisivac.Koristi($"Spremnik {spremnik.ID} ({spremnik.NazivPremaOtpadu}) je pun ({spremnik.Nosivost}kg)");
+                    }
+                    
+                    spremnik.KolicinaOtpada += kolicinaOtpadaKorisnika;
+                }
+            }
+
+            return spremnici;
+        }
+
+        /// <summary>
+        /// Pronalazi i vraca objekt korisnika prema identifikatoru.
+        /// </summary>
+        /// <param name="korisnikID"></param>
+        /// <param name="ulice"></param>
+        /// <returns></returns>
+        private static Korisnik NadjiKorisnika(int korisnikID, List<Ulica> ulice)
+        {
+            Korisnik korisnik = new Korisnik();
+            foreach (Ulica ulica in ulice)
+            {
+                if(ulica.KorisniciMali.Any(k => k.ID == korisnikID))
+                {
+                    korisnik = ulica.KorisniciMali.FirstOrDefault(k => k.ID == korisnikID);
+                }
+
+                if (ulica.KorisniciSrednji.Any(k => k.ID == korisnikID))
+                {
+                    korisnik = ulica.KorisniciSrednji.FirstOrDefault(k => k.ID == korisnikID);
+                }
+
+                if (ulica.KorisniciVeliki.Any(k => k.ID == korisnikID))
+                {
+                    korisnik = ulica.KorisniciVeliki.FirstOrDefault(k => k.ID == korisnikID);
+                }
+            }
+
+            return korisnik;
         }
     }
 }

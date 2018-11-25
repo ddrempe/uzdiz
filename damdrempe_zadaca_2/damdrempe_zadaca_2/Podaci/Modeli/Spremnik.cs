@@ -12,7 +12,7 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
     {
         public int ID { get; set; }
 
-        public string Naziv { get; set; }
+        public VrstaOtpada NazivPremaOtpadu { get; set; }
 
         public VrstaSpremnika Vrsta { get; set; }
 
@@ -24,22 +24,26 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 
         public int Nosivost { get; set; }
 
+        public float KolicinaOtpada { get; set; }
+
         public List<int> Korisnici { get; set; }
 
         public Spremnik()
-        {
+        {            
             Korisnici = new List<int>();
+            KolicinaOtpada = 0;
         }
 
         public Spremnik(SpremnikRedak spremnikRedak)
         {
-            Naziv = spremnikRedak.Naziv;
+            NazivPremaOtpadu = (VrstaOtpada)Enum.Parse(typeof(VrstaOtpada), spremnikRedak.NazivPremaOtpadu, true);
             Vrsta = spremnikRedak.Vrsta;
             BrojnostMali = spremnikRedak.BrojnostMali;
             BrojnostSrednji = spremnikRedak.BrojnostSrednji;
             BrojnostVeliki = spremnikRedak.BrojnostVeliki;
             Nosivost = spremnikRedak.Nosivost;
             Korisnici = new List<int>();
+            KolicinaOtpada = 0;
         }
     }
 }

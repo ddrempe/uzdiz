@@ -48,6 +48,8 @@ namespace damdrempe_zadaca_2
             List<Spremnik> spremnici = GeneratorEntiteta.StvoriSpremnike(pripremljeneUlice, pripremljeniSpremnici);
 
             ulice = Inicijalizator.OdrediOtpadKorisnicima(ulice, DatotekaParametara);
+            spremnici = Inicijalizator.OdloziOtpadKorisnika(ulice, spremnici);
+                        
             Inicijalizator.IspisiOtpadPoUlicama(ulice);
 
             Pomocno.ZavrsiProgram("Program izvrsen do kraja.", true);

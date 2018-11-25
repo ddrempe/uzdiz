@@ -8,7 +8,7 @@ namespace damdrempe_zadaca_2.Citaci
 
     class SpremnikRedak : Redak {        
 
-        public string Naziv { get; set; }
+        public string NazivPremaOtpadu { get; set; }
 
         public VrstaSpremnika Vrsta { get; set; }
 
@@ -22,7 +22,7 @@ namespace damdrempe_zadaca_2.Citaci
 
         public SpremnikRedak(CitacPopisaBuilder citacPopisa)
         {
-            Naziv = citacPopisa.VratiElementRetka(0);
+            NazivPremaOtpadu = citacPopisa.VratiElementRetka(0);
             Vrsta = (VrstaSpremnika)citacPopisa.VratiElementRetkaInt(1);
             BrojnostMali = citacPopisa.VratiElementRetkaInt(2);
             BrojnostSrednji = citacPopisa.VratiElementRetkaInt(3);
