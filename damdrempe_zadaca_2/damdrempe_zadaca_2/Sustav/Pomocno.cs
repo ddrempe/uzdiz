@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace damdrempe_zadaca_2.Pomagaci
+namespace damdrempe_zadaca_2.Sustav
 {
     class Pomocno
     {
@@ -23,6 +23,11 @@ namespace damdrempe_zadaca_2.Pomagaci
         public static string DohvatiPutanjuDatoteke(string nazivDatoteke)
         {
             return Path.Combine(Program.PutanjaDatoteka, nazivDatoteke);
+        }
+
+        public static bool DioPodrucjaJeUlica(string dioID)
+        {
+            return dioID.StartsWith("u") ? true : false; 
         }
     }
 }

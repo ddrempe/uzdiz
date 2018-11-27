@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static damdrempe_zadaca_2.Podaci.Enumeracije;
 
-namespace damdrempe_zadaca_2.Pomagaci
+namespace damdrempe_zadaca_2.Sustav
 {
-    class Inicijalizator
+    class InicijalizatorOtpada
     {
         /// <summary>
         /// Za sve ulice i svakog pojedinog korisnika nasumično generira količinu otpada po pojedinoj vrsti otpada.

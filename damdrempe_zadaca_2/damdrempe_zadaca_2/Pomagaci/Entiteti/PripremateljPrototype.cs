@@ -2,7 +2,7 @@
 using damdrempe_zadaca_2.Citaci;
 using damdrempe_zadaca_2.Podaci.Modeli;
 
-namespace damdrempe_zadaca_2.Pomagaci
+namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 {
     class PripremateljPrototype
     {

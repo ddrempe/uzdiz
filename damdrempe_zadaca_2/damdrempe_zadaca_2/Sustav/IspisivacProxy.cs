@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace damdrempe_zadaca_2.Pomagaci
+namespace damdrempe_zadaca_2.Sustav
 {
     /// <summary>
     /// Client
