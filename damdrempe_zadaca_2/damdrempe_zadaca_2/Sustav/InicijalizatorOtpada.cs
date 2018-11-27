@@ -73,9 +73,9 @@ namespace damdrempe_zadaca_2.Sustav
         }        
 
         /// <summary>
-        /// Ispisuje otpad po ulicama.
+        /// Ispisuje otpad koji imaju korisnici po ulicama.
         /// </summary>
-        public static void IspisiOtpadPoUlicama(List<Ulica> ulice)
+        public static void IspisiOtpadKorisnikaPoUlicama(List<Ulica> ulice)
         {
             foreach (Ulica ulica in ulice)
             {

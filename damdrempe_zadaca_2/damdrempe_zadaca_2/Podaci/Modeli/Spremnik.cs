@@ -28,6 +28,8 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 
         public List<int> Korisnici { get; set; }
 
+        public string UlicaID { get; set; }
+
         public Spremnik()
         {            
             Korisnici = new List<int>();

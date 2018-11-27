@@ -1,4 +1,5 @@
-﻿using System;
+﻿using damdrempe_zadaca_2.Podaci.Modeli;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 
         public class UlicaPodrucja : PodrucjeComponent
         {
+            public Ulica ReferencaUlice { get; set; }
+
             public UlicaPodrucja(string id) : base(id)
             {
 

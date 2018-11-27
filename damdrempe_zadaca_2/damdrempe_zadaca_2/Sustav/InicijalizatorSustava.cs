@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_2.Podaci.Enumeracije;
 using static damdrempe_zadaca_2.Pomagaci.Entiteti.PodrucjaComposite;
 
 namespace damdrempe_zadaca_2.Sustav
@@ -20,8 +21,9 @@ namespace damdrempe_zadaca_2.Sustav
             UcitajZapiseIzDatoteka();
             StvoriKonacnePodatkeSustava();
             StvoriOtpad();
+            IzracunajOtpadPoUlicama();
 
-            InicijalizatorOtpada.IspisiOtpadPoUlicama(Program.Ulice);
+            InicijalizatorOtpada.IspisiOtpadKorisnikaPoUlicama(Program.Ulice);
         }
 
         private static void UcitajParametre()
@@ -50,7 +52,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             string datotekaPodrucja = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("područja"));
             Popis podrucjePopis = new PodrucjePopis();
-            List<PodrucjeRedak> podrucjaPopisRetci = podrucjePopis.UcitajRetke(datotekaPodrucja).Cast<PodrucjeRedak>().ToList();            
+            List<PodrucjeRedak> podrucjaPopisRetci = podrucjePopis.UcitajRetke(datotekaPodrucja).Cast<PodrucjeRedak>().ToList();
 
             Program.PripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
             Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
@@ -60,7 +62,7 @@ namespace damdrempe_zadaca_2.Sustav
         private static void StvoriKonacnePodatkeSustava()
         {
             Program.Ulice = GeneratorEntiteta.StvoriKorisnike(Program.PripremljeneUlice);
-            Program.Spremnici = GeneratorEntiteta.StvoriSpremnike(Program.PripremljeneUlice, Program.PripremljeniSpremnici);            
+            Program.Spremnici = GeneratorEntiteta.StvoriSpremnike(Program.PripremljeneUlice, Program.PripremljeniSpremnici);
         }
 
         private static void StvoriOtpad()
@@ -69,5 +71,25 @@ namespace damdrempe_zadaca_2.Sustav
             Program.Spremnici = InicijalizatorOtpada.OdloziOtpadKorisnika(Program.Ulice, Program.Spremnici);
         }
 
+        private static void IzracunajOtpadPoUlicama()
+        {
+            foreach (Ulica ulica in Program.Ulice)
+            {
+                List<Spremnik> spremniciUlice = Program.Spremnici.Where(s => s.UlicaID == ulica.ID).ToList();
+
+                Dictionary<VrstaOtpada, float> otpadUlice = new Dictionary<VrstaOtpada, float>();
+                foreach (Spremnik spremnik in spremniciUlice)
+                {
+                    otpadUlice[spremnik.NazivPremaOtpadu] = 0;
+                }
+
+                foreach (Spremnik spremnik in spremniciUlice)
+                {
+                    otpadUlice[spremnik.NazivPremaOtpadu] += spremnik.KolicinaOtpada;
+                }
+
+                ulica.Otpad = otpadUlice;
+            }
+        }
     }
 }

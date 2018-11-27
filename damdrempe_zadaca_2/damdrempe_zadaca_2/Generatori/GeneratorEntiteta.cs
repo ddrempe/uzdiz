@@ -108,6 +108,7 @@ namespace damdrempe_zadaca_2
                 spremnik.NazivPremaOtpadu = spremnikVrsta.NazivPremaOtpadu;
                 spremnik.Vrsta = spremnikVrsta.Vrsta;
                 spremnik.Nosivost = spremnikVrsta.Nosivost;
+                spremnik.UlicaID = ulica.ID;
 
                 int brojacKorisnikaGrupe = 1;
                 while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostMali && i < korisnici.Count)

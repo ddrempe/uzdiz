@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_2.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_2.Podaci.Modeli
 {
@@ -27,11 +28,14 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 
         public List<Korisnik> KorisniciVeliki { get; set; }
 
+        public Dictionary<VrstaOtpada, float> Otpad { get; set; }
+
         public Ulica()
         {
             KorisniciMali = new List<Korisnik>();
             KorisniciSrednji = new List<Korisnik>();
             KorisniciVeliki = new List<Korisnik>();
+            Otpad = new Dictionary<VrstaOtpada, float>();
         }
 
         public Ulica(UlicaRedak ulicaRedak)
@@ -45,6 +49,7 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
             KorisniciMali = new List<Korisnik>();
             KorisniciSrednji = new List<Korisnik>();
             KorisniciVeliki = new List<Korisnik>();
+            Otpad = new Dictionary<VrstaOtpada, float>();
         }
     }
 }
