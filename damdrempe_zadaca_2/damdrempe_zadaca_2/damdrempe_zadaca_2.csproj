@@ -50,6 +50,7 @@
     <Compile Include="Generatori\GeneratorEntiteta.cs" />
     <Compile Include="Podaci\Modeli\Ulica.cs" />
     <Compile Include="Pomagaci\IspisivacSingleton.cs" />
+    <Compile Include="Pomagaci\PodrucjaComposite.cs" />
     <Compile Include="Pomagaci\Pomocno.cs" />
     <Compile Include="Pomagaci\Inicijalizator.cs" />
     <Compile Include="Pomagaci\IspisivacProxy.cs" />

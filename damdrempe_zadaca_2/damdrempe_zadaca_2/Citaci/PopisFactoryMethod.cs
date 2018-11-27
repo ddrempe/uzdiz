@@ -87,6 +87,28 @@ namespace damdrempe_zadaca_2.Citaci
         }
     }
 
+    class PodrucjeRedak : Redak
+    {
+        public string ID { get; set; }
+
+        public string Naziv { get; set; }
+
+        public List<string> Dijelovi { get; set; }
+
+        public PodrucjeRedak(CitacPopisaBuilder citacPopisa)
+        {
+            ID = citacPopisa.VratiElementRetka(0);
+            Naziv = citacPopisa.VratiElementRetka(1);
+
+            Dijelovi = new List<string>();
+            string[] dijelovi = citacPopisa.VratiElementRetka(2).Split(',');
+            foreach (string dio in dijelovi)
+            {
+                Dijelovi.Add(dio.Trim());
+            }
+        }
+    }
+
     abstract class Popis
     {
         public Popis()
@@ -193,6 +215,39 @@ namespace damdrempe_zadaca_2.Citaci
             }
 
             return vozila;
+        }
+    }
+
+    class PodrucjePopis : Popis
+    {
+        public override List<Redak> UcitajRetke(string datoteka)
+        {
+            List<Redak> podrucja = new List<Redak>();
+
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
+            citacPopisa.ProcitajRetke();
+            // počinje se od retka 1 jer je redak indeksa 0 zaglavlje
+            for (int brojRetka = 1; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            {
+                try
+                {
+                    citacPopisa.ProcitajElementeRetka(brojRetka, ';');
+                    if (citacPopisa.VratiBrojElemenataRetka() != 3)
+                    {
+                        Program.Ispisivac.Koristi($"Neispravan redak {brojRetka} u datoteci {datoteka}.");
+                        continue;
+                    }
+
+                    PodrucjeRedak podrucje = new PodrucjeRedak(citacPopisa);
+                    podrucja.Add(podrucje);
+                }
+                catch (FormatException)
+                {
+                    Program.Ispisivac.Koristi($"Neispravan redak {brojRetka} u datoteci {datoteka}.");
+                }
+            }
+
+            return podrucja;
         }
     }
 }

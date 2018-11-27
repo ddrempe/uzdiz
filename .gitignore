@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+damdrempe_zadaca_2/damdrempe_zadaca_2/datoteke_podataka/DZ2_ldapKorisnika.txt
