@@ -27,9 +27,9 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
         {
             public Ulica ReferencaUlice { get; set; }
 
-            public UlicaPodrucja(string id) : base(id)
+            public UlicaPodrucja(string id, Ulica ulica) : base(id)
             {
-
+                ReferencaUlice = ulica;
             }
 
             public override void Dodijeli(PodrucjeComponent podrucje)

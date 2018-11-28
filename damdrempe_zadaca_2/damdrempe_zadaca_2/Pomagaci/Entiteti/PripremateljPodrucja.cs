@@ -28,7 +28,8 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 {
                     if (Pomocno.DioPodrucjaJeUlica(dioID))
                     {
-                        UlicaPodrucja ulicaPodrucja = new UlicaPodrucja(dioID);
+                        Ulica ulica = Program.Ulice.FirstOrDefault(u => u.ID == dioID);
+                        UlicaPodrucja ulicaPodrucja = new UlicaPodrucja(dioID, ulica);
                         podrucje.Dodijeli(ulicaPodrucja);
                     }
                     else

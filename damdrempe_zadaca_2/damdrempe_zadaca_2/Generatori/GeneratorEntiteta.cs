@@ -98,9 +98,11 @@ namespace damdrempe_zadaca_2
             List<Korisnik> korisnici = OdrediListuKorisnika(ulica, kategorija);          
             List<Spremnik> spremnici = new List<Spremnik>();
 
+            int brojnost = OdrediBrojnostSpremnika(spremnikVrsta, kategorija);
+
             for (int i = 0; i < korisnici.Count;)
             {
-                if (spremnikVrsta.BrojnostMali == 0) break;
+                if (brojnost == 0) break;
 
                 Spremnik spremnik = new Spremnik();
                 spremnik.ID = spremnikID;
@@ -111,7 +113,7 @@ namespace damdrempe_zadaca_2
                 spremnik.UlicaID = ulica.ID;
 
                 int brojacKorisnikaGrupe = 1;
-                while (brojacKorisnikaGrupe <= spremnikVrsta.BrojnostMali && i < korisnici.Count)
+                while (brojacKorisnikaGrupe <= brojnost && i < korisnici.Count)
                 {
                     Korisnik korisnik = korisnici[i];
                     spremnik.Korisnici.Add(korisnik.ID);
@@ -151,6 +153,33 @@ namespace damdrempe_zadaca_2
             }
 
             return korisnici;
+        }
+
+        /// <summary>
+        /// Obzirom na kategoriju korisnika određuje koju brojnost spremnika treba dohvatiti.
+        /// </summary>
+        /// <param name="spremnikVrsta"></param>
+        /// <param name="kategorija"></param>
+        /// <returns></returns>
+        private static int OdrediBrojnostSpremnika(Spremnik spremnikVrsta, Kategorija kategorija)
+        {
+            int brojnost = 0;
+            switch (kategorija)
+            {
+                case Kategorija.Mali:
+                    brojnost = spremnikVrsta.BrojnostMali;
+                    break;
+                case Kategorija.Srednji:
+                    brojnost = spremnikVrsta.BrojnostSrednji;
+                    break;
+                case Kategorija.Veliki:
+                    brojnost = spremnikVrsta.BrojnostVeliki;
+                    break;
+                default:
+                    break;
+            }
+
+            return brojnost;
         }
     }
 }
