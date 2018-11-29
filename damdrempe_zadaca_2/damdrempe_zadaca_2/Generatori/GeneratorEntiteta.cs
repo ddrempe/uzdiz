@@ -22,6 +22,12 @@ namespace damdrempe_zadaca_2
                 int brojSrednjih = (int)Math.Round(ulica.UdioSrednjih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
                 int brojVelikih = (int)Math.Round(ulica.UdioVelikih / 100.00 * ulica.BrojMjesta, MidpointRounding.AwayFromZero);
 
+                int ukupanBroj = brojMalih + brojSrednjih + brojVelikih;
+                if (ukupanBroj != ulica.BrojMjesta)
+                {
+                    brojVelikih = ulica.BrojMjesta - (brojMalih + brojSrednjih);
+                }
+
                 ulica.KorisniciMali = StvoriKorisnikePoVrsti(ref korisnikID, brojMalih, Kategorija.Mali);
                 ulica.KorisniciSrednji = StvoriKorisnikePoVrsti(ref korisnikID, brojSrednjih, Kategorija.Srednji);
                 ulica.KorisniciVeliki = StvoriKorisnikePoVrsti(ref korisnikID, brojVelikih, Kategorija.Veliki);
