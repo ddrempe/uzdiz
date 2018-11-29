@@ -41,6 +41,21 @@ namespace damdrempe_zadaca_2.Sustav
             ispisivac.IspisiTekst(ispisZaslonProxy, redakTeksta);
         }
 
+        public void PromijeniBojuPozadine(ConsoleColor color)
+        {
+            Console.BackgroundColor = color;
+        }
+
+        public void PromijeniBojuTeksta(ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+        }
+
+        public void ResetirajPostavkeBoja()
+        {
+            Console.ResetColor();
+        }
+
         public void Koristi()
         {
             Koristi("\n");

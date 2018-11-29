@@ -93,16 +93,32 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void IspisiOtpadPodrucja()
         {
+            Program.Ispisivac.Koristi("");
+            Program.Ispisivac.Koristi("ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA");
+            Program.Ispisivac.Koristi("__________________________________");
+            Program.Ispisivac.Koristi("STRUKTURA ISPISA:");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
+            Program.Ispisivac.Koristi("- Ispis svih ulica u podrucju");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
+            Program.Ispisivac.Koristi("- Ispis podrucja i njegovih podpodrucja");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
+            Program.Ispisivac.Koristi("- Ispis ukupne kolicine otpada za podrucje");
+            Program.Ispisivac.Koristi("__________________________________");
+
             foreach (Podrucje podrucje in Program.Podrucja)
             {                
                 Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucja(podrucje.podrucja);
 
-                Program.Ispisivac.Koristi($"{podrucje.PodrucjeID}");
+                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
+                Program.Ispisivac.Koristi($"[{podrucje.PodrucjeID}] {podrucje.Naziv}");
                 foreach (PodrucjeComponent podrucjeComponent in podrucje.podrucja)
                 {
-                    Program.Ispisivac.Koristi($"_{podrucjeComponent.PodrucjeID}");
+                    Program.Ispisivac.Koristi($"_[{podrucjeComponent.PodrucjeID}] {podrucjeComponent.Naziv}");
                 }
 
+                Program.Ispisivac.Koristi("");
+                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
+                Program.Ispisivac.Koristi($"Ispis ukupne kolicine otpada za podrucje {podrucje.Naziv}");                
                 foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                 {
                     Program.Ispisivac.Koristi($"{vrsta}: {otpad[vrsta]}kg");
@@ -110,6 +126,8 @@ namespace damdrempe_zadaca_2.Sustav
                 Program.Ispisivac.Koristi($"__________________________________");
                 Program.Ispisivac.Koristi("");
             }
+
+            Program.Ispisivac.ResetirajPostavkeBoja();
         }
     }
 }

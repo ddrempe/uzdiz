@@ -14,9 +14,12 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
         {
             public string PodrucjeID;
 
-            public PodrucjeComponent(string id)
+            public string Naziv;
+
+            public PodrucjeComponent(string id, string naziv)
             {
                 PodrucjeID = id;
+                Naziv = naziv;
             }
 
             public abstract void Dodijeli(PodrucjeComponent podrucje);
@@ -28,7 +31,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
         {
             public Ulica ReferencaUlice { get; set; }
 
-            public UlicaPodrucja(string id, Ulica ulica) : base(id)
+            public UlicaPodrucja(string id, string naziv, Ulica ulica) : base(id, naziv)
             {
                 ReferencaUlice = ulica;
             }
@@ -48,7 +51,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
         {
             public List<PodrucjeComponent> podrucja = new List<PodrucjeComponent>();
 
-            public Podrucje(string id) : base (id)
+            public Podrucje(string id, string naziv) : base (id, naziv)
             {
 
             }

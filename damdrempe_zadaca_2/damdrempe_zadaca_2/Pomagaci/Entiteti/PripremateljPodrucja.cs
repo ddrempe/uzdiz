@@ -16,7 +16,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
             List<Podrucje> podrucja = new List<Podrucje>();
             foreach (PodrucjeRedak podrucjeRedak in podrucjaPopisRetci)
             {
-                Podrucje novoPodrucje = new Podrucje(podrucjeRedak.ID);
+                Podrucje novoPodrucje = new Podrucje(podrucjeRedak.ID, podrucjeRedak.Naziv);
                 podrucja.Add(novoPodrucje);
             }
 
@@ -31,7 +31,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                         Ulica ulica = Program.Ulice.FirstOrDefault(u => u.ID == dioID);
                         if(ulica != null)
                         {
-                            UlicaPodrucja ulicaPodrucja = new UlicaPodrucja(dioID, ulica);
+                            UlicaPodrucja ulicaPodrucja = new UlicaPodrucja(dioID, ulica.Naziv, ulica);
                             podrucje.Dodijeli(ulicaPodrucja);
                         }
                     }
@@ -51,7 +51,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 
         //TODO: refaktorirati
         public static Dictionary<VrstaOtpada, float> IzracunajUkupanOtpadPodrucja(List<PodrucjeComponent> podpodrucja)
-        {
+        {           
             Dictionary<VrstaOtpada, float> otpad = new Dictionary<VrstaOtpada, float>();
             foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
             {
@@ -63,7 +63,8 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 if (podrucje.GetType() == typeof(UlicaPodrucja))
                 {
                     UlicaPodrucja ulica = (UlicaPodrucja)podrucje;
-                    Program.Ispisivac.Koristi($"Ulica: [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
+                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
+                    Program.Ispisivac.Koristi($"ULICA [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
 
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {
