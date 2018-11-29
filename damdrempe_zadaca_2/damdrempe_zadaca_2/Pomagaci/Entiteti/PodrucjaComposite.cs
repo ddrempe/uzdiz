@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static damdrempe_zadaca_2.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 {
@@ -20,7 +21,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 
             public abstract void Dodijeli(PodrucjeComponent podrucje);
 
-            public abstract void Remove(PodrucjeComponent podrucje);
+            public abstract void Obrisi(PodrucjeComponent podrucje);
         }
 
         public class UlicaPodrucja : PodrucjeComponent
@@ -37,7 +38,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 throw new NotImplementedException();    //TODO: unallowed exception
             }
 
-            public override void Remove(PodrucjeComponent podrucje)
+            public override void Obrisi(PodrucjeComponent podrucje)
             {
                 throw new NotImplementedException();    //TODO: unallowed exception
             }
@@ -45,7 +46,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 
         public class Podrucje : PodrucjeComponent
         {
-            private List<PodrucjeComponent> podrucja = new List<PodrucjeComponent>();
+            public List<PodrucjeComponent> podrucja = new List<PodrucjeComponent>();
 
             public Podrucje(string id) : base (id)
             {
@@ -57,9 +58,9 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 podrucja.Add(podrucje);
             }
 
-            public override void Remove(PodrucjeComponent podrucje)
+            public override void Obrisi(PodrucjeComponent podrucje)
             {
-                podrucje.Remove(podrucje);
+                podrucja.Remove(podrucje);
             }
         }
     }

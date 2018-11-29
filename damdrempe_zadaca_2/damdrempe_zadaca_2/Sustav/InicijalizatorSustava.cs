@@ -22,8 +22,7 @@ namespace damdrempe_zadaca_2.Sustav
             StvoriKonacnePodatkeSustava();
             StvoriOtpad();
             IzracunajOtpadPoUlicama();
-
-            InicijalizatorOtpada.IspisiOtpadKorisnikaPoUlicama(Program.Ulice);
+            IspisiOtpadPodrucja();
         }
 
         private static void UcitajParametre()
@@ -48,21 +47,21 @@ namespace damdrempe_zadaca_2.Sustav
 
             string datotekaVozila = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("vozila"));
             Popis voziloPopis = new VoziloPopis();
-            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);
-
-            string datotekaPodrucja = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("područja"));
-            Popis podrucjePopis = new PodrucjePopis();
-            List<PodrucjeRedak> podrucjaPopisRetci = podrucjePopis.UcitajRetke(datotekaPodrucja).Cast<PodrucjeRedak>().ToList();
+            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);           
 
             Program.PripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
-            Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
-            Program.Podrucja = PripremateljPodrucja.PripremiPodrucja(podrucjaPopisRetci);
+            Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());            
         }
 
         private static void StvoriKonacnePodatkeSustava()
         {
             Program.Ulice = GeneratorEntiteta.StvoriKorisnike(Program.PripremljeneUlice);
             Program.Spremnici = GeneratorEntiteta.StvoriSpremnike(Program.PripremljeneUlice, Program.PripremljeniSpremnici);
+
+            string datotekaPodrucja = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("područja"));
+            Popis podrucjePopis = new PodrucjePopis();
+            List<PodrucjeRedak> podrucjaPopisRetci = podrucjePopis.UcitajRetke(datotekaPodrucja).Cast<PodrucjeRedak>().ToList();
+            Program.Podrucja = PripremateljPodrucja.PripremiPodrucja(podrucjaPopisRetci);
         }
 
         private static void StvoriOtpad()
@@ -89,6 +88,27 @@ namespace damdrempe_zadaca_2.Sustav
                 }
 
                 ulica.Otpad = otpadUlice;
+            }
+        }
+
+        private static void IspisiOtpadPodrucja()
+        {
+            foreach (Podrucje podrucje in Program.Podrucja)
+            {                
+                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucja(podrucje.podrucja);
+
+                Program.Ispisivac.Koristi($"{podrucje.PodrucjeID}");
+                foreach (PodrucjeComponent podrucjeComponent in podrucje.podrucja)
+                {
+                    Program.Ispisivac.Koristi($"_{podrucjeComponent.PodrucjeID}");
+                }
+
+                foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
+                {
+                    Program.Ispisivac.Koristi($"{vrsta}: {otpad[vrsta]}kg");
+                }
+                Program.Ispisivac.Koristi($"__________________________________");
+                Program.Ispisivac.Koristi("");
             }
         }
     }
