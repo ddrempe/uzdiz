@@ -6,10 +6,10 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 {
     class PripremateljPrototype
     {
-        public static List<Ulica> PripremiUlice(List<UlicaRedak> uliceRetci)
+        public static List<Ulica> PripremiUlice(List<UlicaRedak> ulicaRetci)
         {
             List<Ulica> ulice = new List<Ulica>();
-            foreach (UlicaRedak ulicaRedak in uliceRetci)
+            foreach (UlicaRedak ulicaRedak in ulicaRetci)
             {
                 ulice.Add(new Ulica(ulicaRedak));
             }
@@ -26,6 +26,17 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
             }
 
             return spremnici;
+        }
+
+        public static List<Vozilo> PripremiVozila(List<VoziloRedak> voziloRetci)
+        {
+            List<Vozilo> vozila = new List<Vozilo>();
+            foreach (VoziloRedak voziloRedak in voziloRetci)
+            {
+                vozila.Add(new Vozilo(voziloRedak));
+            }
+
+            return vozila;
         }
     }
 }

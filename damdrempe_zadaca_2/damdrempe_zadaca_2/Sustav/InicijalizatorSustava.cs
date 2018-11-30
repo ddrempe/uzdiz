@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static damdrempe_zadaca_2.Podaci.Enumeracije;
 using static damdrempe_zadaca_2.Pomagaci.Entiteti.PodrucjaComposite;
 
@@ -50,7 +48,8 @@ namespace damdrempe_zadaca_2.Sustav
             List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);           
 
             Program.PripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
-            Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());            
+            Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
+            Program.Vozila = PripremateljPrototype.PripremiVozila(voziloPopisRetci.Cast<VoziloRedak>().ToList());
         }
 
         private static void StvoriKonacnePodatkeSustava()
@@ -93,17 +92,7 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void IspisiOtpadPodrucja()
         {
-            Program.Ispisivac.Koristi("");
-            Program.Ispisivac.Koristi("ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA");
-            Program.Ispisivac.Koristi("__________________________________");
-            Program.Ispisivac.Koristi("STRUKTURA ISPISA:");
-            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
-            Program.Ispisivac.Koristi("- Ispis svih ulica u podrucju");
-            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
-            Program.Ispisivac.Koristi("- Ispis podrucja i njegovih podpodrucja");
-            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
-            Program.Ispisivac.Koristi("- Ispis ukupne kolicine otpada za podrucje");
-            Program.Ispisivac.Koristi("__________________________________");
+            IspisiTumacIspisaOtpadaPodrucja();
 
             foreach (Podrucje podrucje in Program.Podrucja)
             {                
@@ -123,11 +112,26 @@ namespace damdrempe_zadaca_2.Sustav
                 {
                     Program.Ispisivac.Koristi($"{vrsta}: {otpad[vrsta]}kg");
                 }
-                Program.Ispisivac.Koristi($"__________________________________");
+                Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
                 Program.Ispisivac.Koristi("");
             }
 
             Program.Ispisivac.ResetirajPostavkeBoja();
+        }
+
+        private static void IspisiTumacIspisaOtpadaPodrucja()
+        {
+            Program.Ispisivac.Koristi("");
+            Program.Ispisivac.Koristi("ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA");
+            Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
+            Program.Ispisivac.Koristi("STRUKTURA ISPISA:");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
+            Program.Ispisivac.Koristi("- Ispis svih ulica u podrucju");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
+            Program.Ispisivac.Koristi("- Ispis podrucja i njegovih podpodrucja");
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
+            Program.Ispisivac.Koristi("- Ispis ukupne kolicine otpada za podrucje");
+            Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
         }
     }
 }
