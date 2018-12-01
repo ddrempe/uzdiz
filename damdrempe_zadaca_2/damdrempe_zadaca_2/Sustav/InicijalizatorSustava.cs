@@ -21,6 +21,10 @@ namespace damdrempe_zadaca_2.Sustav
             StvoriOtpad();
             IzracunajOtpadPoUlicama();
             IspisiOtpadPodrucja();
+
+            IspisiOtpadPodrucjaTablicno();
+
+            StvoriRasporedOdvozaVozilima();
         }
 
         private static void UcitajParametre()
@@ -96,7 +100,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             foreach (Podrucje podrucje in Program.Podrucja)
             {                
-                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucja(podrucje.podrucja);
+                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucjaSIspisom(podrucje.podrucja, false);
 
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
                 Program.Ispisivac.Koristi($"[{podrucje.PodrucjeID}] {podrucje.Naziv}");
@@ -132,6 +136,71 @@ namespace damdrempe_zadaca_2.Sustav
             Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
             Program.Ispisivac.Koristi("- Ispis ukupne kolicine otpada za podrucje");
             Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
+        }
+
+        private static void IspisiOtpadPodrucjaTablicno()
+        {
+            string zaglavlje = 
+                String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|", 
+                "ID", "Naziv", "Podpodrucja", "Staklo", "Papir", "Metal", "Bio", "Mjesano");
+            Program.Ispisivac.Koristi(zaglavlje);
+
+            foreach (Podrucje podrucje in Program.Podrucja)
+            {
+                List<string> redak = new List<string>();
+                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucjaSIspisom(podrucje.podrucja, false);
+
+                redak.Add(podrucje.PodrucjeID);
+                redak.Add(podrucje.Naziv);
+
+                string podpodrucja = "";
+                foreach (PodrucjeComponent podrucjeComponent in podrucje.podrucja)
+                {
+                    podpodrucja += podrucjeComponent.PodrucjeID + " ";
+                }
+                redak.Add(podpodrucja);
+
+                foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
+                {
+                    redak.Add($"{otpad[vrsta]}kg");
+                }
+                string redakZaIspis = 
+                    String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|", 
+                    redak[0], redak[1], redak[2], redak[3], redak[4], redak[5], redak[6], redak[7]);
+                Program.Ispisivac.Koristi(redakZaIspis);
+            }
+        }        
+
+        private static void StvoriRasporedOdvozaVozilima()
+        {
+            bool zajednickiRasporedZaSvaVozila = Program.Parametri.DohvatiParametarInt("preuzimanje") == 0 ? true : false;
+
+            List<int> zajednickiRaspored = StvoriNasumicniRedoslijedUlica();
+            foreach (Vozilo vozilo in Program.Vozila)
+            {
+                vozilo.RedoslijedUlica = zajednickiRasporedZaSvaVozila ? zajednickiRaspored : StvoriNasumicniRedoslijedUlica();
+            }              
+        }
+
+        private static List<int> StvoriNasumicniRedoslijedUlica()
+        {
+            int sjemeGeneratora = Program.Parametri.DohvatiParametarInt("sjemeGeneratora");
+            GeneratorBrojevaSingleton generatorBrojeva = GeneratorBrojevaSingleton.DohvatiInstancu(sjemeGeneratora);
+
+            int brojUlica = Program.Ulice.Count;
+            List<int> redoslijedUlica = new List<int>();
+            for (int i=0; i < brojUlica; i++)
+            {
+                int slucajniBroj = generatorBrojeva.DajSlucajniBrojInt(0, brojUlica);
+                while (redoslijedUlica.Contains(slucajniBroj))
+                {
+                    slucajniBroj = generatorBrojeva.DajSlucajniBrojInt(0, brojUlica);
+                }
+
+                redoslijedUlica.Add(slucajniBroj);
+            }
+
+            return redoslijedUlica;
         }
     }
 }

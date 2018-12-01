@@ -50,7 +50,7 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
         }
 
         //TODO: refaktorirati
-        public static Dictionary<VrstaOtpada, float> IzracunajUkupanOtpadPodrucja(List<PodrucjeComponent> podpodrucja)
+        public static Dictionary<VrstaOtpada, float> IzracunajUkupanOtpadPodrucjaSIspisom(List<PodrucjeComponent> podpodrucja, bool ispis)
         {           
             Dictionary<VrstaOtpada, float> otpad = new Dictionary<VrstaOtpada, float>();
             foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
@@ -63,24 +63,24 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 if (podrucje.GetType() == typeof(UlicaPodrucja))
                 {
                     UlicaPodrucja ulica = (UlicaPodrucja)podrucje;
-                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
-                    Program.Ispisivac.Koristi($"ULICA [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
+                    if (ispis) Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
+                    if (ispis) Program.Ispisivac.Koristi($"ULICA [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
 
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {
                         if (ulica.ReferencaUlice.Otpad.ContainsKey(vrsta))
                         {
-                            Program.Ispisivac.Koristi($"{vrsta}: {ulica.ReferencaUlice.Otpad[vrsta]}kg");
+                            if (ispis) Program.Ispisivac.Koristi($"{vrsta}: {ulica.ReferencaUlice.Otpad[vrsta]}kg");
                             otpad[vrsta] += ulica.ReferencaUlice.Otpad[vrsta];
                         }
                     }
-                    Program.Ispisivac.Koristi("");
+                    if (ispis) Program.Ispisivac.Koristi("");
                 }
 
                 else if (podrucje.GetType() == typeof(Podrucje))
                 {
                     Podrucje podPodrucje = (Podrucje)podrucje;
-                    Dictionary<VrstaOtpada, float> otpadPodpodrucja = IzracunajUkupanOtpadPodrucja(podPodrucje.podrucja);
+                    Dictionary<VrstaOtpada, float> otpadPodpodrucja = IzracunajUkupanOtpadPodrucjaSIspisom(podPodrucje.podrucja, ispis);
 
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {

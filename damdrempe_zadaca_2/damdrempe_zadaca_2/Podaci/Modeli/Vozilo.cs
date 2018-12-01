@@ -22,6 +22,8 @@ namespace damdrempe_zadaca_2.Podaci.Modeli
 
         public List<string> Vozaci { get; set; }
 
+        public List<int> RedoslijedUlica { get; set; }
+
         public Vozilo(VoziloRedak voziloRedak)
         {
             ID = voziloRedak.ID;

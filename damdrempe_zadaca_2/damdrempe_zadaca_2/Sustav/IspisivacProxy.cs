@@ -59,7 +59,7 @@ namespace damdrempe_zadaca_2.Sustav
             }
         }
 
-        public bool provjeriPostojanjeDatoteke()
+        private bool provjeriPostojanjeDatoteke()
         {         
             if(!File.Exists(datotekaIzlaza))
             {
@@ -70,7 +70,7 @@ namespace damdrempe_zadaca_2.Sustav
             return true;
         }
 
-        public void ispisUDatoteku(string redakTeksta)
+        private void ispisUDatoteku(string redakTeksta)
         {
             using (StreamWriter sw = File.AppendText(datotekaIzlaza))
             {
