@@ -20,11 +20,13 @@ namespace damdrempe_zadaca_2.Sustav
             StvoriKonacnePodatkeSustava();
             StvoriOtpad();
             IzracunajOtpadPoUlicama();
-            IspisiOtpadPodrucja();
 
+            IspisiOtpadPodrucja();
             IspisiOtpadPodrucjaTablicno();
 
             StvoriRasporedOdvozaVozilima();
+
+            //IspisiStatistiku();
         }
 
         private static void UcitajParametre()
@@ -100,24 +102,24 @@ namespace damdrempe_zadaca_2.Sustav
 
             foreach (Podrucje podrucje in Program.Podrucja)
             {                
-                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucjaSIspisom(podrucje.podrucja, false);
+                Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucjaSIspisom(podrucje.podrucja, true);
 
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
-                Program.Ispisivac.Koristi($"[{podrucje.PodrucjeID}] {podrucje.Naziv}");
+                Program.Ispisivac.ObavljeniPosao($"[{podrucje.PodrucjeID}] {podrucje.Naziv}");
                 foreach (PodrucjeComponent podrucjeComponent in podrucje.podrucja)
                 {
-                    Program.Ispisivac.Koristi($"_[{podrucjeComponent.PodrucjeID}] {podrucjeComponent.Naziv}");
+                    Program.Ispisivac.ObavljeniPosao($"_[{podrucjeComponent.PodrucjeID}] {podrucjeComponent.Naziv}");
                 }
 
-                Program.Ispisivac.Koristi("");
+                Program.Ispisivac.ObavljeniPosao("");
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
-                Program.Ispisivac.Koristi($"Ispis ukupne kolicine otpada za podrucje {podrucje.Naziv}");                
+                Program.Ispisivac.ObavljeniPosao($"Ispis ukupne kolicine otpada za podrucje {podrucje.Naziv}");                
                 foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                 {
-                    Program.Ispisivac.Koristi($"{vrsta}: {otpad[vrsta]}kg");
+                    Program.Ispisivac.ObavljeniPosao($"{vrsta}: {otpad[vrsta]}kg");
                 }
-                Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
-                Program.Ispisivac.Koristi("");
+                Program.Ispisivac.ObavljeniPosao(Tekstovi.HorizontalniRazmak);
+                Program.Ispisivac.ObavljeniPosao("");
             }
 
             Program.Ispisivac.ResetirajPostavkeBoja();
@@ -125,17 +127,17 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void IspisiTumacIspisaOtpadaPodrucja()
         {
-            Program.Ispisivac.Koristi("");
-            Program.Ispisivac.Koristi("ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA");
-            Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
-            Program.Ispisivac.Koristi("STRUKTURA ISPISA:");
+            Program.Ispisivac.ObavljeniPosao("");
+            Program.Ispisivac.ObavljeniPosao("ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA");
+            Program.Ispisivac.ObavljeniPosao(Tekstovi.HorizontalniRazmak);
+            Program.Ispisivac.ObavljeniPosao("STRUKTURA ISPISA:");
             Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
-            Program.Ispisivac.Koristi("- Ispis svih ulica u podrucju");
+            Program.Ispisivac.ObavljeniPosao("- Ispis svih ulica u podrucju");
             Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
-            Program.Ispisivac.Koristi("- Ispis podrucja i njegovih podpodrucja");
+            Program.Ispisivac.ObavljeniPosao("- Ispis podrucja i njegovih podpodrucja");
             Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
-            Program.Ispisivac.Koristi("- Ispis ukupne kolicine otpada za podrucje");
-            Program.Ispisivac.Koristi(Tekstovi.HorizontalniRazmak);
+            Program.Ispisivac.ObavljeniPosao("- Ispis ukupne kolicine otpada za podrucje");
+            Program.Ispisivac.ObavljeniPosao(Tekstovi.HorizontalniRazmak);
         }
 
         private static void IspisiOtpadPodrucjaTablicno()
@@ -173,12 +175,12 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void StvoriRasporedOdvozaVozilima()
         {
-            bool zajednickiRasporedZaSvaVozila = Program.Parametri.DohvatiParametarInt("preuzimanje") == 0 ? true : false;
+            bool posebanRasporedZaSvakoVozilo = Program.Parametri.DohvatiParametarBool("preuzimanje");
 
             List<int> zajednickiRaspored = StvoriNasumicniRedoslijedUlica();
             foreach (Vozilo vozilo in Program.Vozila)
             {
-                vozilo.RedoslijedUlica = zajednickiRasporedZaSvaVozila ? zajednickiRaspored : StvoriNasumicniRedoslijedUlica();
+                vozilo.RedoslijedUlica = posebanRasporedZaSvakoVozilo ? StvoriNasumicniRedoslijedUlica() : zajednickiRaspored;
             }              
         }
 

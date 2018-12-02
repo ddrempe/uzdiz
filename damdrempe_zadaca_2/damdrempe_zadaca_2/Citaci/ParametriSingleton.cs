@@ -47,5 +47,10 @@ namespace damdrempe_zadaca_2
         {
             return int.Parse(DohvatiParametar(nazivParametra));
         }
+
+        public bool DohvatiParametarBool(string nazivParametra)
+        {
+            return DohvatiParametarInt(nazivParametra) == 1 ? true : false;
+        }
     }
 }

@@ -64,17 +64,17 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
                 {
                     UlicaPodrucja ulica = (UlicaPodrucja)podrucje;
                     if (ispis) Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Cyan);
-                    if (ispis) Program.Ispisivac.Koristi($"ULICA [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
+                    if (ispis) Program.Ispisivac.ObavljeniPosao($"ULICA [{ulica.ReferencaUlice.ID}] {ulica.ReferencaUlice.Naziv}");
 
                     foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                     {
                         if (ulica.ReferencaUlice.Otpad.ContainsKey(vrsta))
                         {
-                            if (ispis) Program.Ispisivac.Koristi($"{vrsta}: {ulica.ReferencaUlice.Otpad[vrsta]}kg");
+                            if (ispis) Program.Ispisivac.ObavljeniPosao($"{vrsta}: {ulica.ReferencaUlice.Otpad[vrsta]}kg");
                             otpad[vrsta] += ulica.ReferencaUlice.Otpad[vrsta];
                         }
                     }
-                    if (ispis) Program.Ispisivac.Koristi("");
+                    if (ispis) Program.Ispisivac.ObavljeniPosao("");
                 }
 
                 else if (podrucje.GetType() == typeof(Podrucje))
