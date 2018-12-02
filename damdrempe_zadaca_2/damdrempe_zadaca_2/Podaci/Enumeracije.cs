@@ -28,5 +28,26 @@ namespace damdrempe_zadaca_2.Podaci
             Kanta,
             Kontejner
         }
+
+        public enum VrstaKomande
+        {
+            PRIPREMI,
+            KRENI,
+            KRENI_N,
+            KVAR,
+            KONTROLA,
+            ISPRAZNI,
+            STATUS,
+        }
+
+        public enum VrstaStanja
+        {
+            Parkirano,
+            Pripremljeno,
+            Skuplja,
+            Pokvareno,
+            Kontrola,
+            Praznjenje
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace damdrempe_zadaca_2
         public static List<Spremnik> Spremnici = new List<Spremnik>();
         public static List<Podrucje> Podrucja = new List<Podrucje>();
         public static List<Vozilo> Vozila = new List<Vozilo>();
+        public static List<KomandaRedak> Komande = new List<KomandaRedak>();
 
         static void Main(string[] args)
         {

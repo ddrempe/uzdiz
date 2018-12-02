@@ -12,7 +12,6 @@ namespace damdrempe_zadaca_2.Sustav
 {
     class InicijalizatorSustava
     {
-
         public static void Pokreni()
         {
             UcitajParametre();
@@ -25,6 +24,8 @@ namespace damdrempe_zadaca_2.Sustav
             IspisiOtpadPodrucjaTablicno();
 
             StvoriRasporedOdvozaVozilima();
+
+            AktivirajDispecera();
 
             //IspisiStatistiku();
         }
@@ -51,7 +52,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             string datotekaVozila = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("vozila"));
             Popis voziloPopis = new VoziloPopis();
-            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);           
+            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);            
 
             Program.PripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
             Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
@@ -67,6 +68,10 @@ namespace damdrempe_zadaca_2.Sustav
             Popis podrucjePopis = new PodrucjePopis();
             List<PodrucjeRedak> podrucjaPopisRetci = podrucjePopis.UcitajRetke(datotekaPodrucja).Cast<PodrucjeRedak>().ToList();
             Program.Podrucja = PripremateljPodrucja.PripremiPodrucja(podrucjaPopisRetci);
+
+            string datotekaKomandi = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("dispečer"));
+            Popis komandaPopis = new KomandaPopis();
+            Program.Komande = komandaPopis.UcitajRetke(datotekaKomandi).Cast<KomandaRedak>().ToList();
         }
 
         private static void StvoriOtpad()
@@ -203,6 +208,33 @@ namespace damdrempe_zadaca_2.Sustav
             }
 
             return redoslijedUlica;
+        }
+
+        private static void AktivirajDispecera()
+        {
+            foreach (KomandaRedak komanda in Program.Komande)
+            {
+                switch (komanda.Vrsta)
+                {
+                    case VrstaKomande.PRIPREMI:
+                        Dispecer.ObradiKomanduPripremi(komanda);
+                        break;
+                    case VrstaKomande.KRENI:
+                        break;
+                    case VrstaKomande.KRENI_N:
+                        break;
+                    case VrstaKomande.KVAR:
+                        break;
+                    case VrstaKomande.KONTROLA:
+                        break;
+                    case VrstaKomande.ISPRAZNI:
+                        break;
+                    case VrstaKomande.STATUS:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

@@ -109,6 +109,44 @@ namespace damdrempe_zadaca_2.Citaci
         }
     }
 
+    class KomandaRedak : Redak
+    {
+        public VrstaKomande Vrsta { get; set; }
+
+        public int Broj { get; set; }
+
+        public List<string> Vozila { get; set; }
+
+        public KomandaRedak(CitacPopisaBuilder citacPopisa)
+        {
+            string prviDioKomande = citacPopisa.VratiElementRetka(0);
+            if (prviDioKomande.StartsWith(VrstaKomande.KRENI.ToString()))
+            {
+                string[] prviDioKomandeSplit = prviDioKomande.Split(' ');
+                Vrsta = (VrstaKomande)Enum.Parse(typeof(VrstaKomande), prviDioKomandeSplit[0], true);
+
+                if(prviDioKomandeSplit.Length == 2)
+                {
+                    Vrsta = VrstaKomande.KRENI_N;
+                    Broj = int.Parse(prviDioKomandeSplit[1]);
+                }
+            }
+            else
+            {
+                Vrsta = (VrstaKomande)Enum.Parse(typeof(VrstaKomande), prviDioKomande, true);
+                if(Vrsta != VrstaKomande.STATUS)
+                {
+                    Vozila = new List<string>();
+                    string[] vozila = citacPopisa.VratiElementRetka(1).Split(',');
+                    foreach (string vozilo in vozila)
+                    {
+                        Vozila.Add(vozilo.Trim());
+                    }
+                }
+            }
+        }
+    }
+
     abstract class Popis
     {
         public Popis()
@@ -248,6 +286,39 @@ namespace damdrempe_zadaca_2.Citaci
             }
 
             return podrucja;
+        }
+    }
+
+    class KomandaPopis : Popis
+    {
+        public override List<Redak> UcitajRetke(string datoteka)
+        {
+            List<Redak> komande = new List<Redak>();
+
+            CitacPopisaBuilder citacPopisa = new CitacPopisaBuilder(datoteka);
+            citacPopisa.ProcitajRetke();
+            // počinje se od retka 1 jer je redak indeksa 0 zaglavlje
+            for (int brojRetka = 1; brojRetka < citacPopisa.VratiBrojRedaka(); brojRetka++)
+            {
+                try
+                {
+                    citacPopisa.ProcitajElementeRetka(brojRetka, ';');
+                    if (!(citacPopisa.VratiBrojElemenataRetka() == 1 || citacPopisa.VratiBrojElemenataRetka() == 2))
+                    {
+                        Program.Ispisivac.Koristi($"Neispravan redak {brojRetka} u datoteci {datoteka}.");
+                        continue;
+                    }
+
+                    KomandaRedak podrucje = new KomandaRedak(citacPopisa);
+                    komande.Add(podrucje);
+                }
+                catch (FormatException)
+                {
+                    Program.Ispisivac.Koristi($"Neispravan redak {brojRetka} u datoteci {datoteka}.");
+                }
+            }
+
+            return komande;
         }
     }
 }
