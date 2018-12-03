@@ -43,8 +43,7 @@ namespace damdrempe_zadaca_2.Podaci
         public enum VrstaStanja
         {
             Parkirano,
-            Pripremljeno,
-            Skuplja,
+            Skupljanje,
             Pokvareno,
             Kontrola,
             Praznjenje

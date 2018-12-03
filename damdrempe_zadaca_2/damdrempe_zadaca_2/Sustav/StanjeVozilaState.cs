@@ -62,11 +62,9 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Parkirano:
                     //TODO: vec je parkirano                   
                     break;
-                case VrstaStanja.Pripremljeno:
+                case VrstaStanja.Skupljanje:
                     this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
-                    vozilo.StanjeVozila = new Pripremljeno(this);
-                    break;
-                case VrstaStanja.Skuplja:
+                    vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
                     break;
@@ -83,9 +81,9 @@ namespace damdrempe_zadaca_2.Sustav
     /// <summary>
     /// A 'ConcreteState' class
     /// </summary>
-    class Pripremljeno : StanjeVozila
-    {
-        public Pripremljeno(StanjeVozila stanjeVozila)
+    class Skupljanje : StanjeVozila
+    {     
+        public Skupljanje(StanjeVozila stanjeVozila)
         {
             trenutnoStanje = stanjeVozila.TrenutnoStanje;
             vozilo = stanjeVozila.Vozilo;
@@ -96,21 +94,55 @@ namespace damdrempe_zadaca_2.Sustav
             switch (novoStanje)
             {
                 case VrstaStanja.Parkirano:
-                    this.trenutnoStanje = novoStanje; //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
                     vozilo.StanjeVozila = new Parkirano(this);
                     break;
-                case VrstaStanja.Pripremljeno:
-                    //TODO: vec je pripremljeno
-                    break;
-                case VrstaStanja.Skuplja:
+                case VrstaStanja.Skupljanje:
+                    //TODO: vec skuplja
                     break;
                 case VrstaStanja.Pokvareno:
                     break;
                 case VrstaStanja.Kontrola:
                     break;
                 case VrstaStanja.Praznjenje:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
                     vozilo.StanjeVozila = new Parkirano(this);  //TODO: u stanje praznjenje 
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// A 'ConcreteState' class
+    /// </summary>
+    class Praznjenje : StanjeVozila
+    {
+        public Praznjenje(StanjeVozila stanjeVozila)
+        {
+            trenutnoStanje = stanjeVozila.TrenutnoStanje;
+            vozilo = stanjeVozila.Vozilo;
+        }
+
+        public override void PromijeniStanje(VrstaStanja novoStanje)
+        {
+            switch (novoStanje)
+            {
+                case VrstaStanja.Parkirano:
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Parkirano(this);
+                    break;
+                case VrstaStanja.Skupljanje:
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Skupljanje(this);
+                    break;
+                case VrstaStanja.Pokvareno:
+                    break;
+                case VrstaStanja.Kontrola:
+                    break;
+                case VrstaStanja.Praznjenje:
+                    //TODO: vec prazni
                     break;
                 default:
                     break;
@@ -140,6 +172,8 @@ namespace damdrempe_zadaca_2.Sustav
         public List<int> RedoslijedUlica { get; set; } 
         
         public IteratorS IteratorS { get; set; }
+
+        public int BrojPreostalihCiklusa { get; set; }
 
         private StanjeVozila _stanjeVozila;
 
