@@ -47,34 +47,33 @@ namespace damdrempe_zadaca_2.Sustav
         public static void ObradiKomanduKreniN(KomandaRedak komanda)
         {
             int brojPotrebnihCiklusa = komanda.Broj;
-            TrenutniCiklus = 1;
+            int redniBrojVozila = 0;
 
             List<Vozilo> vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
             List<Vozilo> vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
-            while (TrenutniCiklus < brojPotrebnihCiklusa && (vozilaKojaSkupljaju.Count > 0 || vozilaZaPraznjenje.Count > 0))
+            for (TrenutniCiklus = 1; TrenutniCiklus < brojPotrebnihCiklusa; TrenutniCiklus++)
             {
-                //TODO: provjeri da li jos ima vozila za obradu                
-                foreach (Vozilo vozilo in vozilaKojaSkupljaju)
+                if (vozilaKojaSkupljaju.Count == 0 && vozilaZaPraznjenje.Count == 0)
                 {
-                    //provjeri ako je trenutni ciklus zadnji, tako dugo dok ne obradi n ciklusa
-                    if (TrenutniCiklus >= brojPotrebnihCiklusa)
-                    {
-                        Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Obavljeno je izvrsavanje komande {komanda.Vrsta}.");   //TODO provjeri da li potrebno
-                        break;
-                    }
-                    PokupiOtpad(vozilo);
-                    TrenutniCiklus++;
-
-                    if (vozilaZaPraznjenje.Count > 0) ObaviPraznjenje();
+                    break;
                 }
-                vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
-                vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
+
+                if (vozilaKojaSkupljaju.Count > 0)
+                {
+                    if (redniBrojVozila >= vozilaKojaSkupljaju.Count) redniBrojVozila = 0;
+
+                    bool voziloIzaslo = false;
+                    PokupiOtpad(vozilaKojaSkupljaju[redniBrojVozila], ref voziloIzaslo);
+                    if(!voziloIzaslo) redniBrojVozila++;
+                }                    
 
                 if (vozilaZaPraznjenje.Count > 0) ObaviPraznjenje();
-                //Console.WriteLine($"{TrenutniCiklus} beskonacna");
+
+                vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
+                vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             }
-            
-            Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} nema vise otpada za vozila u obradi. Zavrseno izvrsavanje komande {komanda.Vrsta}.");
+
+            Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Nema vise otpada za vozila u obradi. Zavrseno izvrsavanje komande {komanda.Vrsta}.");
             Program.Ispisivac.ObavljeniPosao();
         }
 
@@ -86,7 +85,7 @@ namespace damdrempe_zadaca_2.Sustav
                 if(vozilo.BrojPreostalihCiklusa <= 0)
                 {
                     vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
-                    //TODO: stavi ga na kraj liste
+                    //TODO: stavi vozilo na kraj liste
                 }
 
                 vozilo.KolicinaOtpada = 0; 
@@ -94,8 +93,9 @@ namespace damdrempe_zadaca_2.Sustav
             }
         }
 
-        private static void PokupiOtpad(Vozilo vozilo)
+        private static void PokupiOtpad(Vozilo vozilo, ref bool voziloIzaslo)
         {
+            voziloIzaslo = false;
             //preskoči prazne spremnike
             while(vozilo.IteratorS.Trenutni.KolicinaOtpada == 0 && !vozilo.IteratorS.Kraj)
             {
@@ -106,6 +106,7 @@ namespace damdrempe_zadaca_2.Sustav
             {
                 Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Nema vise otpada za vozilo {vozilo.ID}");
                 vozilo.PromijeniStanje(VrstaStanja.Parkirano);  //vozilo za koje vise nema otpada se vraća na prakiralište
+                voziloIzaslo = true;
                 return;
             }
 
@@ -123,6 +124,7 @@ namespace damdrempe_zadaca_2.Sustav
                 //ako je vozilo puno promijeni stanje, posalji ga na praznjenje n ciklusa nakon kojih se vraca na kraj liste
                 vozilo.PromijeniStanje(VrstaStanja.Praznjenje);
                 vozilo.BrojPreostalihCiklusa = Program.Parametri.DohvatiParametarInt("brojRadnihCiklusaZaOdvoz");
+                voziloIzaslo = true;
             }
 
             vozilo.KolicinaOtpada += kolicinaUzetogOtpadaSpremnika;
