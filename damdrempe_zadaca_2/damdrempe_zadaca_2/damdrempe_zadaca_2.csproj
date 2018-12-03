@@ -65,6 +65,8 @@
     <Compile Include="Sustav\StanjeVozilaState.cs" />
     <Compile Include="Sustav\Statistika.cs" />
     <Compile Include="Sustav\Tekstovi.cs" />
+    <Compile Include="Sustav\SpremnikIterator.cs" />
+    <Compile Include="Sustav\UlicaIterator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,6 +1,7 @@
 ﻿using damdrempe_zadaca_2.Citaci;
 using damdrempe_zadaca_2.Podaci.Modeli;
 using damdrempe_zadaca_2.Pomagaci.Entiteti;
+using damdrempe_zadaca_2.Sustav.damdrempe_zadaca_2.Sustav;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,7 +24,8 @@ namespace damdrempe_zadaca_2.Sustav
             IspisiOtpadPodrucja();
             IspisiOtpadPodrucjaTablicno();
 
-            StvoriRasporedOdvozaVozilima();
+            StvoriRedoslijedUlicaVozilima();
+            StvoriRedoslijedSpremnikaVozilima();
 
             AktivirajDispecera();
 
@@ -52,7 +54,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             string datotekaVozila = Pomocno.DohvatiPutanjuDatoteke(Program.Parametri.DohvatiParametar("vozila"));
             Popis voziloPopis = new VoziloPopis();
-            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);            
+            List<Redak> voziloPopisRetci = voziloPopis.UcitajRetke(datotekaVozila);
 
             Program.PripremljeneUlice = PripremateljPrototype.PripremiUlice(ulicaPopisRetci.Cast<UlicaRedak>().ToList());
             Program.PripremljeniSpremnici = PripremateljPrototype.PripremiSpremnike(spremnikPopisRetci.Cast<SpremnikRedak>().ToList());
@@ -106,7 +108,7 @@ namespace damdrempe_zadaca_2.Sustav
             IspisiTumacIspisaOtpadaPodrucja();
 
             foreach (Podrucje podrucje in Program.Podrucja)
-            {                
+            {
                 Dictionary<VrstaOtpada, float> otpad = PripremateljPodrucja.IzracunajUkupanOtpadPodrucjaSIspisom(podrucje.podrucja, true);
 
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkCyan);
@@ -118,7 +120,7 @@ namespace damdrempe_zadaca_2.Sustav
 
                 Program.Ispisivac.ObavljeniPosao("");
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.DarkGreen);
-                Program.Ispisivac.ObavljeniPosao($"Ispis ukupne kolicine otpada za podrucje {podrucje.Naziv}");                
+                Program.Ispisivac.ObavljeniPosao($"Ispis ukupne kolicine otpada za podrucje {podrucje.Naziv}");
                 foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                 {
                     Program.Ispisivac.ObavljeniPosao($"{vrsta}: {otpad[vrsta]}kg");
@@ -147,8 +149,8 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void IspisiOtpadPodrucjaTablicno()
         {
-            string zaglavlje = 
-                String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|", 
+            string zaglavlje =
+                String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|",
                 "ID", "Naziv", "Podpodrucja", "Staklo", "Papir", "Metal", "Bio", "Mjesano");
             Program.Ispisivac.Koristi(zaglavlje);
 
@@ -171,22 +173,24 @@ namespace damdrempe_zadaca_2.Sustav
                 {
                     redak.Add($"{otpad[vrsta]}kg");
                 }
-                string redakZaIspis = 
-                    String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|", 
+                string redakZaIspis =
+                    String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|",
                     redak[0], redak[1], redak[2], redak[3], redak[4], redak[5], redak[6], redak[7]);
                 Program.Ispisivac.Koristi(redakZaIspis);
             }
-        }        
 
-        private static void StvoriRasporedOdvozaVozilima()
+            Program.Ispisivac.Koristi();
+        }
+
+        private static void StvoriRedoslijedUlicaVozilima()
         {
-            bool posebanRasporedZaSvakoVozilo = Program.Parametri.DohvatiParametarBool("preuzimanje");
+            bool posebanRedoslijedZaSvakoVozilo = Program.Parametri.DohvatiParametarBool("preuzimanje");
 
-            List<int> zajednickiRaspored = StvoriNasumicniRedoslijedUlica();
+            List<int> zajednickiRedoslijed = StvoriNasumicniRedoslijedUlica();
             foreach (Vozilo vozilo in Program.Vozila)
             {
-                vozilo.RedoslijedUlica = posebanRasporedZaSvakoVozilo ? StvoriNasumicniRedoslijedUlica() : zajednickiRaspored;
-            }              
+                vozilo.RedoslijedUlica = posebanRedoslijedZaSvakoVozilo ? StvoriNasumicniRedoslijedUlica() : zajednickiRedoslijed;
+            }
         }
 
         private static List<int> StvoriNasumicniRedoslijedUlica()
@@ -196,7 +200,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             int brojUlica = Program.Ulice.Count;
             List<int> redoslijedUlica = new List<int>();
-            for (int i=0; i < brojUlica; i++)
+            for (int i = 0; i < brojUlica; i++)
             {
                 int slucajniBroj = generatorBrojeva.DajSlucajniBrojInt(0, brojUlica);
                 while (redoslijedUlica.Contains(slucajniBroj))
@@ -210,6 +214,34 @@ namespace damdrempe_zadaca_2.Sustav
             return redoslijedUlica;
         }
 
+        private static void StvoriRedoslijedSpremnikaVozilima()
+        {
+            //za svako vozilo
+            //za svaku ulicu
+            //nađi spremnike njegove vrste i dodavaj ih u kolekciju za iteratir
+            //spremi iterator u vozilo
+
+            foreach (Vozilo vozilo in Program.Vozila)
+            {
+                KolekcijaS kolekcijaS = new KolekcijaS();
+
+                List<Spremnik> spremniciUlice = new List<Spremnik>();
+                for (int i = 0; i < vozilo.RedoslijedUlica.Count; i++)
+                {
+                    Ulica ulica = Program.Ulice[vozilo.RedoslijedUlica[i]];
+                    spremniciUlice = Program.Spremnici.Where(s => s.UlicaID == ulica.ID).ToList();
+                    spremniciUlice = spremniciUlice.Where(s => s.NazivPremaOtpadu == vozilo.VrstaOtpada).ToList();
+                }
+
+                for (int i = 0; i < spremniciUlice.Count; i++)
+                {
+                    kolekcijaS[i] = spremniciUlice[i];
+                }
+
+                vozilo.IteratorS = new IteratorS(kolekcijaS);
+            }
+        }
+
         private static void AktivirajDispecera()
         {
             foreach (KomandaRedak komanda in Program.Komande)
@@ -220,8 +252,10 @@ namespace damdrempe_zadaca_2.Sustav
                         Dispecer.ObradiKomanduPripremi(komanda);
                         break;
                     case VrstaKomande.KRENI:
+                        Dispecer.ObradiKomanduKreni(komanda);
                         break;
                     case VrstaKomande.KRENI_N:
+                        Dispecer.ObradiKomanduKreniN(komanda);
                         break;
                     case VrstaKomande.KVAR:
                         break;

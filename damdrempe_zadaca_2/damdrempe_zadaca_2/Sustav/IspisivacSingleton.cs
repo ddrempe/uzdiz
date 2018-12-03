@@ -43,7 +43,7 @@ namespace damdrempe_zadaca_2.Sustav
 
         public void Koristi()
         {
-            Koristi("\n");
+            Koristi("");
         }
 
         public void ObavljeniPosao(string redakTeksta)
@@ -52,6 +52,11 @@ namespace damdrempe_zadaca_2.Sustav
             {
                 Koristi(redakTeksta);
             }
+        }
+
+        public void ObavljeniPosao()
+        {
+            ObavljeniPosao("");
         }
 
         public void PromijeniBojuPozadine(ConsoleColor color)

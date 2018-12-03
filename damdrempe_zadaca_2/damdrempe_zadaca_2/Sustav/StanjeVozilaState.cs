@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using damdrempe_zadaca_2.Citaci;
 using damdrempe_zadaca_2.Podaci;
+using damdrempe_zadaca_2.Sustav.damdrempe_zadaca_2.Sustav;
 using static damdrempe_zadaca_2.Podaci.Enumeracije;
 
 namespace damdrempe_zadaca_2.Sustav
@@ -62,7 +63,7 @@ namespace damdrempe_zadaca_2.Sustav
                     //TODO: vec je parkirano                   
                     break;
                 case VrstaStanja.Pripremljeno:
-                    this.trenutnoStanje = novoStanje;
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
                     vozilo.StanjeVozila = new Pripremljeno(this);
                     break;
                 case VrstaStanja.Skuplja:
@@ -95,7 +96,7 @@ namespace damdrempe_zadaca_2.Sustav
             switch (novoStanje)
             {
                 case VrstaStanja.Parkirano:
-                    this.trenutnoStanje = novoStanje;
+                    this.trenutnoStanje = novoStanje; //TODO: drugi konstruktor
                     vozilo.StanjeVozila = new Parkirano(this);
                     break;
                 case VrstaStanja.Pripremljeno:
@@ -130,15 +131,20 @@ namespace damdrempe_zadaca_2.Sustav
 
         public int Nosivost { get; set; }
 
+        public float KolicinaOtpada { get; set; }
+
         public List<string> Vozaci { get; set; }
 
-        public List<int> RedoslijedUlica { get; set; }        
+        public List<int> RedoslijedUlica { get; set; } 
+        
+        public IteratorS IteratorS { get; set; }
 
         private StanjeVozila _stanjeVozila;
 
         public Vozilo()
         {
             _stanjeVozila = new Parkirano(VrstaStanja.Parkirano, this);
+            KolicinaOtpada = 0;
         }
 
         public Vozilo(VoziloRedak voziloRedak)
@@ -151,6 +157,7 @@ namespace damdrempe_zadaca_2.Sustav
             VrstaOtpada = voziloRedak.VrstaOtpada;
             Nosivost = voziloRedak.Nosivost;
             Vozaci = voziloRedak.Vozaci;
+            KolicinaOtpada = 0;
         }
 
         public VrstaStanja TrenutnoStanje

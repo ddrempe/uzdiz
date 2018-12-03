@@ -26,6 +26,8 @@ namespace damdrempe_zadaca_2
         public static List<Vozilo> Vozila = new List<Vozilo>();
         public static List<KomandaRedak> Komande = new List<KomandaRedak>();
 
+        public static List<Vozilo> VozilaUObradi = new List<Vozilo>();
+
         static void Main(string[] args)
         {
             if (args.Length != 1)
