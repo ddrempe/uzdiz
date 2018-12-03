@@ -93,7 +93,7 @@ namespace damdrempe_zadaca_2.Sustav
 
             public bool Kraj
             {
-                get { return _trenutni >= _kolekcija.BrojElemenata; }
+                get { return _trenutni >= _kolekcija.BrojElemenata - 1; }   //TODO: provjeriti da li ide -1
             }
         }
     }

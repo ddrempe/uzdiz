@@ -12,6 +12,8 @@ namespace damdrempe_zadaca_2.Sustav
 {
     class Dispecer
     {
+        public static int TrenutniCiklus;
+
         public static void ObradiKomanduPripremi(KomandaRedak komanda)
         {
             foreach (string voziloID in komanda.Vozila)
@@ -44,28 +46,46 @@ namespace damdrempe_zadaca_2.Sustav
 
         public static void ObradiKomanduKreniN(KomandaRedak komanda)
         {
-            int trenutniCiklus = 1;
             int brojPotrebnihCiklusa = komanda.Broj;
+            TrenutniCiklus = 1;
 
-            foreach (Vozilo vozilo in Program.VozilaUObradi)
+            List<Vozilo> vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Pripremljeno)).ToList();
+            while (TrenutniCiklus < brojPotrebnihCiklusa && vozilaKojaSkupljaju.Count > 0)
             {
-                //TODO: provjeri ako je trenutni ciklus zadnji, tako dugo dok ne obradi n ciklusa
+                //TODO: provjeri da li jos ima vozila za obradu
 
-                PokupiOtpad(vozilo, ref trenutniCiklus);
+                vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Pripremljeno)).ToList();
+                foreach (Vozilo vozilo in vozilaKojaSkupljaju)
+                {
+                    //provjeri ako je trenutni ciklus zadnji, tako dugo dok ne obradi n ciklusa
+                    if (TrenutniCiklus >= brojPotrebnihCiklusa)
+                    {
+                        Program.Ispisivac.ObavljeniPosao($"Obavljeno je {TrenutniCiklus} ciklusa i izvrsavanje komande {komanda.Vrsta}.");
+                        break;
+                    }
+
+                    PokupiOtpad(vozilo);
+                }
+                TrenutniCiklus++;
             }
+            Program.Ispisivac.ObavljeniPosao($"Obavljeno je {TrenutniCiklus} ciklusa i izvrsavanje komande {komanda.Vrsta}.");
             Program.Ispisivac.ObavljeniPosao();
         }
 
-        private static void PokupiOtpad(Vozilo vozilo, ref int trenutniCiklus)
+        private static void PokupiOtpad(Vozilo vozilo)
         {
-            //TODO: provjeri ako ima što u spremniku, ako nema idi na iduci
-
+            //preskoči prazne spremnike
+            while(vozilo.IteratorS.Trenutni.KolicinaOtpada == 0 && !vozilo.IteratorS.Kraj)
+            {
+                if(!vozilo.IteratorS.Kraj)
+                {
+                    vozilo.IteratorS.Sljedeci();
+                }
+            }
             Spremnik spremnik = vozilo.IteratorS.Trenutni;
-            //vozilo.KolicinaOtpada += spremnik.KolicinaOtpada;
 
             float preostaliKapacitetVozila = vozilo.Nosivost - vozilo.KolicinaOtpada;
             float kolicinaUzetogOtpadaSpremnika = spremnik.KolicinaOtpada;
-
             if (kolicinaUzetogOtpadaSpremnika > preostaliKapacitetVozila)
             {
                 float kolicinaOtpadaViska = kolicinaUzetogOtpadaSpremnika - preostaliKapacitetVozila;
@@ -80,8 +100,17 @@ namespace damdrempe_zadaca_2.Sustav
             spremnik.KolicinaOtpada -= kolicinaUzetogOtpadaSpremnika;
 
             Program.Ispisivac.ObavljeniPosao($"Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) trenutno ima {vozilo.KolicinaOtpada}kg otpada, preostali kapacitet je {vozilo.Nosivost - vozilo.KolicinaOtpada}kg.");
-            vozilo.IteratorS.Sljedeci();
-            trenutniCiklus++;
+
+            if (!vozilo.IteratorS.Kraj)
+            {
+                vozilo.IteratorS.Sljedeci();
+            }
+            else
+            {
+                Program.Ispisivac.ObavljeniPosao($"CIKLUS {TrenutniCiklus} Nema vise otpada za vozilo {vozilo.ID}");
+                vozilo.PromijeniStanje(VrstaStanja.Parkirano);
+            }
+            TrenutniCiklus++;
             
             //TODO: provjeri ako je iduci spremnik u iducoj ulici i iteriraj ulicu
         }

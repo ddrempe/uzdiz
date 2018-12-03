@@ -109,6 +109,8 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Kontrola:
                     break;
                 case VrstaStanja.Praznjenje:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Parkirano(this);  //TODO: u stanje praznjenje 
                     break;
                 default:
                     break;
