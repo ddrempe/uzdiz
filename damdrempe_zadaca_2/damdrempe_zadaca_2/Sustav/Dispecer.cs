@@ -22,8 +22,12 @@ namespace damdrempe_zadaca_2.Sustav
                 if(vozilo != null)
                 {
                     vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
-                    //TODO: provjeri da li vozilo već postoji
-                    Program.VozilaUObradi.Add(vozilo);
+                    
+                    //provjeri da li vozilo već postoji
+                    if(Program.VozilaUObradi.FirstOrDefault(v => v.ID == vozilo.ID) == null)
+                    {
+                        Program.VozilaUObradi.Add(vozilo);
+                    }
                 }
                 else
                 {
@@ -34,14 +38,8 @@ namespace damdrempe_zadaca_2.Sustav
 
         public static void ObradiKomanduKreni(KomandaRedak komanda)
         {
-            /*TODO: od vozila u obradi uzmi samo one koji su u statusu SKUPLJA
-            Obrada vozila temelji se na listi koja sadrži sva vozila koja su u procesu preuzimanja otpada i
-            trenutno ne voze otpad na mjesto za zbrinjavanje i nisu u kvaru i ne čakaju odlazak na pražnjenje otpada*/
-
-            foreach (Vozilo vozilo in Program.VozilaUObradi)
-            {
-                
-            }
+            komanda.Broj = int.MaxValue;
+            ObradiKomanduKreniN(komanda);
         }
 
         public static void ObradiKomanduKreniN(KomandaRedak komanda)
@@ -73,7 +71,7 @@ namespace damdrempe_zadaca_2.Sustav
                 vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             }
 
-            Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Nema vise otpada za vozila u obradi. Zavrseno izvrsavanje komande {komanda.Vrsta}.");
+            Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Zavrseno izvrsavanje komande {komanda.Vrsta}.");
             Program.Ispisivac.ObavljeniPosao();
         }
 
@@ -97,7 +95,7 @@ namespace damdrempe_zadaca_2.Sustav
         {
             voziloIzaslo = false;
             //preskoči prazne spremnike
-            while(vozilo.IteratorS.Trenutni.KolicinaOtpada == 0 && !vozilo.IteratorS.Kraj)
+            while(!vozilo.IteratorS.Kraj && vozilo.IteratorS.Trenutni.KolicinaOtpada == 0)
             {
                 vozilo.IteratorS.Sljedeci();                
             }
@@ -118,8 +116,8 @@ namespace damdrempe_zadaca_2.Sustav
             {
                 float kolicinaOtpadaViska = kolicinaUzetogOtpadaSpremnika - preostaliKapacitetVozila;
                 kolicinaUzetogOtpadaSpremnika = kolicinaUzetogOtpadaSpremnika - kolicinaOtpadaViska;
-                Program.Ispisivac.ObavljeniPosao($"Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) je puno ({vozilo.Nosivost}kg) i mora na odvoz.");
-                Program.Ispisivac.ObavljeniPosao($"Spremnik {spremnik.ID} ima jos {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu}.");
+                Program.Ispisivac.ObavljeniPosao($"ODVOZ Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) je puno ({vozilo.Nosivost}kg) i mora na odvoz.");
+                Program.Ispisivac.ObavljeniPosao($"ODVOZ Spremnik {spremnik.ID} ima jos {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu}.");
 
                 //ako je vozilo puno promijeni stanje, posalji ga na praznjenje n ciklusa nakon kojih se vraca na kraj liste
                 vozilo.PromijeniStanje(VrstaStanja.Praznjenje);
@@ -132,6 +130,40 @@ namespace damdrempe_zadaca_2.Sustav
 
             Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) trenutno ima {vozilo.KolicinaOtpada}kg otpada, preostali kapacitet je {vozilo.Nosivost - vozilo.KolicinaOtpada}kg.");
             vozilo.IteratorS.Sljedeci(); //TODO: provjeri ako je iduci spremnik u iducoj ulici i iteriraj ulicu                 
+        }
+
+        public static void ObradiKomanduKontrola(KomandaRedak komanda)
+        {
+            foreach (string voziloID in komanda.Vozila)
+            {
+                Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
+                if (vozilo != null)
+                {
+                    vozilo.PromijeniStanje(VrstaStanja.Kontrola);
+                }
+                else
+                {
+                    Program.Ispisivac.ObavljeniPosao($"Ne postoji vozilo {voziloID} za komandu {komanda.Vrsta}");
+                }
+            }
+        }
+
+        public static void ObradiKomanduIsprazni(KomandaRedak komanda)
+        {
+            foreach (string voziloID in komanda.Vozila)
+            {
+                Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
+                if (vozilo != null)
+                {
+                    vozilo.PromijeniStanje(VrstaStanja.Praznjenje);
+                    vozilo.BrojPreostalihCiklusa = Program.Parametri.DohvatiParametarInt("brojRadnihCiklusaZaOdvoz");
+                    Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je poslano na odvoz.");
+                }
+                else
+                {
+                    Program.Ispisivac.ObavljeniPosao($"Ne postoji vozilo {voziloID} za komandu {komanda.Vrsta}");
+                }
+            }
         }
     }
 }

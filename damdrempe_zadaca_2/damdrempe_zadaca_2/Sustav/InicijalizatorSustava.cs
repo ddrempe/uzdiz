@@ -216,11 +216,6 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void StvoriRedoslijedSpremnikaVozilima()
         {
-            //za svako vozilo
-            //za svaku ulicu
-            //nađi spremnike njegove vrste i dodavaj ih u kolekciju za iteratir
-            //spremi iterator u vozilo
-
             foreach (Vozilo vozilo in Program.Vozila)
             {
                 KolekcijaS kolekcijaS = new KolekcijaS();
@@ -260,8 +255,10 @@ namespace damdrempe_zadaca_2.Sustav
                     case VrstaKomande.KVAR:
                         break;
                     case VrstaKomande.KONTROLA:
+                        Dispecer.ObradiKomanduKontrola(komanda);
                         break;
                     case VrstaKomande.ISPRAZNI:
+                        Dispecer.ObradiKomanduIsprazni(komanda);
                         break;
                     case VrstaKomande.STATUS:
                         break;

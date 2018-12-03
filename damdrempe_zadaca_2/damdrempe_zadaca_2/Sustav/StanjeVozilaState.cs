@@ -69,6 +69,8 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Pokvareno:
                     break;
                 case VrstaStanja.Kontrola:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Kontrola(this);
                     break;
                 case VrstaStanja.Praznjenje:
                     break;
@@ -103,6 +105,8 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Pokvareno:
                     break;
                 case VrstaStanja.Kontrola:
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Kontrola(this);
                     break;
                 case VrstaStanja.Praznjenje:
                     this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
@@ -143,6 +147,40 @@ namespace damdrempe_zadaca_2.Sustav
                     break;
                 case VrstaStanja.Praznjenje:
                     //TODO: vec prazni
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// A 'ConcreteState' class
+    /// </summary>
+    class Kontrola : StanjeVozila
+    {
+        public Kontrola(StanjeVozila stanjeVozila)
+        {
+            trenutnoStanje = stanjeVozila.TrenutnoStanje;
+            vozilo = stanjeVozila.Vozilo;
+        }
+
+        public override void PromijeniStanje(VrstaStanja novoStanje)
+        {
+            switch (novoStanje)
+            {
+                case VrstaStanja.Parkirano:
+                    break;
+                case VrstaStanja.Skupljanje:
+                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Skupljanje(this);
+                    break;
+                case VrstaStanja.Pokvareno:
+                    break;
+                case VrstaStanja.Kontrola:
+                    //TODO: vec kontrola
+                    break;
+                case VrstaStanja.Praznjenje:
                     break;
                 default:
                     break;
