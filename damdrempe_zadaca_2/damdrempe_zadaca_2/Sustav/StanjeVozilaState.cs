@@ -216,7 +216,7 @@ namespace damdrempe_zadaca_2.Sustav
                     vozilo.StanjeVozila = new Praznjenje(this);
                     break;
                 default:
-                    Program.Ispisivac.ObavljeniPosao($"Vozilo {vozilo.ID} ne može u stanje {novoStanje}, vec samo u stanje {VrstaStanja.Praznjenje}.");
+                    Program.Ispisivac.ObavljeniPosao($"Vozilo {vozilo.ID} je u kvaru! Ne moze u stanje {novoStanje}, vec samo u stanje {VrstaStanja.Praznjenje}.");
                     break;
             }
         }

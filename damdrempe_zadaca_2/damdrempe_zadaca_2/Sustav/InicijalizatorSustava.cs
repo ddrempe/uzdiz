@@ -28,8 +28,8 @@ namespace damdrempe_zadaca_2.Sustav
             StvoriRedoslijedSpremnikaVozilima();
 
             AktivirajDispecera();
-
-            //IspisiStatistiku();
+            IsprazniSvaVozila();
+            IspisiStatistiku();
         }
 
         private static void UcitajParametre()
@@ -80,6 +80,7 @@ namespace damdrempe_zadaca_2.Sustav
         {
             Program.Ulice = InicijalizatorOtpada.OdrediOtpadKorisnicima(Program.Ulice, Program.DatotekaParametara);
             Program.Spremnici = InicijalizatorOtpada.OdloziOtpadKorisnika(Program.Ulice, Program.Spremnici);
+            InicijalizatorOtpada.IspisOtpadPoKorisnicimaTablicno(Program.Ulice);
         }
 
         private static void IzracunajOtpadPoUlicama()
@@ -239,6 +240,8 @@ namespace damdrempe_zadaca_2.Sustav
 
         private static void AktivirajDispecera()
         {
+            Statistika.InicijalizirajStatistiku();
+
             foreach (KomandaRedak komanda in Program.Komande)
             {
                 Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Red);
@@ -272,6 +275,27 @@ namespace damdrempe_zadaca_2.Sustav
                         break;
                 }
             }
+        }
+
+        private static void IspisiStatistiku()
+        {
+            Statistika.IspisiStatistikuVozilaTablicno();
+            Statistika.IspisiStatistikuDeponija();
+        }
+
+        private static void IsprazniSvaVozila()
+        {
+            List<Vozilo> vozilaUObradi = Program.VozilaUObradi.Where(v => v.KolicinaOtpada > 0).ToList();
+
+            foreach (Vozilo vozilo in vozilaUObradi)
+            {
+                Program.Ispisivac.ObavljeniPosao($"KRAJ DANA Vozilo {vozilo.ID} ({vozilo.KolicinaOtpada}/{vozilo.Nosivost}kg) mora na odvoz.");
+                Statistika.VoziloBrojOdlazakaNaDeponij[vozilo.ID]++;
+
+                Statistika.DeponijUkupanOtpad[vozilo.VrstaOtpada] += vozilo.KolicinaOtpada;
+                vozilo.KolicinaOtpada = 0;
+            }
+            Program.Ispisivac.ObavljeniPosao();
         }
     }
 }

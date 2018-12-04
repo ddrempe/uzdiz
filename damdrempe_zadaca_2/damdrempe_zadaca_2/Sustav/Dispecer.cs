@@ -74,7 +74,7 @@ namespace damdrempe_zadaca_2.Sustav
                     if(!voziloIzaslo) redniBrojVozila++;
                 }                    
 
-                if (vozilaZaPraznjenje.Count > 0) ObaviPraznjenje();
+                if (vozilaZaPraznjenje.Count > 0) OdradiCiklusPraznjenja();
 
                 vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
                 vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
@@ -84,7 +84,7 @@ namespace damdrempe_zadaca_2.Sustav
             Program.Ispisivac.ObavljeniPosao();
         }
 
-        private static void ObaviPraznjenje()
+        private static void OdradiCiklusPraznjenja()
         {
             List<Vozilo> vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             foreach (Vozilo vozilo in vozilaZaPraznjenje)
@@ -92,10 +92,12 @@ namespace damdrempe_zadaca_2.Sustav
                 if(vozilo.BrojPreostalihCiklusa <= 0)
                 {
                     vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
+                    Statistika.DeponijUkupanOtpad[vozilo.VrstaOtpada] += vozilo.KolicinaOtpada;
+                    vozilo.KolicinaOtpada = 0;
+                    Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Vozilo {vozilo.ID} je zavrsilo s odvozom otpada i spremno je za skupljanje.");
                     //TODO: stavi vozilo na kraj liste
                 }
-
-                vozilo.KolicinaOtpada = 0; 
+                
                 vozilo.BrojPreostalihCiklusa--;
             }
         }
@@ -127,6 +129,7 @@ namespace damdrempe_zadaca_2.Sustav
                 kolicinaUzetogOtpadaSpremnika = kolicinaUzetogOtpadaSpremnika - kolicinaOtpadaViska;
                 Program.Ispisivac.ObavljeniPosao($"ODVOZ Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) je puno ({vozilo.Nosivost}kg) i mora na odvoz.");
                 Program.Ispisivac.ObavljeniPosao($"ODVOZ Spremnik {spremnik.ID} ima jos {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu}.");
+                Statistika.VoziloBrojOdlazakaNaDeponij[vozilo.ID]++;
 
                 //ako je vozilo puno promijeni stanje, posalji ga na praznjenje n ciklusa nakon kojih se vraca na kraj liste
                 vozilo.PromijeniStanje(VrstaStanja.Praznjenje);
@@ -136,6 +139,8 @@ namespace damdrempe_zadaca_2.Sustav
 
             vozilo.KolicinaOtpada += kolicinaUzetogOtpadaSpremnika;
             spremnik.KolicinaOtpada -= kolicinaUzetogOtpadaSpremnika;
+            Statistika.VoziloBrojPreuzetihSpremnika[vozilo.ID]++;
+            Statistika.VoziloKolicinaPreuzetogOtpada[vozilo.ID] += kolicinaUzetogOtpadaSpremnika;
 
             Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) trenutno ima {vozilo.KolicinaOtpada}kg otpada, preostali kapacitet je {vozilo.Nosivost - vozilo.KolicinaOtpada}kg.");
             vozilo.IteratorS.Sljedeci(); //TODO: provjeri ako je iduci spremnik u iducoj ulici i iteriraj ulicu                 
@@ -172,6 +177,8 @@ namespace damdrempe_zadaca_2.Sustav
                     Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
                     Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je poslano na odvoz.");
                     Program.Ispisivac.ResetirajPostavkeBoja();
+
+                    Statistika.VoziloBrojOdlazakaNaDeponij[vozilo.ID]++;
                 }
                 else
                 {

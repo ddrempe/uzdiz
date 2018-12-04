@@ -106,11 +106,11 @@ namespace damdrempe_zadaca_2.Sustav
                     }
                 }
 
-                Program.Ispisivac.Koristi();
-                Program.Ispisivac.Koristi(ulica.Naziv);
+                Program.Ispisivac.ObavljeniPosao();
+                Program.Ispisivac.ObavljeniPosao(ulica.Naziv);
                 foreach (VrstaOtpada vrsta in Enum.GetValues(typeof(VrstaOtpada)))
                 {
-                    Program.Ispisivac.Koristi($"{vrsta}: {sumaOtpada[vrsta]}kg");
+                    Program.Ispisivac.ObavljeniPosao($"{vrsta}: {sumaOtpada[vrsta]}kg");
                 }
             }            
         }
@@ -175,6 +175,36 @@ namespace damdrempe_zadaca_2.Sustav
             }
 
             return korisnik;
+        }
+
+        public static void IspisOtpadPoKorisnicimaTablicno(List<Ulica> ulice)
+        {
+            Program.Ispisivac.ObavljeniPosao();
+            Program.Ispisivac.ObavljeniPosao("ISPIS PRIDRUZENE KOLICINE OTPADA ZA KORISNIKE");
+            string redakZaIspis = String.Format("|{0,5}|{1,15}|{2,10}|{3,10}|{4,10}|{5,10}|{6,10}|{7,30}|",
+                    "ID", "Kategorija", "Bio", "Metal", "Mjesano", "Papir", "Staklo", "Ulica");
+            Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+            foreach (Ulica ulica in ulice)
+            {
+                IspisiOtpadKorisnika(ulica.KorisniciMali, ulica);
+                IspisiOtpadKorisnika(ulica.KorisniciSrednji, ulica);
+                IspisiOtpadKorisnika(ulica.KorisniciVeliki, ulica);
+            }
+            Program.Ispisivac.ObavljeniPosao();
+        }
+
+        private static void IspisiOtpadKorisnika(List<Korisnik> korisnici, Ulica ulica)
+        {
+            foreach (Korisnik korisnik in korisnici)
+            {
+                string redakZaIspis =
+                    String.Format("|{0,5}|{1,15}|{2,10}|{3,10}|{4,10}|{5,10}|{6,10}|{7,30}|",
+                    korisnik.ID, korisnik.Kategorija, korisnik.Otpad[VrstaOtpada.Bio], 
+                    korisnik.Otpad[VrstaOtpada.Metal], korisnik.Otpad[VrstaOtpada.Mješano], 
+                    korisnik.Otpad[VrstaOtpada.Papir], korisnik.Otpad[VrstaOtpada.Staklo],
+                    ulica.ID + " " + ulica.Naziv);
+                Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+            }
         }
     }
 }
