@@ -198,5 +198,23 @@ namespace damdrempe_zadaca_2.Sustav
                 }
             }
         }
+
+        public static void ObradiKomanduStatus(KomandaRedak komanda)
+        {
+            List<Vozilo> vozilaKojaNisuUKvaru = Program.VozilaUObradi.Where(v => !v.TrenutnoStanje.Equals(VrstaStanja.Pokvareno)).ToList();
+
+            string redakZaIspis = String.Format("|{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}|",
+                    "ID", "Naziv", "Vrsta", "Nosivost", "Kolicina otpada", "Stanje");
+            Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+
+            foreach (Vozilo vozilo in vozilaKojaNisuUKvaru)
+            {
+                redakZaIspis =
+                    String.Format("|{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}|",
+                    vozilo.ID, vozilo.Naziv, vozilo.VrstaOtpada, vozilo.Nosivost, vozilo.KolicinaOtpada, vozilo.TrenutnoStanje);
+                Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+            }
+            Program.Ispisivac.ObavljeniPosao();
+        }
     }
 }

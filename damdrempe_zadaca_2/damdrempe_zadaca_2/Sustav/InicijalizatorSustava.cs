@@ -266,6 +266,7 @@ namespace damdrempe_zadaca_2.Sustav
                         Dispecer.ObradiKomanduIsprazni(komanda);
                         break;
                     case VrstaKomande.STATUS:
+                        Dispecer.ObradiKomanduStatus(komanda);
                         break;
                     default:
                         break;
