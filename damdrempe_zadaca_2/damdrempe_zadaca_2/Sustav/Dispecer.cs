@@ -21,12 +21,21 @@ namespace damdrempe_zadaca_2.Sustav
                 Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
                 if(vozilo != null)
                 {
-                    vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
-                    
                     //provjeri da li vozilo već postoji
-                    if(Program.VozilaUObradi.FirstOrDefault(v => v.ID == vozilo.ID) == null)
+                    Vozilo trazenoVoziloUObradi = Program.VozilaUObradi.FirstOrDefault(v => v.ID == vozilo.ID);
+                    if (vozilo == null || !vozilo.TrenutnoStanje.Equals(VrstaStanja.Skupljanje))
                     {
+                        Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je dodano u listu za obradu i stavljeno u status skupljanja.");
+                        Program.Ispisivac.ResetirajPostavkeBoja();
+                        vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
                         Program.VozilaUObradi.Add(vozilo);
+                    }
+                    else
+                    {
+                        Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je vec u listi za obradu.");
+                        Program.Ispisivac.ResetirajPostavkeBoja();
                     }
                 }
                 else
@@ -140,6 +149,9 @@ namespace damdrempe_zadaca_2.Sustav
                 if (vozilo != null)
                 {
                     vozilo.PromijeniStanje(VrstaStanja.Kontrola);
+                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                    Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je u stanju kontrole.");
+                    Program.Ispisivac.ResetirajPostavkeBoja();
                 }
                 else
                 {
@@ -157,7 +169,28 @@ namespace damdrempe_zadaca_2.Sustav
                 {
                     vozilo.PromijeniStanje(VrstaStanja.Praznjenje);
                     vozilo.BrojPreostalihCiklusa = Program.Parametri.DohvatiParametarInt("brojRadnihCiklusaZaOdvoz");
+                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
                     Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je poslano na odvoz.");
+                    Program.Ispisivac.ResetirajPostavkeBoja();
+                }
+                else
+                {
+                    Program.Ispisivac.ObavljeniPosao($"Ne postoji vozilo {voziloID} za komandu {komanda.Vrsta}");
+                }
+            }
+        }
+
+        public static void ObradiKomanduKvar(KomandaRedak komanda)
+        {
+            foreach (string voziloID in komanda.Vozila)
+            {
+                Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
+                if (vozilo != null)
+                {
+                    vozilo.PromijeniStanje(VrstaStanja.Pokvareno);
+                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                    Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je u stanju kvara.");
+                    Program.Ispisivac.ResetirajPostavkeBoja();
                 }
                 else
                 {

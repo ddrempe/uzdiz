@@ -67,6 +67,8 @@ namespace damdrempe_zadaca_2.Sustav
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
                     this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
@@ -103,6 +105,8 @@ namespace damdrempe_zadaca_2.Sustav
                     //TODO: vec skuplja
                     break;
                 case VrstaStanja.Pokvareno:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
                     this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
@@ -142,6 +146,8 @@ namespace damdrempe_zadaca_2.Sustav
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
                     break;
@@ -176,6 +182,8 @@ namespace damdrempe_zadaca_2.Sustav
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
+                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
                     //TODO: vec kontrola
@@ -183,6 +191,32 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Praznjenje:
                     break;
                 default:
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// A 'ConcreteState' class
+    /// </summary>
+    class Pokvareno : StanjeVozila
+    {
+        public Pokvareno(StanjeVozila stanjeVozila)
+        {
+            trenutnoStanje = stanjeVozila.TrenutnoStanje;
+            vozilo = stanjeVozila.Vozilo;
+        }
+
+        public override void PromijeniStanje(VrstaStanja novoStanje)
+        {
+            switch (novoStanje)
+            {
+                case VrstaStanja.Praznjenje:
+                    this.trenutnoStanje = novoStanje;
+                    vozilo.StanjeVozila = new Praznjenje(this);
+                    break;
+                default:
+                    Program.Ispisivac.ObavljeniPosao($"Vozilo {vozilo.ID} ne može u stanje {novoStanje}, vec samo u stanje {VrstaStanja.Praznjenje}.");
                     break;
             }
         }

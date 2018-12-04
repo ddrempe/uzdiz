@@ -241,6 +241,10 @@ namespace damdrempe_zadaca_2.Sustav
         {
             foreach (KomandaRedak komanda in Program.Komande)
             {
+                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Red);
+                string brojCiklusa = komanda.Vrsta.Equals(VrstaKomande.KRENI_N) ? komanda.Broj.ToString() : "";
+                Program.Ispisivac.ObavljeniPosao($"Pristigla je komanda {komanda.Vrsta}{brojCiklusa}.");
+                Program.Ispisivac.ResetirajPostavkeBoja();
                 switch (komanda.Vrsta)
                 {
                     case VrstaKomande.PRIPREMI:
@@ -253,6 +257,7 @@ namespace damdrempe_zadaca_2.Sustav
                         Dispecer.ObradiKomanduKreniN(komanda);
                         break;
                     case VrstaKomande.KVAR:
+                        Dispecer.ObradiKomanduKvar(komanda);
                         break;
                     case VrstaKomande.KONTROLA:
                         Dispecer.ObradiKomanduKontrola(komanda);
