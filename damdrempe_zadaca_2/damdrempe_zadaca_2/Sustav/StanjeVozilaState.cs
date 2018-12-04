@@ -59,19 +59,18 @@ namespace damdrempe_zadaca_2.Sustav
         {
             switch (novoStanje)
             {
-                case VrstaStanja.Parkirano:
-                    //TODO: vec je parkirano                   
+                case VrstaStanja.Parkirano:              
                     break;
                 case VrstaStanja.Skupljanje:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Kontrola(this);
                     break;
                 case VrstaStanja.Praznjenje:
@@ -98,22 +97,21 @@ namespace damdrempe_zadaca_2.Sustav
             switch (novoStanje)
             {
                 case VrstaStanja.Parkirano:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Parkirano(this);
                     break;
                 case VrstaStanja.Skupljanje:
-                    //TODO: vec skuplja
                     break;
                 case VrstaStanja.Pokvareno:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Kontrola(this);
                     break;
                 case VrstaStanja.Praznjenje:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Parkirano(this);  //TODO: u stanje praznjenje 
                     break;
                 default:
@@ -138,21 +136,20 @@ namespace damdrempe_zadaca_2.Sustav
             switch (novoStanje)
             {
                 case VrstaStanja.Parkirano:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Parkirano(this);
                     break;
                 case VrstaStanja.Skupljanje:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
                     break;
                 case VrstaStanja.Praznjenje:
-                    //TODO: vec prazni
                     break;
                 default:
                     break;
@@ -178,15 +175,14 @@ namespace damdrempe_zadaca_2.Sustav
                 case VrstaStanja.Parkirano:
                     break;
                 case VrstaStanja.Skupljanje:
-                    this.trenutnoStanje = novoStanje;           //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Skupljanje(this);
                     break;
                 case VrstaStanja.Pokvareno:
-                    this.trenutnoStanje = novoStanje;   //TODO: drugi konstruktor
+                    this.trenutnoStanje = novoStanje;
                     vozilo.StanjeVozila = new Pokvareno(this);
                     break;
                 case VrstaStanja.Kontrola:
-                    //TODO: vec kontrola
                     break;
                 case VrstaStanja.Praznjenje:
                     break;

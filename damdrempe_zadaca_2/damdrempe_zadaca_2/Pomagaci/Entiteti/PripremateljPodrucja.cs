@@ -49,7 +49,6 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
             return podrucja;
         }
 
-        //TODO: refaktorirati
         public static Dictionary<VrstaOtpada, float> IzracunajUkupanOtpadPodrucjaSIspisom(List<PodrucjeComponent> podpodrucja, bool ispis)
         {           
             Dictionary<VrstaOtpada, float> otpad = new Dictionary<VrstaOtpada, float>();

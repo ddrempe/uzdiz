@@ -38,12 +38,12 @@ namespace damdrempe_zadaca_2.Pomagaci.Entiteti
 
             public override void Dodijeli(PodrucjeComponent podrucje)
             {
-                throw new NotImplementedException();    //TODO: unallowed exception
+                //TODO: implementirati
             }
 
             public override void Obrisi(PodrucjeComponent podrucje)
             {
-                throw new NotImplementedException();    //TODO: unallowed exception
+                //TODO: implementirati
             }
         }
 
