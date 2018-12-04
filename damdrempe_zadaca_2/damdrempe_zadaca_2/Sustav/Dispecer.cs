@@ -14,6 +14,8 @@ namespace damdrempe_zadaca_2.Sustav
     {
         public static int TrenutniCiklus;
 
+        public static List<PrijevozPutnika> listaPrijevozPutnika = new List<PrijevozPutnika>();
+
         public static void ObradiKomanduPripremi(KomandaRedak komanda)
         {
             foreach (string voziloID in komanda.Vozila)
@@ -23,10 +25,10 @@ namespace damdrempe_zadaca_2.Sustav
                 {
                     //provjeri da li vozilo već postoji
                     Vozilo trazenoVoziloUObradi = Program.VozilaUObradi.FirstOrDefault(v => v.ID == vozilo.ID);
-                    if (vozilo == null || !vozilo.TrenutnoStanje.Equals(VrstaStanja.Skupljanje))
+                    if (trazenoVoziloUObradi == null)
                     {
                         Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
-                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je dodano u listu za obradu i stavljeno u status skupljanja.");
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je u listi za obradu i stavljeno u status skupljanja.");
                         Program.Ispisivac.ResetirajPostavkeBoja();
                         vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
                         Program.VozilaUObradi.Add(vozilo);
@@ -96,6 +98,9 @@ namespace damdrempe_zadaca_2.Sustav
                     vozilo.KolicinaOtpada = 0;
                     Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Vozilo {vozilo.ID} je zavrsilo s odvozom otpada i spremno je za skupljanje.");
                     //TODO: stavi vozilo na kraj liste
+
+                    PrijevozPutnika prijevozPutnika = listaPrijevozPutnika.FirstOrDefault(p => p.VoziloID == vozilo.ID);
+                    prijevozPutnika.IskrcajPutnike();
                 }
                 
                 vozilo.BrojPreostalihCiklusa--;
@@ -130,6 +135,9 @@ namespace damdrempe_zadaca_2.Sustav
                 Program.Ispisivac.ObavljeniPosao($"ODVOZ Vozilo {vozilo.ID} ({vozilo.VrstaOtpada}) je puno ({vozilo.Nosivost}kg) i mora na odvoz.");
                 Program.Ispisivac.ObavljeniPosao($"ODVOZ Spremnik {spremnik.ID} ima jos {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu}.");
                 Statistika.VoziloBrojOdlazakaNaDeponij[vozilo.ID]++;
+                PrijevozPutnika prijevozPutnika = new PrijevozPutnika(vozilo, vozilo.ID);
+                prijevozPutnika.UkrcajPutnika($"Putnik{TrenutniCiklus}");
+                listaPrijevozPutnika.Add(prijevozPutnika);
 
                 //ako je vozilo puno promijeni stanje, posalji ga na praznjenje n ciklusa nakon kojih se vraca na kraj liste
                 vozilo.PromijeniStanje(VrstaStanja.Praznjenje);

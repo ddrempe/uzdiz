@@ -67,6 +67,7 @@
     <Compile Include="Sustav\Tekstovi.cs" />
     <Compile Include="Sustav\SpremnikIterator.cs" />
     <Compile Include="Sustav\UlicaIterator.cs" />
+    <Compile Include="Sustav\VoziloDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

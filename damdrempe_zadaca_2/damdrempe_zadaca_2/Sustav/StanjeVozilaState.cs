@@ -225,7 +225,7 @@ namespace damdrempe_zadaca_2.Sustav
     /// <summary>
     /// The Context class
     /// </summary>
-    class Vozilo
+    class Vozilo : PrijevoznoSredstvo
     {
         public string ID { get; set; }
 
@@ -251,12 +251,14 @@ namespace damdrempe_zadaca_2.Sustav
 
         public Vozilo()
         {
+            this.BrojMjesta = 3;
             _stanjeVozila = new Parkirano(VrstaStanja.Parkirano, this);
             KolicinaOtpada = 0;
         }
 
         public Vozilo(VoziloRedak voziloRedak)
         {
+            this.BrojMjesta = 3;
             _stanjeVozila = new Parkirano(VrstaStanja.Parkirano, this);
 
             ID = voziloRedak.ID;
@@ -282,6 +284,10 @@ namespace damdrempe_zadaca_2.Sustav
         public void PromijeniStanje(VrstaStanja novoStanje)
         {
             _stanjeVozila.PromijeniStanje(novoStanje);
+        }
+
+        public override void IspisiPutnike()    //TODO: implementirati
+        {            
         }
     }
 }
