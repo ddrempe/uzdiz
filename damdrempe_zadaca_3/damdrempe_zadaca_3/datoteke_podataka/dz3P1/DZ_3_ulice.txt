@@ -1,0 +1,4 @@
+﻿id;naziv;broj mjesta; udio (%) mali;udio (%) srednji;udio (%) veliki
+u1;Pavlinska;10;70;20;10
+u8;Dravska;12;100;0;00
+
