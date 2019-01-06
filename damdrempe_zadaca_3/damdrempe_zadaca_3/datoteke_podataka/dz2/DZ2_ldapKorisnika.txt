@@ -1,0 +1,624 @@
+Neispravan redak 10 u datoteci ..\..\datoteke_podataka\dz2\DZ_2_ulice.txt.
+Neispravan redak 4 u datoteci ..\..\datoteke_podataka\dz2\DZ_2_spremnici.txt.
+Neispravan redak 8 u datoteci ..\..\datoteke_podataka\dz2\DZ_2_podrucja.txt.
+
+ISPIS PRIDRUZENE KOLICINE OTPADA ZA KORISNIKE
+|   ID|     Kategorija|       Bio|     Metal|   Mjesano|     Papir|    Staklo|                         Ulica|
+|    1|           Mali|       7,7|      1,67|     17,61|      4,22|      6,29|                  u1 Pavlinska|
+|    2|           Mali|      1,81|      2,55|     15,45|       2,4|      4,03|                  u1 Pavlinska|
+|    3|           Mali|      4,67|       1,6|     19,19|      0,78|      3,41|                  u1 Pavlinska|
+|    4|           Mali|      1,14|      2,58|      4,08|      1,77|      3,45|                  u1 Pavlinska|
+|    5|           Mali|      4,26|      2,82|     24,38|      0,99|      6,66|                  u1 Pavlinska|
+|    6|           Mali|      4,86|      2,52|     14,18|      2,67|      0,98|                  u1 Pavlinska|
+|    7|           Mali|      1,22|      2,81|       5,8|      3,52|      5,07|                  u1 Pavlinska|
+|    8|        Srednji|     43,09|      1,52|     58,69|     11,47|      6,24|                  u1 Pavlinska|
+|    9|        Srednji|     25,02|      1,61|     66,87|      5,74|      16,7|                  u1 Pavlinska|
+|   10|         Veliki|    230,23|     12,66|    157,73|     61,14|     29,41|                  u1 Pavlinska|
+|   11|           Mali|      1,14|      2,17|     22,83|      3,13|      2,18|          u2 Alojzija Stepinca|
+|   12|           Mali|      9,58|       0,7|      16,4|      4,51|      5,61|          u2 Alojzija Stepinca|
+|   13|           Mali|      7,08|       1,4|     23,75|       3,2|      0,99|          u2 Alojzija Stepinca|
+|   14|           Mali|      3,74|      1,53|     15,41|       1,1|      5,49|          u2 Alojzija Stepinca|
+|   15|           Mali|      5,79|      0,35|      9,65|      1,18|      5,31|          u2 Alojzija Stepinca|
+|   16|           Mali|      7,99|      1,81|     13,27|      4,81|      5,22|          u2 Alojzija Stepinca|
+|   17|           Mali|      1,95|      2,83|      7,84|      1,89|      6,31|          u2 Alojzija Stepinca|
+|   18|           Mali|      3,62|      2,77|     11,76|       4,9|      1,39|          u2 Alojzija Stepinca|
+|   19|           Mali|      3,98|      0,78|     14,83|      3,02|      2,26|          u2 Alojzija Stepinca|
+|   20|           Mali|      6,46|      1,58|     25,29|       4,2|      1,92|          u2 Alojzija Stepinca|
+|   21|           Mali|      4,85|      2,65|     18,96|      3,64|      2,46|          u2 Alojzija Stepinca|
+|   22|           Mali|      7,92|      0,73|      3,47|      3,05|      1,23|          u2 Alojzija Stepinca|
+|   23|           Mali|      6,15|       1,3|     19,35|         2|      5,88|          u2 Alojzija Stepinca|
+|   24|           Mali|      5,47|      1,11|     20,79|      3,49|      5,35|          u2 Alojzija Stepinca|
+|   25|           Mali|      9,82|      0,75|      8,71|      1,48|      5,62|          u2 Alojzija Stepinca|
+|   26|           Mali|      1,84|      2,15|      4,41|      4,88|      1,78|         u3 Petra Krešimira IV|
+|   27|           Mali|      9,56|      2,87|      5,74|      2,67|      6,34|         u3 Petra Krešimira IV|
+|   28|           Mali|      5,63|      1,67|      5,59|      2,47|      1,91|         u3 Petra Krešimira IV|
+|   29|           Mali|      3,46|      0,69|     16,56|      4,19|      4,12|         u3 Petra Krešimira IV|
+|   30|           Mali|      7,52|      1,93|     21,92|      1,35|      6,47|         u3 Petra Krešimira IV|
+|   31|           Mali|      9,53|      2,94|       4,2|      2,85|      4,04|         u3 Petra Krešimira IV|
+|   32|           Mali|      2,94|       2,7|     14,33|       2,9|      1,08|         u3 Petra Krešimira IV|
+|   33|           Mali|      7,46|      0,48|       6,3|      4,46|      1,39|         u3 Petra Krešimira IV|
+|   34|           Mali|      5,24|      1,43|     14,15|      2,21|      2,84|         u3 Petra Krešimira IV|
+|   35|           Mali|      4,61|      2,42|      6,15|       1,2|      2,58|         u3 Petra Krešimira IV|
+|   36|           Mali|       5,3|      2,71|        11|      0,83|      6,76|         u3 Petra Krešimira IV|
+|   37|           Mali|      4,54|      2,89|     17,09|      2,16|      6,89|         u3 Petra Krešimira IV|
+|   38|           Mali|      9,16|      0,31|      4,11|      2,76|      3,06|         u3 Petra Krešimira IV|
+|   39|           Mali|      1,85|      1,09|     29,63|      2,97|      4,86|         u3 Petra Krešimira IV|
+|   40|           Mali|      2,36|      1,45|      7,37|      3,89|      4,87|         u3 Petra Krešimira IV|
+|   41|           Mali|      3,81|      0,66|     13,85|      3,97|      4,07|         u3 Petra Krešimira IV|
+|   42|           Mali|      8,48|      1,86|      5,22|      3,81|      3,06|         u3 Petra Krešimira IV|
+|   43|           Mali|      9,27|      1,41|     14,81|      3,38|      6,91|         u3 Petra Krešimira IV|
+|   44|           Mali|      2,76|      2,12|      23,2|      4,64|      5,37|         u3 Petra Krešimira IV|
+|   45|        Srednji|      27,2|      3,05|     80,25|      7,52|      17,4|         u3 Petra Krešimira IV|
+|   46|        Srednji|     26,57|      3,76|     56,42|     13,35|     16,01|         u3 Petra Krešimira IV|
+|   47|        Srednji|     22,63|      3,96|     80,95|     10,77|      7,35|         u3 Petra Krešimira IV|
+|   48|        Srednji|     49,65|       3,6|     31,72|      5,82|      7,38|         u3 Petra Krešimira IV|
+|   49|        Srednji|     42,98|      1,69|     24,42|      14,1|     14,22|         u3 Petra Krešimira IV|
+|   50|        Srednji|      36,3|      2,49|     39,64|      4,64|       4,3|         u3 Petra Krešimira IV|
+|   51|        Srednji|     26,11|      1,93|     45,98|      3,96|     15,86|         u3 Petra Krešimira IV|
+|   52|        Srednji|     32,36|      3,82|     72,11|       6,1|      6,53|         u3 Petra Krešimira IV|
+|   53|        Srednji|     25,05|      1,66|     89,81|      3,53|     12,21|         u3 Petra Krešimira IV|
+|   54|        Srednji|     16,29|      1,38|     38,09|      13,8|      9,42|         u3 Petra Krešimira IV|
+|   55|        Srednji|     11,96|      3,73|     28,77|      6,25|     12,09|         u3 Petra Krešimira IV|
+|   56|         Veliki|    140,56|     23,45|     244,2|     66,45|     46,94|         u3 Petra Krešimira IV|
+|   57|         Veliki|    104,53|       9,7|    239,89|     96,34|     36,47|         u3 Petra Krešimira IV|
+|   58|         Veliki|    248,43|      16,1|    216,86|     88,62|     19,55|         u3 Petra Krešimira IV|
+|   59|         Veliki|    134,47|     10,89|    223,08|    100,75|     48,35|         u3 Petra Krešimira IV|
+|   60|         Veliki|    241,56|     25,72|    240,45|    124,88|     35,81|         u3 Petra Krešimira IV|
+|   61|         Veliki|     150,5|     13,54|    245,35|     49,28|     19,14|         u3 Petra Krešimira IV|
+|   62|         Veliki|    126,31|     12,84|    176,57|     86,75|     31,47|         u3 Petra Krešimira IV|
+|   63|           Mali|      8,42|      1,19|      4,02|      3,07|      6,71|      u4 Zrinskih i Frankopana|
+|   64|           Mali|      6,96|      2,99|     23,05|      0,55|      0,85|      u4 Zrinskih i Frankopana|
+|   65|           Mali|      5,98|      0,58|     10,37|      3,03|      6,52|      u4 Zrinskih i Frankopana|
+|   66|           Mali|      4,74|      1,22|      16,9|      1,31|      6,84|      u4 Zrinskih i Frankopana|
+|   67|           Mali|      6,92|      2,29|     19,63|      2,34|      1,66|      u4 Zrinskih i Frankopana|
+|   68|           Mali|      4,86|      1,93|      9,57|      1,73|      4,31|      u4 Zrinskih i Frankopana|
+|   69|           Mali|      6,21|      0,42|     20,56|      1,55|      5,31|      u4 Zrinskih i Frankopana|
+|   70|           Mali|      3,72|      1,02|     19,46|      1,41|      3,11|      u4 Zrinskih i Frankopana|
+|   71|           Mali|      2,88|      0,66|     24,41|      3,94|      4,38|      u4 Zrinskih i Frankopana|
+|   72|           Mali|      2,42|      2,09|     23,65|      4,71|       4,2|      u4 Zrinskih i Frankopana|
+|   73|           Mali|         8|      2,37|     10,03|      0,75|      2,53|      u4 Zrinskih i Frankopana|
+|   74|        Srednji|     18,35|      3,68|     57,22|     13,01|     12,73|      u4 Zrinskih i Frankopana|
+|   75|        Srednji|     26,77|      3,27|     20,84|       7,9|     16,02|      u4 Zrinskih i Frankopana|
+|   76|        Srednji|     46,11|       3,1|     91,24|      9,21|     15,05|      u4 Zrinskih i Frankopana|
+|   77|        Srednji|     42,22|      1,16|     94,47|     13,99|     16,37|      u4 Zrinskih i Frankopana|
+|   78|        Srednji|     44,61|      3,11|     24,79|      6,29|     10,18|      u4 Zrinskih i Frankopana|
+|   79|        Srednji|     36,56|      2,78|     96,27|     10,32|     14,19|      u4 Zrinskih i Frankopana|
+|   80|        Srednji|     22,73|      2,07|      28,4|      8,58|     14,83|      u4 Zrinskih i Frankopana|
+|   81|        Srednji|     43,47|      1,23|     88,69|      9,37|     12,78|      u4 Zrinskih i Frankopana|
+|   82|         Veliki|    109,73|     24,01|    111,47|     65,92|     21,15|      u4 Zrinskih i Frankopana|
+|   83|         Veliki|    121,87|     24,96|    298,26|        88|     16,34|      u4 Zrinskih i Frankopana|
+|   84|         Veliki|     223,3|      29,2|    273,61|      46,6|      28,1|      u4 Zrinskih i Frankopana|
+|   85|         Veliki|    101,06|     25,92|    263,94|     77,22|      24,5|      u4 Zrinskih i Frankopana|
+|   86|         Veliki|    156,52|     27,95|     160,1|    146,28|     19,94|      u4 Zrinskih i Frankopana|
+|   87|         Veliki|    214,61|     13,37|    161,82|     71,38|      22,9|      u4 Zrinskih i Frankopana|
+|   88|         Veliki|     240,7|     13,27|    248,57|    135,18|      23,5|      u4 Zrinskih i Frankopana|
+|   89|         Veliki|    208,52|     15,91|     94,55|    103,75|     21,54|      u4 Zrinskih i Frankopana|
+|   90|         Veliki|    192,65|      12,7|     211,6|    134,22|     22,96|      u4 Zrinskih i Frankopana|
+|   91|           Mali|         5|      1,43|      25,5|      2,76|      4,87|           u5 Krešimira Filića|
+|   92|           Mali|      1,08|      2,75|     22,37|      3,76|      2,22|           u5 Krešimira Filića|
+|   93|           Mali|      8,78|      0,97|     26,67|      1,84|      2,03|           u5 Krešimira Filića|
+|   94|           Mali|      9,33|       2,9|     23,22|      1,41|      5,66|           u5 Krešimira Filića|
+|   95|           Mali|      1,83|      0,34|     21,56|      4,15|      3,95|           u5 Krešimira Filića|
+|   96|           Mali|      2,15|      0,42|     19,22|       4,9|      5,19|           u5 Krešimira Filića|
+|   97|           Mali|      8,98|      0,92|     21,15|      4,05|      2,54|           u5 Krešimira Filića|
+|   98|           Mali|      9,68|      2,36|      5,71|      4,24|      5,25|           u5 Krešimira Filića|
+|   99|           Mali|      3,07|      0,83|     17,69|      4,78|      3,96|           u5 Krešimira Filića|
+|  100|           Mali|      8,98|      1,55|      9,34|       1,9|      6,31|           u5 Krešimira Filića|
+|  101|           Mali|      9,31|      0,98|      4,72|      4,49|      0,86|           u5 Krešimira Filića|
+|  102|           Mali|      7,81|      1,18|      6,28|       2,7|      6,05|           u5 Krešimira Filića|
+|  103|           Mali|      4,67|      2,41|      14,5|      3,57|      2,36|           u5 Krešimira Filića|
+|  104|        Srednji|     17,69|      2,45|     32,31|       3,8|     10,76|           u5 Krešimira Filića|
+|  105|        Srednji|     43,02|      4,99|     38,46|      8,25|     19,28|           u5 Krešimira Filića|
+|  106|        Srednji|     31,93|      4,14|      83,8|      10,4|     13,03|           u5 Krešimira Filića|
+|  107|        Srednji|      45,7|      1,63|     66,02|      9,17|     10,42|           u5 Krešimira Filića|
+|  108|        Srednji|     42,93|      2,23|      85,8|      9,46|     10,47|           u5 Krešimira Filića|
+|  109|        Srednji|     43,71|      1,03|     86,93|      9,06|      7,76|           u5 Krešimira Filića|
+|  110|         Veliki|    215,63|     25,54|    115,52|     62,93|     44,28|           u5 Krešimira Filića|
+|  111|         Veliki|     203,2|     14,71|    148,76|     144,6|      43,8|           u5 Krešimira Filića|
+|  112|         Veliki|     196,2|     17,92|    194,82|    138,38|     35,58|           u5 Krešimira Filića|
+|  113|         Veliki|    242,85|     25,35|    241,23|    118,73|     23,16|           u5 Krešimira Filića|
+|  114|         Veliki|    220,66|     27,64|     94,58|    100,13|     41,24|           u5 Krešimira Filića|
+|  115|         Veliki|    139,74|     20,32|    283,01|    124,84|     45,94|           u5 Krešimira Filića|
+|  116|         Veliki|    248,04|     12,26|    172,78|     90,21|     30,73|           u5 Krešimira Filića|
+|  117|         Veliki|    149,69|     29,62|    294,65|    132,05|     28,78|           u5 Krešimira Filića|
+|  118|         Veliki|    182,24|      17,9|    297,33|     70,41|     30,85|           u5 Krešimira Filića|
+|  119|         Veliki|    131,71|      21,9|    213,73|     56,94|     33,02|           u5 Krešimira Filića|
+|  120|         Veliki|     96,46|     10,01|    108,24|    121,33|     33,64|           u5 Krešimira Filića|
+|  121|         Veliki|    211,81|     29,06|    139,87|     74,71|      25,9|           u5 Krešimira Filića|
+|  122|         Veliki|    217,36|     27,94|    264,37|     88,02|     17,19|           u5 Krešimira Filića|
+|  123|           Mali|      3,69|      1,48|      5,85|       3,8|      1,69|               u6 Tina Ujevića|
+|  124|           Mali|      9,86|      1,25|     10,22|      3,74|      3,25|               u6 Tina Ujevića|
+|  125|           Mali|      8,61|      1,04|     16,69|      0,96|       3,9|               u6 Tina Ujevića|
+|  126|           Mali|      8,03|      0,88|     13,44|      1,16|      5,55|               u6 Tina Ujevića|
+|  127|           Mali|      9,12|      0,39|      5,23|      2,22|      5,25|               u6 Tina Ujevića|
+|  128|           Mali|       2,7|      0,84|     27,62|      4,43|       1,4|               u6 Tina Ujevića|
+|  129|           Mali|      8,04|      1,95|     25,41|      2,03|      0,97|               u6 Tina Ujevića|
+|  130|           Mali|      2,97|      1,15|      7,99|      3,55|      5,62|               u6 Tina Ujevića|
+|  131|           Mali|       8,7|      0,47|     18,64|      2,19|      5,82|               u6 Tina Ujevića|
+|  132|           Mali|      3,47|       0,6|     15,61|      0,54|      2,03|               u6 Tina Ujevića|
+|  133|           Mali|      4,84|      0,63|      5,91|      1,38|      6,47|               u6 Tina Ujevića|
+|  134|           Mali|      2,94|      1,74|     29,86|      3,66|      5,58|               u6 Tina Ujevića|
+|  135|           Mali|      1,65|      0,74|      9,06|      2,84|      4,04|               u6 Tina Ujevića|
+|  136|           Mali|      1,14|      1,63|     22,61|      2,71|      1,76|               u6 Tina Ujevića|
+|  137|           Mali|      6,36|      2,99|      18,5|      4,24|      1,28|               u6 Tina Ujevića|
+|  138|           Mali|      3,91|      0,78|     26,55|      1,93|      2,89|               u6 Tina Ujevića|
+|  139|           Mali|       7,5|       2,8|     29,89|      3,94|      1,35|               u6 Tina Ujevića|
+|  140|           Mali|      7,07|       0,8|      4,48|      1,49|      6,04|               u6 Tina Ujevića|
+|  141|           Mali|      3,01|      0,57|     20,67|      1,15|       1,2|               u6 Tina Ujevića|
+|  142|           Mali|      6,68|      2,98|     14,11|      1,46|      2,54|               u6 Tina Ujevića|
+|  143|           Mali|      5,93|      0,56|     13,12|      2,82|      5,23|               u6 Tina Ujevića|
+|  144|           Mali|      8,67|      1,72|     23,54|      1,39|      1,24|               u6 Tina Ujevića|
+|  145|           Mali|      4,09|      0,87|     27,08|      2,86|      3,57|               u6 Tina Ujevića|
+|  146|           Mali|      1,69|      1,49|     13,16|      3,17|      5,53|               u6 Tina Ujevića|
+|  147|        Srednji|     48,41|      4,27|     71,78|      6,69|     19,18|               u6 Tina Ujevića|
+|  148|        Srednji|     47,65|      4,09|     42,53|     11,77|     19,18|               u6 Tina Ujevića|
+|  149|        Srednji|     46,46|      3,19|     32,22|      6,94|      6,15|               u6 Tina Ujevića|
+|  150|           Mali|      4,13|      1,32|     27,57|      3,51|       4,4|           u7 Ruđera Boškovića|
+|  151|           Mali|      9,22|      1,19|     19,17|      3,62|      4,79|           u7 Ruđera Boškovića|
+|  152|           Mali|      3,99|      2,34|     26,97|       4,7|       4,2|           u7 Ruđera Boškovića|
+|  153|           Mali|      3,29|      2,77|      15,5|      3,98|       5,1|           u7 Ruđera Boškovića|
+|  154|           Mali|      9,11|      0,66|     14,51|      3,64|       3,3|           u7 Ruđera Boškovića|
+|  155|           Mali|      6,14|      1,88|     19,92|      2,42|      2,94|           u7 Ruđera Boškovića|
+|  156|           Mali|      2,71|      1,11|     11,22|       4,9|      1,51|           u7 Ruđera Boškovića|
+|  157|           Mali|       2,5|      0,55|     22,63|      1,48|      1,32|           u7 Ruđera Boškovića|
+|  158|           Mali|      4,25|      2,74|      5,49|      4,89|      2,31|           u7 Ruđera Boškovića|
+|  159|           Mali|      1,48|      1,49|     18,75|      4,88|       0,8|           u7 Ruđera Boškovića|
+|  160|           Mali|      5,04|      1,09|     22,99|      2,36|      2,98|           u7 Ruđera Boškovića|
+|  161|           Mali|      9,29|      1,59|     17,98|       2,9|      6,31|           u7 Ruđera Boškovića|
+|  162|           Mali|      3,59|      2,35|     15,71|      0,99|       2,1|           u7 Ruđera Boškovića|
+|  163|           Mali|      1,25|      1,83|     24,33|      3,35|      4,34|           u7 Ruđera Boškovića|
+|  164|        Srednji|      31,1|      3,99|     36,62|     11,16|      11,7|           u7 Ruđera Boškovića|
+|  165|        Srednji|     42,35|      4,09|     52,86|     12,52|     10,98|           u7 Ruđera Boškovića|
+|  166|        Srednji|     49,52|      3,12|      41,2|     14,83|      10,1|           u7 Ruđera Boškovića|
+|  167|        Srednji|     28,01|       4,4|     53,13|     11,23|     15,43|           u7 Ruđera Boškovića|
+|  168|        Srednji|     34,47|      1,69|     60,33|     11,89|     13,03|           u7 Ruđera Boškovića|
+|  169|        Srednji|     45,63|      3,47|     61,18|       5,6|      6,33|           u7 Ruđera Boškovića|
+|  170|         Veliki|    121,12|     17,67|    111,37|     87,77|     28,38|           u7 Ruđera Boškovića|
+|  171|         Veliki|    117,14|     25,05|    153,89|    114,96|     38,86|           u7 Ruđera Boškovića|
+|  172|         Veliki|    164,28|     23,02|    126,42|    124,85|      18,4|           u7 Ruđera Boškovića|
+|  173|         Veliki|     78,91|      25,2|    248,81|    105,75|     23,29|           u7 Ruđera Boškovića|
+|  174|         Veliki|    182,35|     11,44|     137,4|    127,14|     46,21|           u7 Ruđera Boškovića|
+|  175|         Veliki|      79,1|     11,85|    103,04|      98,3|     40,94|           u7 Ruđera Boškovića|
+|  176|         Veliki|    126,46|     27,54|     95,99|     63,52|     22,67|           u7 Ruđera Boškovića|
+|  177|         Veliki|    230,08|     14,61|    212,47|    105,17|      49,1|           u7 Ruđera Boškovića|
+|  178|           Mali|      2,31|      1,95|     11,56|      4,65|         1|                    u8 Dravska|
+|  179|           Mali|      4,94|      2,09|     10,21|      0,83|      5,76|                    u8 Dravska|
+|  180|           Mali|      2,21|      1,91|     19,82|       2,5|      4,27|                    u8 Dravska|
+|  181|           Mali|      1,34|      2,46|     12,74|      1,81|      4,48|                    u8 Dravska|
+|  182|           Mali|      2,61|       2,3|       5,3|      2,89|       1,8|                    u8 Dravska|
+|  183|           Mali|      5,33|      1,31|      8,38|      4,45|       6,5|                    u8 Dravska|
+|  184|           Mali|      4,95|      2,69|     22,12|       1,9|      4,88|                    u8 Dravska|
+|  185|           Mali|      3,67|      2,92|      14,4|      1,27|      6,81|                    u8 Dravska|
+|  186|           Mali|      7,81|      2,18|     16,36|      4,31|      4,91|                    u8 Dravska|
+|  187|           Mali|      7,04|      2,32|     14,57|      3,12|      5,58|                    u8 Dravska|
+|  188|           Mali|      5,73|      0,92|     14,04|      3,98|         5|                    u8 Dravska|
+|  189|           Mali|      1,55|      1,46|      13,7|      1,31|      3,96|                    u8 Dravska|
+|  190|           Mali|      3,15|      0,79|     19,29|      3,65|      6,53|               u11 Varaždinska|
+|  191|           Mali|      4,84|      0,72|     20,62|      3,02|      2,31|               u11 Varaždinska|
+|  192|           Mali|      6,54|      1,66|      21,7|      1,95|       3,4|               u11 Varaždinska|
+|  193|           Mali|      7,15|      2,96|      11,4|      4,25|      2,77|               u11 Varaždinska|
+|  194|           Mali|      1,48|       2,2|     16,94|      1,08|      2,83|               u11 Varaždinska|
+|  195|           Mali|      1,27|      1,27|      8,14|      0,87|      6,31|               u11 Varaždinska|
+|  196|           Mali|       9,1|      2,75|      16,4|      3,83|      5,68|               u11 Varaždinska|
+|  197|           Mali|      2,38|      1,54|      9,45|       3,5|       6,8|               u11 Varaždinska|
+|  198|           Mali|      1,17|      1,17|      3,02|      2,42|      2,05|               u11 Varaždinska|
+|  199|           Mali|       8,5|      1,96|      5,18|      1,72|      2,98|               u11 Varaždinska|
+|  200|           Mali|      7,75|      2,32|      4,55|      1,38|      5,01|               u11 Varaždinska|
+|  201|           Mali|       7,5|      0,64|     22,26|      4,99|      5,72|               u11 Varaždinska|
+|  202|           Mali|      3,12|      0,64|     26,29|       1,4|       1,8|               u11 Varaždinska|
+|  203|           Mali|      2,07|      1,93|     22,54|      2,36|      5,03|               u11 Varaždinska|
+|  204|           Mali|         5|      2,55|      5,62|      2,18|      4,88|               u11 Varaždinska|
+|  205|           Mali|      1,47|      2,15|      7,18|      4,13|      6,45|               u11 Varaždinska|
+|  206|           Mali|      9,55|      1,72|     16,65|      2,61|       4,6|               u11 Varaždinska|
+|  207|           Mali|      8,58|      0,73|      21,9|      4,97|      4,44|               u11 Varaždinska|
+|  208|           Mali|      4,96|      2,29|      4,75|      2,92|      6,82|               u11 Varaždinska|
+|  209|           Mali|       2,4|      0,53|     11,47|      1,86|      0,79|               u11 Varaždinska|
+|  210|           Mali|      1,98|      1,63|     14,28|       3,5|      6,68|               u11 Varaždinska|
+|  211|           Mali|      6,88|      1,12|      6,92|      2,14|      2,66|               u11 Varaždinska|
+|  212|           Mali|      6,11|       0,5|      5,53|      1,91|      6,93|               u11 Varaždinska|
+|  213|           Mali|      7,57|      0,77|     10,25|      3,53|      5,15|               u11 Varaždinska|
+|  214|        Srednji|     26,78|      4,04|     80,13|      6,04|     15,11|               u11 Varaždinska|
+|  215|        Srednji|      25,2|      2,57|     26,62|     10,66|      5,99|               u11 Varaždinska|
+|  216|        Srednji|     39,54|      3,11|     36,44|     11,66|     13,77|               u11 Varaždinska|
+|  217|        Srednji|     31,27|      2,67|     35,59|     14,69|     19,24|               u11 Varaždinska|
+|  218|        Srednji|     37,89|      3,03|     76,88|     11,28|      7,68|               u11 Varaždinska|
+|  219|        Srednji|     23,84|      1,67|     48,72|      8,56|     14,55|               u11 Varaždinska|
+
+
+ISPIS OTPADA PO PODRUCJIMA I PODPODRUCJIMA
+________________________________________________
+STRUKTURA ISPISA:
+- Ispis svih ulica u podrucju
+- Ispis podrucja i njegovih podpodrucja
+- Ispis ukupne kolicine otpada za podrucje
+________________________________________________
+ULICA [u1] Pavlinska
+Staklo: 82,24kg
+Papir: 94,7kg
+Metal: 32,34kg
+Mješano: 383,98kg
+
+ULICA [u2] Alojzija Stepinca
+Staklo: 57,22kg
+Papir: 45,6kg
+Metal: 22,46kg
+Mješano: 232,31kg
+
+ULICA [u3] Petra Krešimira IV
+Staklo: 438,9kg
+Papir: 760,5kg
+Metal: 177,09kg
+Mješano: 2400,19kg
+
+ULICA [u7] Ruđera Boškovića
+Staklo: 381,82kg
+Papir: 942,31kg
+Metal: 200,05kg
+Mješano: 1757,45kg
+
+ULICA [u8] Dravska
+Staklo: 54,95kg
+Papir: 33,02kg
+Metal: 24,51kg
+Mješano: 163,2kg
+
+ULICA [u4] Zrinskih i Frankopana
+Staklo: 359,5kg
+Papir: 971,61kg
+Metal: 224,45kg
+Mješano: 2507,49kg
+
+ULICA [u5] Krešimira Filića
+Staklo: 557,08kg
+Papir: 1417,97kg
+Metal: 315,68kg
+Mješano: 3180,14kg
+
+ULICA [u6] Tina Ujevića
+Staklo: 128,71kg
+Papir: 85,06kg
+Metal: 41,9kg
+Mješano: 551,77kg
+
+ULICA [u11] Varaždinska
+Staklo: 184,96kg
+Papir: 129,06kg
+Metal: 53,63kg
+Mješano: 616,71kg
+
+[p1] EZO Aglomeracija Varaždin
+_[p2] Varaždin grad
+_[p3] Varaždin okolica
+
+Ispis ukupne kolicine otpada za podrucje EZO Aglomeracija Varaždin
+Staklo: 2245,38kg
+Papir: 4479,83kg
+Metal: 1092,11kg
+Bio: 0kg
+Mješano: 11793,24kg
+________________________________________________
+
+ULICA [u1] Pavlinska
+Staklo: 82,24kg
+Papir: 94,7kg
+Metal: 32,34kg
+Mješano: 383,98kg
+
+ULICA [u2] Alojzija Stepinca
+Staklo: 57,22kg
+Papir: 45,6kg
+Metal: 22,46kg
+Mješano: 232,31kg
+
+ULICA [u3] Petra Krešimira IV
+Staklo: 438,9kg
+Papir: 760,5kg
+Metal: 177,09kg
+Mješano: 2400,19kg
+
+ULICA [u7] Ruđera Boškovića
+Staklo: 381,82kg
+Papir: 942,31kg
+Metal: 200,05kg
+Mješano: 1757,45kg
+
+ULICA [u8] Dravska
+Staklo: 54,95kg
+Papir: 33,02kg
+Metal: 24,51kg
+Mješano: 163,2kg
+
+ULICA [u4] Zrinskih i Frankopana
+Staklo: 359,5kg
+Papir: 971,61kg
+Metal: 224,45kg
+Mješano: 2507,49kg
+
+ULICA [u5] Krešimira Filića
+Staklo: 557,08kg
+Papir: 1417,97kg
+Metal: 315,68kg
+Mješano: 3180,14kg
+
+ULICA [u6] Tina Ujevića
+Staklo: 128,71kg
+Papir: 85,06kg
+Metal: 41,9kg
+Mješano: 551,77kg
+
+[p2] Varaždin grad
+_[p4] Centar
+_[p5] Banfica
+_[p6] Đurek
+
+Ispis ukupne kolicine otpada za podrucje Varaždin grad
+Staklo: 2060,42kg
+Papir: 4350,77kg
+Metal: 1038,48kg
+Bio: 0kg
+Mješano: 11176,53kg
+________________________________________________
+
+ULICA [u11] Varaždinska
+Staklo: 184,96kg
+Papir: 129,06kg
+Metal: 53,63kg
+Mješano: 616,71kg
+
+[p3] Varaždin okolica
+_[p7] Hrašcica
+
+Ispis ukupne kolicine otpada za podrucje Varaždin okolica
+Staklo: 184,96kg
+Papir: 129,06kg
+Metal: 53,63kg
+Bio: 0kg
+Mješano: 616,71kg
+________________________________________________
+
+ULICA [u1] Pavlinska
+Staklo: 82,24kg
+Papir: 94,7kg
+Metal: 32,34kg
+Mješano: 383,98kg
+
+ULICA [u2] Alojzija Stepinca
+Staklo: 57,22kg
+Papir: 45,6kg
+Metal: 22,46kg
+Mješano: 232,31kg
+
+ULICA [u3] Petra Krešimira IV
+Staklo: 438,9kg
+Papir: 760,5kg
+Metal: 177,09kg
+Mješano: 2400,19kg
+
+[p4] Centar
+_[u1] Pavlinska
+_[u2] Alojzija Stepinca
+_[u3] Petra Krešimira IV
+
+Ispis ukupne kolicine otpada za podrucje Centar
+Staklo: 578,36kg
+Papir: 900,8kg
+Metal: 231,89kg
+Bio: 0kg
+Mješano: 3016,48kg
+________________________________________________
+
+ULICA [u7] Ruđera Boškovića
+Staklo: 381,82kg
+Papir: 942,31kg
+Metal: 200,05kg
+Mješano: 1757,45kg
+
+ULICA [u8] Dravska
+Staklo: 54,95kg
+Papir: 33,02kg
+Metal: 24,51kg
+Mješano: 163,2kg
+
+[p5] Banfica
+_[u7] Ruđera Boškovića
+_[u8] Dravska
+
+Ispis ukupne kolicine otpada za podrucje Banfica
+Staklo: 436,77kg
+Papir: 975,33kg
+Metal: 224,56kg
+Bio: 0kg
+Mješano: 1920,65kg
+________________________________________________
+
+ULICA [u4] Zrinskih i Frankopana
+Staklo: 359,5kg
+Papir: 971,61kg
+Metal: 224,45kg
+Mješano: 2507,49kg
+
+ULICA [u5] Krešimira Filića
+Staklo: 557,08kg
+Papir: 1417,97kg
+Metal: 315,68kg
+Mješano: 3180,14kg
+
+ULICA [u6] Tina Ujevića
+Staklo: 128,71kg
+Papir: 85,06kg
+Metal: 41,9kg
+Mješano: 551,77kg
+
+[p6] Đurek
+_[u4] Zrinskih i Frankopana
+_[u5] Krešimira Filića
+_[u6] Tina Ujevića
+
+Ispis ukupne kolicine otpada za podrucje Đurek
+Staklo: 1045,29kg
+Papir: 2474,64kg
+Metal: 582,03kg
+Bio: 0kg
+Mješano: 6239,4kg
+________________________________________________
+
+ULICA [u11] Varaždinska
+Staklo: 184,96kg
+Papir: 129,06kg
+Metal: 53,63kg
+Mješano: 616,71kg
+
+[p7] Hrašcica
+_[u11] Varaždinska
+
+Ispis ukupne kolicine otpada za podrucje Hrašcica
+Staklo: 184,96kg
+Papir: 129,06kg
+Metal: 53,63kg
+Bio: 0kg
+Mješano: 616,71kg
+________________________________________________
+
+|        ID|                         Naziv|         Podpodrucja|    Staklo|     Papir|     Metal|       Bio|   Mjesano|
+|        p1|     EZO Aglomeracija Varaždin|              p2 p3 | 2245,38kg| 4479,83kg| 1092,11kg|       0kg|11793,24kg|
+|        p2|                 Varaždin grad|           p4 p5 p6 | 2060,42kg| 4350,77kg| 1038,48kg|       0kg|11176,53kg|
+|        p3|              Varaždin okolica|                 p7 |  184,96kg|  129,06kg|   53,63kg|       0kg|  616,71kg|
+|        p4|                        Centar|           u1 u2 u3 |  578,36kg|   900,8kg|  231,89kg|       0kg| 3016,48kg|
+|        p5|                       Banfica|              u7 u8 |  436,77kg|  975,33kg|  224,56kg|       0kg| 1920,65kg|
+|        p6|                         Đurek|           u4 u5 u6 | 1045,29kg| 2474,64kg|  582,03kg|       0kg|  6239,4kg|
+|        p7|                      Hrašcica|                u11 |  184,96kg|  129,06kg|   53,63kg|       0kg|  616,71kg|
+
+Pristigla je komanda PRIPREMI.
+KOMANDA PRIPREMI. Vozilo v1 je u listi za obradu i stavljeno u status skupljanja.
+KOMANDA PRIPREMI. Vozilo v2 je u listi za obradu i stavljeno u status skupljanja.
+KOMANDA PRIPREMI. Vozilo v5 je u listi za obradu i stavljeno u status skupljanja.
+KOMANDA PRIPREMI. Vozilo v7 je u listi za obradu i stavljeno u status skupljanja.
+Pristigla je komanda KRENI_N1000.
+C1 Vozilo v1 (Staklo) trenutno ima 41,98kg otpada, preostali kapacitet je 3958,02kg.
+C2 Vozilo v2 (Papir) trenutno ima 13,92kg otpada, preostali kapacitet je 2986,08kg.
+C3 Vozilo v5 (Mješano) trenutno ima 25,5kg otpada, preostali kapacitet je 3974,5kg.
+C4 Vozilo v7 (Mješano) trenutno ima 22,37kg otpada, preostali kapacitet je 2977,63kg.
+C5 Vozilo v1 (Staklo) trenutno ima 51,25kg otpada, preostali kapacitet je 3948,75kg.
+C6 Vozilo v2 (Papir) trenutno ima 33,79kg otpada, preostali kapacitet je 2966,21kg.
+C7 Vozilo v5 (Mješano) trenutno ima 52,17kg otpada, preostali kapacitet je 3947,83kg.
+C8 Vozilo v7 (Mješano) trenutno ima 45,59kg otpada, preostali kapacitet je 2954,41kg.
+C9 Vozilo v1 (Staklo) trenutno ima 62,01kg otpada, preostali kapacitet je 3937,99kg.
+C10 Vozilo v2 (Papir) trenutno ima 44,55kg otpada, preostali kapacitet je 2955,45kg.
+C11 Vozilo v5 (Mješano) trenutno ima 73,73kg otpada, preostali kapacitet je 3926,27kg.
+C12 Vozilo v7 (Mješano) trenutno ima 64,81kg otpada, preostali kapacitet je 2935,19kg.
+C13 Vozilo v1 (Staklo) trenutno ima 81,29kg otpada, preostali kapacitet je 3918,71kg.
+C14 Vozilo v2 (Papir) trenutno ima 56,6kg otpada, preostali kapacitet je 2943,4kg.
+C15 Vozilo v5 (Mješano) trenutno ima 94,88kg otpada, preostali kapacitet je 3905,12kg.
+C16 Vozilo v7 (Mješano) trenutno ima 70,52kg otpada, preostali kapacitet je 2929,48kg.
+C17 Vozilo v1 (Staklo) trenutno ima 94,32kg otpada, preostali kapacitet je 3905,68kg.
+C18 Vozilo v2 (Papir) trenutno ima 76,17kg otpada, preostali kapacitet je 2923,83kg.
+C19 Vozilo v5 (Mješano) trenutno ima 112,57kg otpada, preostali kapacitet je 3887,43kg.
+C20 Vozilo v7 (Mješano) trenutno ima 79,86kg otpada, preostali kapacitet je 2920,14kg.
+C21 Vozilo v1 (Staklo) trenutno ima 104,74kg otpada, preostali kapacitet je 3895,26kg.
+C22 Vozilo v2 (Papir) trenutno ima 94,69kg otpada, preostali kapacitet je 2905,31kg.
+C23 Vozilo v5 (Mješano) trenutno ima 117,29kg otpada, preostali kapacitet je 3882,71kg.
+C24 Vozilo v7 (Mješano) trenutno ima 86,14kg otpada, preostali kapacitet je 2913,86kg.
+C25 Vozilo v1 (Staklo) trenutno ima 115,21kg otpada, preostali kapacitet je 3884,79kg.
+C26 Vozilo v2 (Papir) trenutno ima 157,62kg otpada, preostali kapacitet je 2842,38kg.
+C27 Vozilo v5 (Mješano) trenutno ima 131,79kg otpada, preostali kapacitet je 3868,21kg.
+C28 Vozilo v7 (Mješano) trenutno ima 240,71kg otpada, preostali kapacitet je 2759,29kg.
+C29 Vozilo v1 (Staklo) trenutno ima 122,97kg otpada, preostali kapacitet je 3877,03kg.
+C30 Vozilo v2 (Papir) trenutno ima 302,22kg otpada, preostali kapacitet je 2697,78kg.
+C31 Vozilo v5 (Mješano) trenutno ima 370,54kg otpada, preostali kapacitet je 3629,46kg.
+C32 Vozilo v7 (Mješano) trenutno ima 356,23kg otpada, preostali kapacitet je 2643,77kg.
+C33 Vozilo v1 (Staklo) trenutno ima 167,25kg otpada, preostali kapacitet je 3832,75kg.
+C34 Vozilo v2 (Papir) trenutno ima 440,6kg otpada, preostali kapacitet je 2559,4kg.
+C35 Vozilo v5 (Mješano) trenutno ima 519,3kg otpada, preostali kapacitet je 3480,7kg.
+C36 Vozilo v7 (Mješano) trenutno ima 551,05kg otpada, preostali kapacitet je 2448,95kg.
+C37 Vozilo v1 (Staklo) trenutno ima 211,05kg otpada, preostali kapacitet je 3788,95kg.
+C38 Vozilo v2 (Papir) trenutno ima 559,33kg otpada, preostali kapacitet je 2440,67kg.
+C39 Vozilo v5 (Mješano) trenutno ima 760,53kg otpada, preostali kapacitet je 3239,47kg.
+C40 Vozilo v7 (Mješano) trenutno ima 645,6301kg otpada, preostali kapacitet je 2354,37kg.
+C41 Vozilo v1 (Staklo) trenutno ima 246,63kg otpada, preostali kapacitet je 3753,37kg.
+C42 Vozilo v2 (Papir) trenutno ima 659,46kg otpada, preostali kapacitet je 2340,54kg.
+C43 Vozilo v5 (Mješano) trenutno ima 1043,54kg otpada, preostali kapacitet je 2956,46kg.
+C44 Vozilo v7 (Mješano) trenutno ima 818,41kg otpada, preostali kapacitet je 2181,59kg.
+C45 Vozilo v1 (Staklo) trenutno ima 269,79kg otpada, preostali kapacitet je 3730,21kg.
+C46 Vozilo v2 (Papir) trenutno ima 784,3kg otpada, preostali kapacitet je 2215,7kg.
+C47 Vozilo v5 (Mješano) trenutno ima 1338,19kg otpada, preostali kapacitet je 2661,81kg.
+C48 Vozilo v7 (Mješano) trenutno ima 1115,74kg otpada, preostali kapacitet je 1884,26kg.
+C49 Vozilo v1 (Staklo) trenutno ima 311,03kg otpada, preostali kapacitet je 3688,97kg.
+C50 Vozilo v2 (Papir) trenutno ima 874,5101kg otpada, preostali kapacitet je 2125,49kg.
+C51 Vozilo v5 (Mješano) trenutno ima 1551,92kg otpada, preostali kapacitet je 2448,08kg.
+C52 Vozilo v7 (Mješano) trenutno ima 1223,98kg otpada, preostali kapacitet je 1776,02kg.
+C53 Vozilo v1 (Staklo) trenutno ima 356,97kg otpada, preostali kapacitet je 3643,03kg.
+C54 Vozilo v2 (Papir) trenutno ima 1006,56kg otpada, preostali kapacitet je 1993,44kg.
+C55 Vozilo v5 (Mješano) trenutno ima 1691,79kg otpada, preostali kapacitet je 2308,21kg.
+C56 Nema vise otpada za vozilo v7
+C57 Vozilo v1 (Staklo) trenutno ima 387,7kg otpada, preostali kapacitet je 3612,3kg.
+C58 Vozilo v2 (Papir) trenutno ima 1076,97kg otpada, preostali kapacitet je 1923,03kg.
+C59 Nema vise otpada za vozilo v5
+C60 Vozilo v1 (Staklo) trenutno ima 416,48kg otpada, preostali kapacitet je 3583,52kg.
+C61 Vozilo v2 (Papir) trenutno ima 1133,91kg otpada, preostali kapacitet je 1866,09kg.
+C62 Vozilo v1 (Staklo) trenutno ima 447,33kg otpada, preostali kapacitet je 3552,67kg.
+C63 Vozilo v2 (Papir) trenutno ima 1255,24kg otpada, preostali kapacitet je 1744,76kg.
+C64 Vozilo v1 (Staklo) trenutno ima 480,35kg otpada, preostali kapacitet je 3519,65kg.
+C65 Vozilo v2 (Papir) trenutno ima 1329,95kg otpada, preostali kapacitet je 1670,05kg.
+C66 Vozilo v1 (Staklo) trenutno ima 513,99kg otpada, preostali kapacitet je 3486,01kg.
+C67 Nema vise otpada za vozilo v2
+C68 Vozilo v1 (Staklo) trenutno ima 539,89kg otpada, preostali kapacitet je 3460,11kg.
+C69 Nema vise otpada za vozilo v1
+C70 Zavrseno izvrsavanje komande KRENI_N.
+
+Pristigla je komanda KVAR.
+KOMANDA KVAR. Vozilo v5 je u stanju kvara.
+Pristigla je komanda STATUS.
+|   ID|          Naziv|          Vrsta|  Nosivost|     Kolicina otpada|              Stanje|
+|   v1|    staklarko 1|         Staklo|      4000|              539,89|           Parkirano|
+|   v2|    papirko 1  |          Papir|      3000|             1329,95|           Parkirano|
+|   v7|    mješanko 3 |        Mješano|      3000|             1223,98|           Parkirano|
+
+Pristigla je komanda PRIPREMI.
+KOMANDA PRIPREMI. Vozilo v6 je u listi za obradu i stavljeno u status skupljanja.
+Pristigla je komanda KRENI_N500.
+C1 Nema vise otpada za vozilo v6
+C2 Zavrseno izvrsavanje komande KRENI_N.
+
+Pristigla je komanda ISPRAZNI.
+KOMANDA ISPRAZNI. Vozilo v1 je poslano na odvoz.
+KOMANDA ISPRAZNI. Vozilo v7 je poslano na odvoz.
+Pristigla je komanda PRIPREMI.
+KOMANDA PRIPREMI. Vozilo v3 je u listi za obradu i stavljeno u status skupljanja.
+KOMANDA PRIPREMI. Vozilo v4 je u listi za obradu i stavljeno u status skupljanja.
+KOMANDA PRIPREMI. Vozilo v5 je vec u listi za obradu.
+Pristigla je komanda KRENI.
+C1 Vozilo v3 (Metal) trenutno ima 14,47kg otpada, preostali kapacitet je 4985,53kg.
+C2 Nema vise otpada za vozilo v4
+C3 Vozilo v3 (Metal) trenutno ima 19,04kg otpada, preostali kapacitet je 4980,96kg.
+C4 Vozilo v3 (Metal) trenutno ima 34,48kg otpada, preostali kapacitet je 4965,52kg.
+C5 Vozilo v3 (Metal) trenutno ima 35,51kg otpada, preostali kapacitet je 4964,49kg.
+C6 Vozilo v3 (Metal) trenutno ima 93,67999kg otpada, preostali kapacitet je 4906,32kg.
+C7 Vozilo v3 (Metal) trenutno ima 166,99kg otpada, preostali kapacitet je 4833,01kg.
+C8 Vozilo v3 (Metal) trenutno ima 226,77kg otpada, preostali kapacitet je 4773,23kg.
+C9 Vozilo v3 (Metal) trenutno ima 287,74kg otpada, preostali kapacitet je 4712,26kg.
+C10 Nema vise otpada za vozilo v3
+C11 Zavrseno izvrsavanje komande KRENI.
+
+KRAJ DANA Vozilo v1 (539,89/4000kg) mora na odvoz.
+KRAJ DANA Vozilo v2 (1329,95/3000kg) mora na odvoz.
+KRAJ DANA Vozilo v5 (1691,79/4000kg) mora na odvoz.
+KRAJ DANA Vozilo v7 (1223,98/3000kg) mora na odvoz.
+KRAJ DANA Vozilo v3 (287,74/5000kg) mora na odvoz.
+
+STATISTIKA - VOZILA
+|   ID|       Odlasci na deponij|       Preuzeti spremnici|           Preuzeti otpad|
+|   v1|                        2|                       20|                 539,89kg|
+|   v2|                        1|                       18|                1329,95kg|
+|   v3|                        1|                        8|                 287,74kg|
+|   v4|                        0|                        0|                      0kg|
+|   v5|                        1|                       14|                1691,79kg|
+|   v6|                        0|                        0|                      0kg|
+|   v7|                        2|                       13|                1223,98kg|
+
+STATISTIKA - KOLICINA OTPADA NA DEPONIJU
+|    STAKLO|  539,89kg|
+|     PAPIR| 1329,95kg|
+|     METAL|  287,74kg|
+|       BIO|       0kg|
+|   MJEŠANO| 2915,77kg|
+

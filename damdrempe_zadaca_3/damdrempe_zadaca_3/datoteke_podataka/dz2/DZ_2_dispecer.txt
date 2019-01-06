@@ -1,0 +1,10 @@
+komanda;lista vozila
+PRIPREMI;v1,v2,v5,v7
+KRENI 1000;
+KVAR;v5
+STATUS;
+PRIPREMI;v6
+KRENI 500;
+ISPRAZNI;v1,v7
+PRIPREMI;v3,v4,v5
+KRENI;
