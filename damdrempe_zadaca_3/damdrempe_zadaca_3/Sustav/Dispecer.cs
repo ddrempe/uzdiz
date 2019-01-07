@@ -18,7 +18,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public static void ObradiKomanduPripremi(KomandaRedak komanda)
         {
-            foreach (string voziloID in komanda.Vozila)
+            foreach (string voziloID in komanda.Lista)
             {
                 Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
                 if(vozilo != null)
@@ -100,7 +100,10 @@ namespace damdrempe_zadaca_3.Sustav
                     //TODO: stavi vozilo na kraj liste
 
                     PrijevozPutnika prijevozPutnika = listaPrijevozPutnika.FirstOrDefault(p => p.VoziloID == vozilo.ID);
-                    prijevozPutnika.IskrcajPutnike();
+                    if(prijevozPutnika != null)
+                    {
+                        prijevozPutnika.IskrcajPutnike();
+                    }
                 }
                 
                 vozilo.BrojPreostalihCiklusa--;
@@ -156,7 +159,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public static void ObradiKomanduKontrola(KomandaRedak komanda)
         {
-            foreach (string voziloID in komanda.Vozila)
+            foreach (string voziloID in komanda.Lista)
             {
                 Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
                 if (vozilo != null)
@@ -175,7 +178,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public static void ObradiKomanduIsprazni(KomandaRedak komanda)
         {
-            foreach (string voziloID in komanda.Vozila)
+            foreach (string voziloID in komanda.Lista)
             {
                 Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
                 if (vozilo != null)
@@ -197,7 +200,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public static void ObradiKomanduKvar(KomandaRedak komanda)
         {
-            foreach (string voziloID in komanda.Vozila)
+            foreach (string voziloID in komanda.Lista)
             {
                 Vozilo vozilo = Program.Vozila.FirstOrDefault(v => v.ID == voziloID);
                 if (vozilo != null)

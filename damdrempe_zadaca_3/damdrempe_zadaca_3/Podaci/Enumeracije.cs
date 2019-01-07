@@ -38,6 +38,14 @@ namespace damdrempe_zadaca_3.Podaci
             KONTROLA,
             ISPRAZNI,
             STATUS,
+            VOZAČI,
+            IZLAZ,
+            OBRADI,
+            GODIŠNJI_ODMOR,
+            BOLOVANJE,
+            OTKAZ,
+            PREUZMI,
+            NOVI
         }
 
         public enum VrstaStanja

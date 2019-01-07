@@ -115,37 +115,83 @@ namespace damdrempe_zadaca_3.Citaci
 
         public int Broj { get; set; }
 
-        public List<string> Vozila { get; set; }
+        public List<string> Lista { get; set; }
+
+        public string Vozac { get; set; }
+
+        public string Vozilo { get; set; }
+
+        public string Podrucje { get; set; }
 
         public KomandaRedak(CitacPopisaBuilder citacPopisa)
         {
             string prviDioKomande = citacPopisa.VratiElementRetka(0);
             if (prviDioKomande.StartsWith(VrstaKomande.KRENI.ToString()))
             {
-                string[] prviDioKomandeSplit = prviDioKomande.Split(' ');
-                Vrsta = (VrstaKomande)Enum.Parse(typeof(VrstaKomande), prviDioKomandeSplit[0], true);
+                ProcitajKomanduKreni(prviDioKomande);
+            }
+            else
+            {
+                ProcitajOstaleKomande(citacPopisa);                
+            }
+        }
 
-                if(prviDioKomandeSplit.Length == 2)
-                {
-                    Vrsta = VrstaKomande.KRENI_N;
-                    Broj = int.Parse(prviDioKomandeSplit[1]);
-                }
+        private void ProcitajKomanduKreni(string prviDioKomande)
+        {
+            string[] prviDioKomandeSplit = prviDioKomande.Split(' ');
+            Vrsta = (VrstaKomande)Enum.Parse(typeof(VrstaKomande), prviDioKomandeSplit[0], true);
+
+            if (prviDioKomandeSplit.Length == 2)
+            {
+                Vrsta = VrstaKomande.KRENI_N;
+                Broj = int.Parse(prviDioKomandeSplit[1]);
+            }
+        }
+
+        private void ProcitajOstaleKomande(CitacPopisaBuilder citacPopisa)
+        {
+            string prviDioKomande = citacPopisa.VratiElementRetka(0);
+            if(prviDioKomande.Equals("GODIŠNJI ODMOR"))
+            {
+                Vrsta = VrstaKomande.GODIŠNJI_ODMOR;
             }
             else
             {
                 Vrsta = (VrstaKomande)Enum.Parse(typeof(VrstaKomande), prviDioKomande, true);
-                if(Vrsta != VrstaKomande.STATUS)
-                {
-                    Vozila = new List<string>();
-                    string[] vozila = citacPopisa.VratiElementRetka(1).Split(',');
-                    foreach (string vozilo in vozila)
-                    {
-                        Vozila.Add(vozilo.Trim());
-                    }
-                }
+            }
+
+            if(Vrsta == VrstaKomande.STATUS || Vrsta == VrstaKomande.VOZAČI || Vrsta == VrstaKomande.IZLAZ)
+            {
+                return;
+            }
+            else if (Vrsta == VrstaKomande.OBRADI)
+            {
+                Podrucje = citacPopisa.VratiElementRetka(1);
+                ProcitajListu(citacPopisa.VratiElementRetka(2));
+            }
+            else if (Vrsta == VrstaKomande.PREUZMI)
+            {
+                Vozac = citacPopisa.VratiElementRetka(1);
+                Vozilo = citacPopisa.VratiElementRetka(2);
+            }
+            else
+            {
+                ProcitajListu(citacPopisa.VratiElementRetka(1));
+            }
+        }
+
+        private void ProcitajListu(string lista)
+        {
+            string[] elementi = lista.Split(',');
+            Lista = new List<string>();
+            foreach (string element in elementi)
+            {
+                Lista.Add(element.Trim());
             }
         }
     }
+
+    
 
     abstract class Popis
     {
@@ -303,14 +349,15 @@ namespace damdrempe_zadaca_3.Citaci
                 try
                 {
                     citacPopisa.ProcitajElementeRetka(brojRetka, ';');
-                    if (!(citacPopisa.VratiBrojElemenataRetka() == 1 || citacPopisa.VratiBrojElemenataRetka() == 2))
+                    int brojElemenataRetka = citacPopisa.VratiBrojElemenataRetka();
+                    if (brojElemenataRetka == 0 || brojElemenataRetka > 4)
                     {
                         Program.Ispisivac.Koristi($"Neispravan redak {brojRetka} u datoteci {datoteka}.");
                         continue;
                     }
 
-                    KomandaRedak podrucje = new KomandaRedak(citacPopisa);
-                    komande.Add(podrucje);
+                    KomandaRedak komanda = new KomandaRedak(citacPopisa);
+                    komande.Add(komanda);
                 }
                 catch (FormatException)
                 {
