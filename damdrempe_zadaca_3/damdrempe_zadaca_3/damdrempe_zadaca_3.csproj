@@ -49,6 +49,7 @@
     <Compile Include="Podaci\Modeli\Korisnik.cs" />
     <Compile Include="Generatori\GeneratorEntiteta.cs" />
     <Compile Include="Podaci\Modeli\Ulica.cs" />
+    <Compile Include="Podaci\Modeli\Vozac.cs" />
     <Compile Include="Pomagaci\Entiteti\PripremateljPodrucja.cs" />
     <Compile Include="Sustav\Dispecer.cs" />
     <Compile Include="Sustav\InicijalizatorSustava.cs" />

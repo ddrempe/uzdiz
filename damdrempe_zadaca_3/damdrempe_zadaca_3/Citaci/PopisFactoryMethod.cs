@@ -1,4 +1,5 @@
-﻿using System;
+﻿using damdrempe_zadaca_3.Podaci.Modeli;
+using System;
 using System.Collections.Generic;
 using static damdrempe_zadaca_3.Podaci.Enumeracije;
 
@@ -68,7 +69,7 @@ namespace damdrempe_zadaca_3.Citaci
 
         public int Nosivost { get; set; }
 
-        public List<string> Vozaci { get; set; }
+        public List<Vozac> Vozaci { get; set; }
 
         public VoziloRedak(CitacPopisaBuilder citacPopisa)
         {            
@@ -78,11 +79,12 @@ namespace damdrempe_zadaca_3.Citaci
             VrstaOtpada = (VrstaOtpada)citacPopisa.VratiElementRetkaInt(3);
             Nosivost = citacPopisa.VratiElementRetkaInt(4);
 
-            Vozaci = new List<string>();
+            Vozaci = new List<Vozac>();
             string[] vozaci = citacPopisa.VratiElementRetka(5).Split(',');
-            foreach (string vozac in vozaci)
+            foreach (string imeVozaca in vozaci)
             {
-                Vozaci.Add(vozac.Trim());
+                Vozac vozac = new Vozac(imeVozaca.Trim());
+                Vozaci.Add(vozac);
             }
         }
     }

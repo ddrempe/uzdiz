@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using damdrempe_zadaca_3.Citaci;
 using damdrempe_zadaca_3.Podaci;
+using damdrempe_zadaca_3.Podaci.Modeli;
 using damdrempe_zadaca_3.Sustav.damdrempe_zadaca_2.Sustav;
 using static damdrempe_zadaca_3.Podaci.Enumeracije;
 
@@ -235,7 +236,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public float KolicinaOtpada { get; set; }
 
-        public List<string> Vozaci { get; set; }
+        public List<Vozac> Vozaci { get; set; }
 
         public List<int> RedoslijedUlica { get; set; } 
         

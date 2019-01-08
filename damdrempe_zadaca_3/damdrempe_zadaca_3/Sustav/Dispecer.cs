@@ -234,5 +234,20 @@ namespace damdrempe_zadaca_3.Sustav
             }
             Program.Ispisivac.ObavljeniPosao();
         }
+
+        public static void ObradiKomanduGodisnjiOdmor(KomandaRedak komanda)
+        {
+            foreach (Vozilo vozilo in Program.VozilaUObradi)
+            {
+                foreach (string imeVozaca in komanda.Lista)
+                {
+                    Vozac vozac = vozilo.Vozaci.FirstOrDefault(v => v.Ime == imeVozaca);
+                    if(vozac != null)
+                    {
+                        vozac.Status = StatusVozaca.Godisnji;
+                    }
+                }                
+            }            
+        }
     }
 }

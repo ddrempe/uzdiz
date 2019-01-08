@@ -271,6 +271,9 @@ namespace damdrempe_zadaca_3.Sustav
                     case VrstaKomande.STATUS:
                         Dispecer.ObradiKomanduStatus(komanda);
                         break;
+                    case VrstaKomande.GODIŠNJI_ODMOR:
+                        Dispecer.ObradiKomanduGodisnjiOdmor(komanda);
+                        break;
                     default:
                         break;
                 }
