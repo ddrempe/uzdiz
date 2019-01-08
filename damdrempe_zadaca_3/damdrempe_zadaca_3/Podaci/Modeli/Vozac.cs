@@ -21,10 +21,13 @@ namespace damdrempe_zadaca_3.Podaci.Modeli
 
         public StatusVozaca Status { get; set; }
 
+        public string IDVozila { get; set; }
+
         public Vozac(string ime)
         {
             Ime = ime;
             Status = StatusVozaca.Raspoloziv;
+            IDVozila = "";
         }
     }
 }

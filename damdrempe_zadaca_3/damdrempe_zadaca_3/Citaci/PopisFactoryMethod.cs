@@ -84,6 +84,7 @@ namespace damdrempe_zadaca_3.Citaci
             foreach (string imeVozaca in vozaci)
             {
                 Vozac vozac = new Vozac(imeVozaca.Trim());
+                vozac.IDVozila = ID;
                 Vozaci.Add(vozac);
             }
         }

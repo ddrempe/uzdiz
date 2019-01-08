@@ -274,6 +274,24 @@ namespace damdrempe_zadaca_3.Sustav
                     case VrstaKomande.GODIŠNJI_ODMOR:
                         Dispecer.ObradiKomanduGodisnjiOdmor(komanda);
                         break;
+                    case VrstaKomande.BOLOVANJE:
+                        Dispecer.ObradiKomanduBolovanje(komanda);
+                        break;
+                    case VrstaKomande.OTKAZ:
+                        Dispecer.ObradiKomanduOtkaz(komanda);
+                        break;
+                    case VrstaKomande.NOVI:
+                        Dispecer.ObradiKomanduNovi(komanda);
+                        break;
+                    case VrstaKomande.IZLAZ:
+                        Dispecer.ObradiKomanduIzlaz(komanda);
+                        break;
+                    case VrstaKomande.PREUZMI:
+                        Dispecer.ObradiKomanduPreuzmi(komanda);
+                        break;
+                    case VrstaKomande.VOZAČI:
+                        Dispecer.ObradiKomanduVozaci(komanda);
+                        break;
                     default:
                         break;
                 }
@@ -288,7 +306,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         private static void IsprazniSvaVozila()
         {
-            List<Vozilo> vozilaUObradi = Program.VozilaUObradi.Where(v => v.KolicinaOtpada > 0).ToList();
+            List<Vozilo> vozilaUObradi = Program.Vozila.Where(v => v.KolicinaOtpada > 0).ToList();
 
             foreach (Vozilo vozilo in vozilaUObradi)
             {

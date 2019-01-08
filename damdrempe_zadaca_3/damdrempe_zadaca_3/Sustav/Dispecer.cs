@@ -24,19 +24,18 @@ namespace damdrempe_zadaca_3.Sustav
                 if(vozilo != null)
                 {
                     //provjeri da li vozilo već postoji
-                    Vozilo trazenoVoziloUObradi = Program.VozilaUObradi.FirstOrDefault(v => v.ID == vozilo.ID);
-                    if (trazenoVoziloUObradi == null)
+                    Vozilo trazenoVoziloUObradi = Program.Vozila.FirstOrDefault(v => v.ID == vozilo.ID);
+                    if (trazenoVoziloUObradi.TrenutnoStanje != VrstaStanja.Skupljanje)
                     {
                         Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
-                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je u listi za obradu i stavljeno u status skupljanja.");
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je stavljeno u status skupljanja.");
                         Program.Ispisivac.ResetirajPostavkeBoja();
                         vozilo.PromijeniStanje(VrstaStanja.Skupljanje);
-                        Program.VozilaUObradi.Add(vozilo);
                     }
                     else
                     {
                         Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
-                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je vec u listi za obradu.");
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozilo {vozilo.ID} je vec u stanju skupljanja.");
                         Program.Ispisivac.ResetirajPostavkeBoja();
                     }
                 }
@@ -58,8 +57,8 @@ namespace damdrempe_zadaca_3.Sustav
             int brojPotrebnihCiklusa = komanda.Broj;
             int redniBrojVozila = 0;
 
-            List<Vozilo> vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
-            List<Vozilo> vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
+            List<Vozilo> vozilaKojaSkupljaju = Program.Vozila.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
+            List<Vozilo> vozilaZaPraznjenje = Program.Vozila.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             for (TrenutniCiklus = 1; TrenutniCiklus < brojPotrebnihCiklusa; TrenutniCiklus++)
             {
                 if (vozilaKojaSkupljaju.Count == 0 && vozilaZaPraznjenje.Count == 0)
@@ -78,8 +77,8 @@ namespace damdrempe_zadaca_3.Sustav
 
                 if (vozilaZaPraznjenje.Count > 0) OdradiCiklusPraznjenja();
 
-                vozilaKojaSkupljaju = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
-                vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
+                vozilaKojaSkupljaju = Program.Vozila.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Skupljanje)).ToList();
+                vozilaZaPraznjenje = Program.Vozila.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             }
 
             Program.Ispisivac.ObavljeniPosao($"C{TrenutniCiklus} Zavrseno izvrsavanje komande {komanda.Vrsta}.");
@@ -88,7 +87,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         private static void OdradiCiklusPraznjenja()
         {
-            List<Vozilo> vozilaZaPraznjenje = Program.VozilaUObradi.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
+            List<Vozilo> vozilaZaPraznjenje = Program.Vozila.Where(v => v.TrenutnoStanje.Equals(VrstaStanja.Praznjenje)).ToList();
             foreach (Vozilo vozilo in vozilaZaPraznjenje)
             {
                 if(vozilo.BrojPreostalihCiklusa <= 0)
@@ -219,7 +218,7 @@ namespace damdrempe_zadaca_3.Sustav
 
         public static void ObradiKomanduStatus(KomandaRedak komanda)
         {
-            List<Vozilo> vozilaKojaNisuUKvaru = Program.VozilaUObradi.Where(v => !v.TrenutnoStanje.Equals(VrstaStanja.Pokvareno)).ToList();
+            List<Vozilo> vozilaKojaNisuUKvaru = Program.Vozila.Where(v => !v.TrenutnoStanje.Equals(VrstaStanja.Pokvareno)).ToList();
 
             string redakZaIspis = String.Format("|{0,5}|{1,15}|{2,15}|{3,10}|{4,20}|{5,20}|",
                     "ID", "Naziv", "Vrsta", "Nosivost", "Kolicina otpada", "Stanje");
@@ -235,19 +234,132 @@ namespace damdrempe_zadaca_3.Sustav
             Program.Ispisivac.ObavljeniPosao();
         }
 
-        public static void ObradiKomanduGodisnjiOdmor(KomandaRedak komanda)
+        public static void ObradiKomanduVozaca(KomandaRedak komanda, StatusVozaca statusVozaca)
         {
-            foreach (Vozilo vozilo in Program.VozilaUObradi)
+            foreach (Vozilo vozilo in Program.Vozila)
             {
                 foreach (string imeVozaca in komanda.Lista)
                 {
                     Vozac vozac = vozilo.Vozaci.FirstOrDefault(v => v.Ime == imeVozaca);
-                    if(vozac != null)
+                    if (vozac != null)
                     {
-                        vozac.Status = StatusVozaca.Godisnji;
+                        vozac.Status = statusVozaca;
+                        Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                        Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozac {vozac.Ime} vozila {vozilo.ID} je u sada u statusu {vozac.Status}.");
+                        Program.Ispisivac.ResetirajPostavkeBoja();
                     }
-                }                
-            }            
+                }
+            }
         }
+
+        public static void ObradiKomanduGodisnjiOdmor(KomandaRedak komanda)
+        {
+            ObradiKomanduVozaca(komanda, StatusVozaca.Godisnji);        
+        }
+
+        public static void ObradiKomanduBolovanje(KomandaRedak komanda)
+        {
+            ObradiKomanduVozaca(komanda, StatusVozaca.Bolovanje);
+        }
+
+        public static void ObradiKomanduOtkaz(KomandaRedak komanda)
+        {
+            ObradiKomanduVozaca(komanda, StatusVozaca.Otkaz);
+        }
+
+        public static void ObradiKomanduNovi(KomandaRedak komanda)
+        {
+            foreach (string imeVozaca in komanda.Lista)
+            {
+                Vozac vozac = new Vozac(imeVozaca);
+                Program.NoviVozaci.Add(vozac);
+                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozac {vozac.Ime} je novi vozac.");
+                Program.Ispisivac.ResetirajPostavkeBoja();
+            }
+        }
+
+        public static void ObradiKomanduIzlaz(KomandaRedak komanda)
+        {
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+            Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Izlaz iz programa.");
+            Program.Ispisivac.ResetirajPostavkeBoja();
+            //Environment.Exit(0); // TODO: odkomentirati
+        }
+
+        public static void ObradiKomanduPreuzmi(KomandaRedak komanda)
+        {
+            foreach (Vozilo dosadasnjeVozilo in Program.Vozila)
+            {
+                Vozac vozac = dosadasnjeVozilo.Vozaci.FirstOrDefault(v => v.Ime == komanda.Vozac);
+                if (vozac != null)
+                {
+                    dosadasnjeVozilo.Vozaci.Remove(vozac);
+                    Vozilo novoVozilo = Program.Vozila.FirstOrDefault(v => v.ID == komanda.Vozilo);
+                    if (novoVozilo != null)
+                    {
+                        novoVozilo.Vozaci.Add(vozac);
+                        vozac.IDVozila = novoVozilo.ID;
+                    }
+
+                    Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                    Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozac {vozac.Ime} vozila {dosadasnjeVozilo.ID} preuzima vozilo {novoVozilo.ID}.");
+                    Program.Ispisivac.ResetirajPostavkeBoja();
+                    return;
+                }
+            }
+
+            Vozac noviVozac = Program.NoviVozaci.FirstOrDefault(v => v.Ime == komanda.Vozac);
+            if (noviVozac != null)
+            {
+                Vozilo novoVozilo = Program.Vozila.FirstOrDefault(v => v.ID == komanda.Vozilo);
+                if (novoVozilo != null)
+                {
+                    novoVozilo.Vozaci.Add(noviVozac);
+                    noviVozac.IDVozila = novoVozilo.ID;
+                }
+
+                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+                Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Vozac {noviVozac.Ime} bez dosadasnjeg vozila preuzima vozilo {novoVozilo.ID}.");
+                Program.Ispisivac.ResetirajPostavkeBoja();
+            }
+        }
+
+        private static List<Vozac> DohvatiSveVozace()
+        {
+            List<Vozac> sviVozaci = new List<Vozac>();
+
+            foreach (Vozilo vozilo in Program.Vozila)
+            {                
+                sviVozaci.AddRange(vozilo.Vozaci.ToList());
+            }
+            sviVozaci.AddRange(Program.NoviVozaci);
+
+            return sviVozaci;
+        }
+
+        public static void ObradiKomanduVozaci(KomandaRedak komanda)
+        {
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Blue);
+            Program.Ispisivac.ObavljeniPosao($"KOMANDA {komanda.Vrsta}. Ispis statusa i ostalih podataka vozaca.");
+            Program.Ispisivac.ResetirajPostavkeBoja();
+
+            List<Vozac> sviVozaci = DohvatiSveVozace();
+
+            string redakZaIspis = String.Format("|{0,5}|{1,10}|{2,15}|{3,5}|",
+                    "#","Ime", "Status", "Vozilo");
+            Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+
+            for (int i=0; i < sviVozaci.Count; i++)
+            {
+                Vozac vozac = sviVozaci[i];
+                redakZaIspis =
+                    String.Format("|{0,5}|{1,10}|{2,15}|{3,5}|",
+                    i+1, vozac.Ime, vozac.Status, vozac.IDVozila);
+                Program.Ispisivac.ObavljeniPosao(redakZaIspis);
+            }
+            Program.Ispisivac.ObavljeniPosao();
+        }
+
     }
 }
