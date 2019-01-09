@@ -27,16 +27,28 @@ namespace damdrempe_zadaca_3
         public static List<KomandaRedak> Komande = new List<KomandaRedak>();
 
         public static List<Vozac> NoviVozaci = new List<Vozac>();
+        public static int BrojGornjihRedaka;
+        public static int BrojDonjihRedaka;
 
         static void Main(string[] args)
         {
-            if (args.Length != 1)
+            if (args.Length != 5)
             {
                 Pomocno.ZavrsiProgram("Broj argumenata mora biti jednak 1.", false);
             }
-            DatotekaParametara = args[0];            
+            DatotekaParametara = args[0];
+            BrojGornjihRedaka = int.Parse(args[2]);
+            BrojDonjihRedaka = int.Parse(args[4]);
 
-            InicijalizatorSustava.Pokreni();     
+            InicijalizatorSustava.Pokreni();
+
+            PodjelaEkrana podjelaEkrana = new PodjelaEkrana(BrojGornjihRedaka);
+
+            foreach (Spremnik s in Spremnici)
+            {
+                podjelaEkrana.Ispis(s.ID + s.Vrsta.ToString());
+            }
+
             Pomocno.ZavrsiProgram("Program izvrsen do kraja.", true);
         }
     }

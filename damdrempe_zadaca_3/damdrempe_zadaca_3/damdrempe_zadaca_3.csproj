@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generatori\GeneratorBrojevaSingleton.cs" />
     <Compile Include="Citaci\ParametriSingleton.cs" />
+    <Compile Include="Sustav\PodjelaEkrana.cs" />
     <Compile Include="Sustav\StanjeVozilaState.cs" />
     <Compile Include="Sustav\Statistika.cs" />
     <Compile Include="Sustav\Tekstovi.cs" />
