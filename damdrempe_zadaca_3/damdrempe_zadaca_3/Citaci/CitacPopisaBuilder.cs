@@ -20,7 +20,12 @@ namespace damdrempe_zadaca_3
         public CitacPopisaBuilder(string datoteka)
         {
             DatotekaPopisa = datoteka;
-        }        
+        }
+        
+        public CitacPopisaBuilder (string[] retci)
+        {
+            this.retci = retci;
+        }
 
         public CitacPopisaBuilder ProcitajRetke()
         {
@@ -40,7 +45,7 @@ namespace damdrempe_zadaca_3
 
         public CitacPopisaBuilder ProcitajElementeRetka(int redniBrojRetka, char separator)
         {
-            if(redniBrojRetka <0 || redniBrojRetka >= retci.Length)
+            if(redniBrojRetka < 0 || redniBrojRetka >= retci.Length)
             {
                 return null;
             }

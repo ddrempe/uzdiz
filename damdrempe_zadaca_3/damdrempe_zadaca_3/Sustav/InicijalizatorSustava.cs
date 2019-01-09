@@ -32,6 +32,26 @@ namespace damdrempe_zadaca_3.Sustav
             IspisiStatistiku();
         }
 
+        public static void PrimajUnosKomandi()
+        {
+            KomandaRedak komanda;
+            string unos;
+            do
+            {
+                Console.Write("UPISITE KOMANDU: ");
+                unos = Console.ReadLine();
+
+                string[] retci = new string[1];
+                retci[0] = unos;
+                CitacPopisaBuilder citac = new CitacPopisaBuilder(retci);
+                citac.ProcitajElementeRetka(0, ';');
+                komanda = new KomandaRedak(citac);
+
+                ObradiPristigluKomandu(komanda);
+
+            } while (komanda.Vrsta != VrstaKomande.IZLAZ);
+        }
+
         private static void UcitajParametre()
         {
             if (!File.Exists(Program.DatotekaParametara))
@@ -244,57 +264,62 @@ namespace damdrempe_zadaca_3.Sustav
 
             foreach (KomandaRedak komanda in Program.Komande)
             {
-                Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Red);
-                string brojCiklusa = komanda.Vrsta.Equals(VrstaKomande.KRENI_N) ? komanda.Broj.ToString() : "";
-                Program.Ispisivac.ObavljeniPosao($"Pristigla je komanda {komanda.Vrsta}{brojCiklusa}.");
-                Program.Ispisivac.ResetirajPostavkeBoja();
-                switch (komanda.Vrsta)
-                {
-                    case VrstaKomande.PRIPREMI:
-                        Dispecer.ObradiKomanduPripremi(komanda);
-                        break;
-                    case VrstaKomande.KRENI:
-                        Dispecer.ObradiKomanduKreni(komanda);
-                        break;
-                    case VrstaKomande.KRENI_N:
-                        Dispecer.ObradiKomanduKreniN(komanda);
-                        break;
-                    case VrstaKomande.KVAR:
-                        Dispecer.ObradiKomanduKvar(komanda);
-                        break;
-                    case VrstaKomande.KONTROLA:
-                        Dispecer.ObradiKomanduKontrola(komanda);
-                        break;
-                    case VrstaKomande.ISPRAZNI:
-                        Dispecer.ObradiKomanduIsprazni(komanda);
-                        break;
-                    case VrstaKomande.STATUS:
-                        Dispecer.ObradiKomanduStatus(komanda);
-                        break;
-                    case VrstaKomande.GODIŠNJI_ODMOR:
-                        Dispecer.ObradiKomanduGodisnjiOdmor(komanda);
-                        break;
-                    case VrstaKomande.BOLOVANJE:
-                        Dispecer.ObradiKomanduBolovanje(komanda);
-                        break;
-                    case VrstaKomande.OTKAZ:
-                        Dispecer.ObradiKomanduOtkaz(komanda);
-                        break;
-                    case VrstaKomande.NOVI:
-                        Dispecer.ObradiKomanduNovi(komanda);
-                        break;
-                    case VrstaKomande.IZLAZ:
-                        Dispecer.ObradiKomanduIzlaz(komanda);
-                        break;
-                    case VrstaKomande.PREUZMI:
-                        Dispecer.ObradiKomanduPreuzmi(komanda);
-                        break;
-                    case VrstaKomande.VOZAČI:
-                        Dispecer.ObradiKomanduVozaci(komanda);
-                        break;
-                    default:
-                        break;
-                }
+                ObradiPristigluKomandu(komanda);
+            }
+        }
+
+        private static void ObradiPristigluKomandu(KomandaRedak komanda)
+        {
+            Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Red);
+            string brojCiklusa = komanda.Vrsta.Equals(VrstaKomande.KRENI_N) ? komanda.Broj.ToString() : "";
+            Program.Ispisivac.ObavljeniPosao($"Pristigla je komanda {komanda.Vrsta}{brojCiklusa}.");
+            Program.Ispisivac.ResetirajPostavkeBoja();
+            switch (komanda.Vrsta)
+            {
+                case VrstaKomande.PRIPREMI:
+                    Dispecer.ObradiKomanduPripremi(komanda);
+                    break;
+                case VrstaKomande.KRENI:
+                    Dispecer.ObradiKomanduKreni(komanda);
+                    break;
+                case VrstaKomande.KRENI_N:
+                    Dispecer.ObradiKomanduKreniN(komanda);
+                    break;
+                case VrstaKomande.KVAR:
+                    Dispecer.ObradiKomanduKvar(komanda);
+                    break;
+                case VrstaKomande.KONTROLA:
+                    Dispecer.ObradiKomanduKontrola(komanda);
+                    break;
+                case VrstaKomande.ISPRAZNI:
+                    Dispecer.ObradiKomanduIsprazni(komanda);
+                    break;
+                case VrstaKomande.STATUS:
+                    Dispecer.ObradiKomanduStatus(komanda);
+                    break;
+                case VrstaKomande.GODIŠNJI_ODMOR:
+                    Dispecer.ObradiKomanduGodisnjiOdmor(komanda);
+                    break;
+                case VrstaKomande.BOLOVANJE:
+                    Dispecer.ObradiKomanduBolovanje(komanda);
+                    break;
+                case VrstaKomande.OTKAZ:
+                    Dispecer.ObradiKomanduOtkaz(komanda);
+                    break;
+                case VrstaKomande.NOVI:
+                    Dispecer.ObradiKomanduNovi(komanda);
+                    break;
+                case VrstaKomande.IZLAZ:
+                    Dispecer.ObradiKomanduIzlaz(komanda);
+                    break;
+                case VrstaKomande.PREUZMI:
+                    Dispecer.ObradiKomanduPreuzmi(komanda);
+                    break;
+                case VrstaKomande.VOZAČI:
+                    Dispecer.ObradiKomanduVozaci(komanda);
+                    break;
+                default:
+                    break;
             }
         }
 

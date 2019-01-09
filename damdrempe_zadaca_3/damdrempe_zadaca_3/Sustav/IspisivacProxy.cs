@@ -33,7 +33,8 @@ namespace damdrempe_zadaca_3.Sustav
     {
         public override void ObaviIspis( string redakTeksta)
         {
-            Console.WriteLine(redakTeksta);
+            Program.PodjelaEkrana.Ispis(redakTeksta);
+            //Console.WriteLine(redakTeksta);
         }
     }
 

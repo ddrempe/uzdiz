@@ -29,6 +29,7 @@ namespace damdrempe_zadaca_3
         public static List<Vozac> NoviVozaci = new List<Vozac>();
         public static int BrojGornjihRedaka;
         public static int BrojDonjihRedaka;
+        public static PodjelaEkrana PodjelaEkrana;
 
         static void Main(string[] args)
         {
@@ -39,15 +40,10 @@ namespace damdrempe_zadaca_3
             DatotekaParametara = args[0];
             BrojGornjihRedaka = int.Parse(args[2]);
             BrojDonjihRedaka = int.Parse(args[4]);
+            PodjelaEkrana = new PodjelaEkrana(BrojGornjihRedaka);
 
             InicijalizatorSustava.Pokreni();
-
-            PodjelaEkrana podjelaEkrana = new PodjelaEkrana(BrojGornjihRedaka);
-
-            foreach (Spremnik s in Spremnici)
-            {
-                podjelaEkrana.Ispis(s.ID + s.Vrsta.ToString());
-            }
+            InicijalizatorSustava.PrimajUnosKomandi();
 
             Pomocno.ZavrsiProgram("Program izvrsen do kraja.", true);
         }
