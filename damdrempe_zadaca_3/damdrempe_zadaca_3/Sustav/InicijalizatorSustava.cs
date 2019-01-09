@@ -45,10 +45,16 @@ namespace damdrempe_zadaca_3.Sustav
                 retci[0] = unos;
                 CitacPopisaBuilder citac = new CitacPopisaBuilder(retci);
                 citac.ProcitajElementeRetka(0, ';');
-                komanda = new KomandaRedak(citac);
-
-                ObradiPristigluKomandu(komanda);
-
+                try
+                {
+                    komanda = new KomandaRedak(citac);
+                    ObradiPristigluKomandu(komanda);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("NEISPRAVNA KOMANDA");
+                    komanda = Program.Komande.First();
+                }           
             } while (komanda.Vrsta != VrstaKomande.IZLAZ);
         }
 
@@ -173,7 +179,7 @@ namespace damdrempe_zadaca_3.Sustav
             string zaglavlje =
                 String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|",
                 "ID", "Naziv", "Podpodrucja", "Staklo", "Papir", "Metal", "Bio", "Mjesano");
-            Program.Ispisivac.Koristi(zaglavlje);
+            Program.Ispisivac.ObavljeniPosao(zaglavlje);
 
             foreach (Podrucje podrucje in Program.Podrucja)
             {
@@ -197,7 +203,7 @@ namespace damdrempe_zadaca_3.Sustav
                 string redakZaIspis =
                     String.Format("|{0,10}|{1,30}|{2,20}|{3,10}|{4,10}|{5,10}|{6,10}|{7,10}|",
                     redak[0], redak[1], redak[2], redak[3], redak[4], redak[5], redak[6], redak[7]);
-                Program.Ispisivac.Koristi(redakZaIspis);
+                Program.Ispisivac.ObavljeniPosao(redakZaIspis);
             }
 
             Program.Ispisivac.Koristi();
@@ -272,7 +278,7 @@ namespace damdrempe_zadaca_3.Sustav
         {
             Program.Ispisivac.PromijeniBojuTeksta(ConsoleColor.Red);
             string brojCiklusa = komanda.Vrsta.Equals(VrstaKomande.KRENI_N) ? komanda.Broj.ToString() : "";
-            Program.Ispisivac.ObavljeniPosao($"Pristigla je komanda {komanda.Vrsta}{brojCiklusa}.");
+            Program.Ispisivac.Koristi($"Pristigla je komanda {komanda.Vrsta}{brojCiklusa}.");
             Program.Ispisivac.ResetirajPostavkeBoja();
             switch (komanda.Vrsta)
             {

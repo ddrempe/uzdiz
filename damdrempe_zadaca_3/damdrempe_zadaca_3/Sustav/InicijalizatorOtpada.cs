@@ -136,8 +136,8 @@ namespace damdrempe_zadaca_3.Sustav
                     {
                         float kolicinaOtpadaViska = kolicinaOtpadaKorisnika - preostaliKapacitetSpremnika;
                         kolicinaOtpadaKorisnika = kolicinaOtpadaKorisnika - kolicinaOtpadaViska;
-                        Program.Ispisivac.Koristi($"Korisnik {korisnikID} ima {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu} viška.");
-                        Program.Ispisivac.Koristi($"Spremnik {spremnik.ID} ({spremnik.NazivPremaOtpadu}) je pun ({spremnik.Nosivost}kg)");
+                        Program.Ispisivac.ObavljeniPosao($"Korisnik {korisnikID} ima {kolicinaOtpadaViska}kg otpada vrste {spremnik.NazivPremaOtpadu} viška.");
+                        Program.Ispisivac.ObavljeniPosao($"Spremnik {spremnik.ID} ({spremnik.NazivPremaOtpadu}) je pun ({spremnik.Nosivost}kg)");
                     }
                     
                     spremnik.KolicinaOtpada += kolicinaOtpadaKorisnika;
